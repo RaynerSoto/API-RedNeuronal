@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/demo" />
     <file type="web" url="file://$PROJECT_DIR$/microservicio-eureka" />
   </component>
   <component name="MavenProjectsManager">
@@ -12,6 +13,7 @@
         <option value="$PROJECT_DIR$/microservicio-gateway/pom.xml" />
         <option value="$PROJECT_DIR$/microservicio-eureka/pom.xml" />
         <option value="$PROJECT_DIR$/microservicio-config/pom.xml" />
+        <option value="$PROJECT_DIR$/microservicio-usuario/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

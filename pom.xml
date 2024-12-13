@@ -19,6 +19,7 @@
     <module>microservicio-gateway</module>
     <module>microservicio-eureka</module>
     <module>microservicio-config</module>
+    <module>microservicio-usuario</module>
 
   </modules>
 

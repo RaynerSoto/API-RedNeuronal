@@ -1,5 +1,6 @@
 package com.example.usuario.core.entities;
 
+import com.example.usuario.core.dto.UsuarioDTO;
 import jakarta.persistence.*;
 
 import lombok.*;
@@ -7,8 +8,6 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
 @Entity
 @Table(name = "usuario")
 public class Usuario {
@@ -16,25 +15,23 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name ="id_rol")
+    private Long id_rol;
     @Column(name = "nombre")
     private String nombre;
     @Column(name ="contrasenna")
     private String contrasenna;
-    @Column(name ="repetrircontrasenna")
+    @Column(name ="repetircontrasenna")
     private String repetrircontrasenna;
-    @Column(name ="noprodesional")
-    private String noprodesional;
-    /*@ManyToMany
-    @JoinTable(
-            name = "usuario_participante", // Nombre de la tabla intermedia existente
-            joinColumns = @JoinColumn(name = "id_usuario"), // Columna que referencia a Usuario
-            inverseJoinColumns = @JoinColumn(name = "id_participante") // Columna que referencia a Participante)
-            private List<Empleado> personal = new ArrayList<>();*/
+    @Column(name ="noprofesional", unique = true)
+    private String noprofesional;
 
-    public Usuario(String nombre, String contrasenna, String repetrircontrasenna, String noprodesional) {
-        this.nombre = nombre;
-        this.contrasenna = contrasenna;
-        this.repetrircontrasenna = repetrircontrasenna;
-        this.noprodesional = noprodesional;
+    public Usuario(UsuarioDTO usuario) {
+        this.id = usuario.getIdentificador();
+        this.id_rol = usuario.getId_rol();
+        this.nombre = usuario.getNombre();
+        this.contrasenna = usuario.getContrasenna();
+        this.repetrircontrasenna = usuario.getRepetircontrasenna();
+        this.noprofesional = usuario.getNoprofesional();
     }
 }

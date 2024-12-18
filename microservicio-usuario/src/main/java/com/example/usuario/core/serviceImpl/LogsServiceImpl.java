@@ -1,6 +1,6 @@
 package com.example.usuario.core.serviceImpl;
 
-import com.example.usuario.core.dto.LogDTO;
+import com.example.usuario.core.dto.LogDto;
 import com.example.usuario.core.entities.Logs;
 import com.example.usuario.core.repository.LogsRepository;
 import com.example.usuario.core.service.LogsService;
@@ -22,7 +22,7 @@ public class LogsServiceImpl implements LogsService {
     public void insertarLog(HttpServletRequest request, String estado,String mensaje) {
         String ip = IpUtils.hostIpV4Http(request);
         String user = UsuarioUtil.Usuario(request);
-        LogDTO logDTO = new LogDTO(estado,user,ip,mensaje);
+        LogDto logDTO = new LogDto(estado,user,ip,mensaje);
         logsRepository.save(new Logs(logDTO));
     }
 }

@@ -1,6 +1,6 @@
 package com.example.usuario.core.controller;
 
-import com.example.usuario.core.dto.UsuarioDTO;
+import com.example.usuario.core.dto.UsuarioDto;
 import com.example.usuario.core.entities.Usuario;
 import com.example.usuario.core.service.LogsService;
 import com.example.usuario.core.service.UsuarioService;
@@ -30,7 +30,7 @@ public class UsuarioController {
     @PostMapping("/create")
     @Operation(summary = "Insertar usuario",
             description = "Permite insertar un usuario")
-    public ResponseEntity<?> insertarUsuario(@RequestBody UsuarioDTO usuario, HttpServletRequest request){
+    public ResponseEntity<?> insertarUsuario(@RequestBody UsuarioDto usuario, HttpServletRequest request){
         try{
             usuarioService.insertarUsuario(new Usuario(usuario));
             logsService.insertarLog(request,"Aceptado","Se insertó un usuario");
@@ -42,8 +42,8 @@ public class UsuarioController {
     }
 
     @GetMapping("/all")
-    @Operation(summary = "Listado de empleados",
-            description = "Permite listar todos los empleados del sistema junto con sus centros laborales")
+    @Operation(summary = "Listado de usuarios",
+            description = "Permite listar todos los usuarios del sistema")
     public ResponseEntity<?> listarUsuarios(){
        try{
            List<Usuario> usuarios = usuarioService.obtenerUsuarios();
@@ -56,7 +56,7 @@ public class UsuarioController {
     @PutMapping("/update/{id}")
     @Operation(summary = "Modificar usuarios por ID",
             description = "Permite modificar un usuario a raíz de su ID")
-    public ResponseEntity<?> modificarUsuario(@RequestBody UsuarioDTO usuario,HttpServletRequest request){
+    public ResponseEntity<?> modificarUsuario(@RequestBody UsuarioDto usuario, HttpServletRequest request){
         try{
             usuarioService.modificarUsuario(new Usuario(usuario));
             logsService.insertarLog(request,"Aceptado","Se modificó un usuario");
@@ -84,7 +84,7 @@ public class UsuarioController {
     @Operation(summary = "Obtener usuario por ID", description = "Permite obtener un usuario a raíz de su ID")
     public ResponseEntity<?> obtenerDatosPorId(@PathVariable Long id){
         try{
-            UsuarioDTO usuario = new UsuarioDTO(usuarioService.obtenerUsuarioXId(id).get());
+            UsuarioDto usuario = new UsuarioDto(usuarioService.obtenerUsuarioXId(id).get());
             return ResponseEntity.ok(usuario);
         }catch (Exception e){
             return ResponseEntity.badRequest().body(e.getMessage());

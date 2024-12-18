@@ -1,6 +1,6 @@
 package com.example.usuario.core.entities;
 
-import com.example.usuario.core.dto.UsuarioDTO;
+import com.example.usuario.core.dto.UsuarioDto;
 import jakarta.persistence.*;
 
 import lombok.*;
@@ -26,7 +26,7 @@ public class Usuario {
     @Column(name ="noprofesional", unique = true)
     private String noprofesional;
 
-    public Usuario(UsuarioDTO usuario) {
+    public Usuario(UsuarioDto usuario) {
         this.id = usuario.getIdentificador();
         this.id_rol = usuario.getId_rol();
         this.nombre = usuario.getNombre();

@@ -1,12 +1,11 @@
 package com.example.usuario.core.entities;
 
-import com.example.usuario.core.dto.LogDTO;
+import com.example.usuario.core.dto.LogDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -30,7 +29,7 @@ public class Logs {
     @Column(name="message")
     private String message;
 
-    public Logs(LogDTO logDTO) {
+    public Logs(LogDto logDTO) {
         this.event_date  = LocalDateTime.now().toLocalDate();
         this.log_level = logDTO.getLog_level();
         this.user_name = logDTO.getUser_name();

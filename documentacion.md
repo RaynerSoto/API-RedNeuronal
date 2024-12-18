@@ -34,7 +34,7 @@ El sistema consta de 2 subsistemas con arquitecturas diferentes:
 1. Aplicación movil con arquitectura monolítica modular en la cual los módulos están diseñados para gestionar funciones específicas como la recolección de datos, configuración de sensores, roles de usuario y comunicación con la API.
 ![Arquitectura de la aplicación movil](diagramas\Arquitectura%20app%20movil.png "Arquitectura de la aplicación movil")
 2. Api con arquitectura de microservicios la cual está diseñada como un conjunto de servicios independientes que pueden escalar y desplegarse de manera autónoma.
-   ![Arquitectura de la Api](diagramas\Diagrama%20de%20arquitectura%20Inicial.png "Arquitectura de la Api")
+![Arquitectura de la Api](diagramas\Diagrama%20de%20arquitectura%20Inicial.png "Arquitectura de la Api")
 3. **Tecnologías utilizadas en el desarrollo:**
    - Backend: Java, Spring Boot
    - Base de Datos: SQLite, PostgreSql

@@ -2,7 +2,7 @@ package com.example.usuario.core.dto;
 
 import com.example.usuario.core.entities.Usuario;
 
-public class UsuarioDTO {
+public class UsuarioDto {
     private Long identificador;
     private Long id_rol;
     private String nombre;
@@ -10,7 +10,7 @@ public class UsuarioDTO {
     private String repetircontrasenna;
     private String noprofesional;
 
-    public UsuarioDTO(Long identificador,Long id_rol, String nombre, String contrasenna, String repetircontrasenna, String noprofesional) {
+    public UsuarioDto(Long identificador, Long id_rol, String nombre, String contrasenna, String repetircontrasenna, String noprofesional) {
         this.identificador = identificador;
         this.id_rol = id_rol;
         this.nombre = nombre;
@@ -19,7 +19,7 @@ public class UsuarioDTO {
         this.noprofesional = noprofesional;
     }
 
-    public UsuarioDTO(Usuario usuario) {
+    public UsuarioDto(Usuario usuario) {
         this.identificador = usuario.getId();
         this.id_rol = usuario.getId_rol();
         this.nombre = usuario.getNombre();

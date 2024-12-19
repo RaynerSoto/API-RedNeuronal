@@ -90,4 +90,24 @@ public class UsuarioController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
+    @GetMapping("/existeUsuario/{id}")
+    public ResponseEntity<?> validateUsuario(@PathVariable Long id) {
+        try{
+            boolean exists = usuarioService.existeUsuario(id);
+            return ResponseEntity.ok(exists);
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/participantesXUsuario/{id}")
+    public ResponseEntity<?> obtenerParticipantesXUsuario(@PathVariable Long id) {
+        try{
+            return ResponseEntity.ok(usuarioService.obtenerParticipanteXUsuario(id));
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
 }

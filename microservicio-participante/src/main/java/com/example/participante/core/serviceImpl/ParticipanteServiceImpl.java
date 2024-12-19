@@ -1,9 +1,13 @@
 package com.example.participante.core.serviceImpl;
 
+import com.example.participante.core.dto.ParticipanteDto;
 import com.example.participante.core.entities.Participante;
+import com.example.participante.core.entities.UsuarioParticipante;
 import com.example.participante.core.exception.SearchException;
+import com.example.participante.core.feingclient.UsuarioClient;
 import com.example.participante.core.repository.ParticipanteRepository;
 import com.example.participante.core.service.ParticipanteService;
+import com.example.participante.core.service.UsuarioParticipanteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,15 +17,30 @@ import java.util.Optional;
 @Service
 public class ParticipanteServiceImpl implements ParticipanteService {
     private ParticipanteRepository participanteRepository;
+    private UsuarioParticipanteService usuarioParticipanteService;
+    private UsuarioClient usuarioClient;
 
     @Autowired
-    public ParticipanteServiceImpl(ParticipanteRepository participanteRepository) {
+    public ParticipanteServiceImpl(ParticipanteRepository participanteRepository, UsuarioParticipanteService usuarioParticipanteService,UsuarioClient usuarioClient) {
         this.participanteRepository = participanteRepository;
+        this.usuarioParticipanteService = usuarioParticipanteService;
+        this.usuarioClient = usuarioClient;
     }
 
     @Override
-    public void insertarParticipante(Participante participante) {
-        participanteRepository.save(participante);
+    public void insertarParticipante(ParticipanteDto participanteDto) throws SearchException {
+        if(usuarioClient.existeUsuario(participanteDto.getUsuario())){
+            participanteRepository.save(new Participante(participanteDto));
+            try{
+                if(participanteRepository.existsByCi(participanteDto.getCi())){
+                    Participante participante = obtenerParticipanteXCI(participanteDto.getCi()).get();
+                    usuarioParticipanteService.crearRelacion(new UsuarioParticipante(participanteDto.getUsuario(),participante.getId()));
+                }
+            }catch (Exception e){
+                throw new SearchException(e.getMessage());
+            }
+        }
+
     }
 
     @Override
@@ -55,5 +74,10 @@ public class ParticipanteServiceImpl implements ParticipanteService {
     @Override
     public Optional<Participante> obtenerParticipanteXCI(String ci) throws SearchException {
         return Optional.ofNullable(participanteRepository.findByCi(ci).orElseThrow(()-> new SearchException("No existe un participante con ese ID")));
+    }
+
+    @Override
+    public List<Participante> obtenerParticipanteXUsuario(Long id_usuario) throws SearchException {
+        return usuarioParticipanteService.obtenerParticipanteXUsuario(id_usuario);
     }
 }

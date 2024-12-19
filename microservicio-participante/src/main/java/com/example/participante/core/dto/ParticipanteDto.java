@@ -20,13 +20,7 @@ public class ParticipanteDto {
     private String sexo;
 
     private String telefono;
-
-    public ParticipanteDto(String nombre, String ci, String sexo, String telefono) {
-        this.nombre = nombre;
-        this.ci = ci;
-        this.sexo = sexo;
-        this.telefono = telefono;
-    }
+    private Long usuario;
 
     public ParticipanteDto(Participante participante) {
         this.id = participante.getId();

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/participante")
+@RequestMapping("/api/v1/participante")
 @Tag(name = "Controlador de participates",
         description = "Controlador encargardo de todo lo referente con los participates a los que se le realizará las pruebas")
 public class ParticipanteController {
@@ -33,7 +33,7 @@ public class ParticipanteController {
             description = "Permite insertar un participante")
     public ResponseEntity<?> insertarParticipante(@RequestBody ParticipanteDto participanteDto,HttpServletRequest request){
         try{
-            participanteService.insertarParticipante(new Participante(participanteDto));
+            participanteService.insertarParticipante(participanteDto);
             logsService.insertarLog(request,"Aceptado","Se insertó un participante");
             return ResponseEntity.ok("Se insertó correctamente un participante");
         }catch (Exception e){
@@ -48,7 +48,7 @@ public class ParticipanteController {
             description = "Permite modificar un participante")
     public ResponseEntity<?> modificarParticipante(@RequestBody ParticipanteDto participanteDto,HttpServletRequest request){
         try{
-      participanteService.insertarParticipante(new Participante(participanteDto));
+            participanteService.modificarParticipante(new Participante(participanteDto));
             logsService.insertarLog(request,"Aceptado","Se modificó un participante");
             return ResponseEntity.ok("Se modificó un participante correctamente");
         }catch (Exception e){
@@ -80,12 +80,23 @@ public class ParticipanteController {
         }
     }
 
-    @GetMapping("/getParticipanteXCi/{ci}")
+    @GetMapping("/obtenerParticipanteXCi/{ci}")
     @Operation(summary = "Obtener participante por CI", description = "Permite obtener un participante a raíz de su CI")
     public ResponseEntity<?> obtenerParticipanteXCI(@RequestBody String ci){
         try{
             ParticipanteDto participante = new ParticipanteDto(participanteService.obtenerParticipanteXCI(ci).get());
             return ResponseEntity.ok(participante);
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/obtenerParticipanteXUsuario/{id}")
+    @Operation(summary = "Obtener participantes para un usuario", description = "Permite obtener una lista de participantes a raíz del usuario")
+    public ResponseEntity<?> obtenerParticipanteXUsuario(@PathVariable Long id){
+        try{
+            List<Participante> participantes = participanteService.obtenerParticipanteXUsuario(id);
+            return ResponseEntity.ok(participantes);
         }catch (Exception e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }

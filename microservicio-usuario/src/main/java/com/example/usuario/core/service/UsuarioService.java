@@ -2,6 +2,7 @@ package com.example.usuario.core.service;
 
 import com.example.usuario.core.entities.Usuario;
 import com.example.usuario.core.exception.SearchException;
+import com.example.usuario.core.http.response.ParticipantesByUsuarioResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,4 +14,7 @@ public interface UsuarioService {
     void eliminarUsuario(Long id) throws SearchException;
     List<Usuario> obtenerUsuarios();
     Optional<Usuario> obtenerUsuarioXId(Long id) throws SearchException;
+    boolean existeUsuario(Long id) throws SearchException;
+    ParticipantesByUsuarioResponse obtenerParticipanteXUsuario(Long idUsuario);
+
 }

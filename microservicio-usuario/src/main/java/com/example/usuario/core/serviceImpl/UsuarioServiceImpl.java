@@ -1,7 +1,10 @@
 package com.example.usuario.core.serviceImpl;
 
+import com.example.usuario.core.dto.ParticipanteDto;
 import com.example.usuario.core.entities.Usuario;
 import com.example.usuario.core.exception.SearchException;
+import com.example.usuario.core.feignClient.ParticipanteClient;
+import com.example.usuario.core.http.response.ParticipantesByUsuarioResponse;
 import com.example.usuario.core.repository.UsuarioRepository;
 import com.example.usuario.core.service.UsuarioService;
 import org.springframework.beans.factory.annotation.*;
@@ -13,10 +16,12 @@ import java.util.Optional;
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
     private UsuarioRepository repository;
+    private ParticipanteClient participanteClient;
 
     @Autowired
-    public UsuarioServiceImpl(UsuarioRepository repository) {
+    public UsuarioServiceImpl(UsuarioRepository repository,ParticipanteClient participanteClient) {
         this.repository = repository;
+        this.participanteClient = participanteClient;
     }
 
     @Override
@@ -50,5 +55,22 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public Optional<Usuario> obtenerUsuarioXId(Long id) throws SearchException {
         return Optional.ofNullable(repository.findById(id).orElseThrow(()-> new SearchException("No existe un usuario con ese ID")));
+    }
+
+    @Override
+    public boolean existeUsuario(Long id) throws SearchException {
+        return repository.existsById(id);
+    }
+
+    @Override
+    public ParticipantesByUsuarioResponse obtenerParticipanteXUsuario(Long idUsuario) {
+        Usuario usuario = repository.findById(idUsuario).orElse(new Usuario());
+        List<ParticipanteDto> participanteDtoList = participanteClient.obtenerParticipanteXUsuario(idUsuario);
+
+        return ParticipantesByUsuarioResponse.builder()
+                .nombre(usuario.getNombre())
+                .noprofesional(usuario.getNoprofesional())
+                    .participanteList(participanteDtoList)
+            .build();
     }
 }

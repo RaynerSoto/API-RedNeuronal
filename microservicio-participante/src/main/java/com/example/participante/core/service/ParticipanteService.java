@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface ParticipanteService {
     void insertarParticipante(ParticipanteDto participanteDto) throws SearchException;
-    void modificarParticipante(Participante participante) throws SearchException;
+    void modificarParticipante(ParticipanteDto participante, Long id) throws SearchException;
     void eliminarParticipante(Long id) throws SearchException;
     List<Participante> obtenerParticipantes();
     Optional<Participante> obtenerParticipanteXId(Long id) throws SearchException;

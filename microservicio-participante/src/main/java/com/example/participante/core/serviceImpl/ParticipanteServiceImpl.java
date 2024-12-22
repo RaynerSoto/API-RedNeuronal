@@ -44,9 +44,10 @@ public class ParticipanteServiceImpl implements ParticipanteService {
     }
 
     @Override
-    public void modificarParticipante(Participante participante) throws SearchException {
-        if(participanteRepository.existsById(participante.getId())){
-            participanteRepository.save(participante);
+    public void modificarParticipante(ParticipanteDto participante, Long id) throws SearchException {
+        if(participanteRepository.existsById(id)){
+            participante.setId(id);
+            participanteRepository.save(new Participante(participante));
         }else{
             throw new SearchException("No existe el participante a modificar");
         }

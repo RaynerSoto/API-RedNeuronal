@@ -1,6 +1,7 @@
-package com.example.usuario.core.serviceImpl;
+package com.example.usuario.core.serviceimpl;
 
 import com.example.usuario.core.dto.ParticipanteDto;
+import com.example.usuario.core.dto.UsuarioDto;
 import com.example.usuario.core.entities.Usuario;
 import com.example.usuario.core.exception.SearchException;
 import com.example.usuario.core.feignClient.ParticipanteClient;
@@ -30,9 +31,10 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public void modificarUsuario(Usuario usuario) throws SearchException {
-        if(repository.existsById(usuario.getId())){
-            repository.save(usuario);
+    public void modificarUsuario(UsuarioDto usuarioDto, Long id) throws SearchException {
+        if(repository.existsById(id)){
+            usuarioDto.setId(id);
+            repository.save(new Usuario(usuarioDto));
         }else{
             throw new SearchException("No existe el usuario a modificar");
         }

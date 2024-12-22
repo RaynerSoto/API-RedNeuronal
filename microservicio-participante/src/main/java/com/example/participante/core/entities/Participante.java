@@ -25,6 +25,7 @@ public class Participante {
     private String telefono;
 
     public Participante(ParticipanteDto participanteDto) {
+        this.id = participanteDto.getId();
         this.nombre = participanteDto.getNombre();
         this.ci = participanteDto.getCi();
         this.sexo = participanteDto.getSexo();

@@ -20,6 +20,8 @@ import java.util.List;
 public class UsuarioController {
     private final UsuarioService usuarioService;
     private final LogsService logsService;
+    private static final String aceptado = "Aceptado";
+    private static final String error = "Error";
 
     @Autowired
     public UsuarioController(UsuarioService usuarioService,LogsService logsService) {
@@ -33,10 +35,10 @@ public class UsuarioController {
     public ResponseEntity<?> insertarUsuario(@RequestBody UsuarioDto usuario, HttpServletRequest request){
         try{
             usuarioService.insertarUsuario(new Usuario(usuario));
-            logsService.insertarLog(request,"Aceptado","Se insertó un usuario");
+            logsService.insertarLog(request, aceptado,"Se insertó un usuario");
             return ResponseEntity.ok("El usuario se insertó correctamente");
         }catch (Exception e){
-            logsService.insertarLog(request,"Error",e.getMessage());
+            logsService.insertarLog(request, error,e.getMessage());
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
@@ -56,13 +58,13 @@ public class UsuarioController {
     @PutMapping("/update/{id}")
     @Operation(summary = "Modificar usuarios por ID",
             description = "Permite modificar un usuario a raíz de su ID")
-    public ResponseEntity<?> modificarUsuario(@RequestBody UsuarioDto usuario, HttpServletRequest request){
+    public ResponseEntity<?> modificarUsuario(@RequestBody UsuarioDto usuario,@PathVariable Long id, HttpServletRequest request){
         try{
-            usuarioService.modificarUsuario(new Usuario(usuario));
-            logsService.insertarLog(request,"Aceptado","Se modificó un usuario");
+            usuarioService.modificarUsuario(usuario, id);
+            logsService.insertarLog(request, aceptado,"Se modificó un usuario");
             return ResponseEntity.ok("Usuario Modificado correctamente");
         }catch (Exception e){
-            logsService.insertarLog(request,"Error",e.getMessage());
+            logsService.insertarLog(request, error,e.getMessage());
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
@@ -72,10 +74,10 @@ public class UsuarioController {
     public ResponseEntity<?> eliminarUsuario(@PathVariable Long id, HttpServletRequest request){
         try{
             usuarioService.eliminarUsuario(id);
-            logsService.insertarLog(request,"Aceptado","Se eliminó un usuario");
+            logsService.insertarLog(request, aceptado,"Se eliminó un usuario");
             return ResponseEntity.ok("Se eliminó el usuario");
         }catch (Exception e){
-            logsService.insertarLog(request,"Error",e.getMessage());
+            logsService.insertarLog(request, error,e.getMessage());
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }

@@ -21,6 +21,7 @@
     <module>microservicio-config</module>
     <module>microservicio-usuario</module>
     <module>microservicio-participante</module>
+    <module>microservicio-dato</module>
 
   </modules>
 

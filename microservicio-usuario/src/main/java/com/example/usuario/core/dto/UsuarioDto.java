@@ -3,15 +3,15 @@ package com.example.usuario.core.dto;
 import com.example.usuario.core.entities.Usuario;
 
 public class UsuarioDto {
-    private Long identificador;
+    private Long id;
     private Long id_rol;
     private String nombre;
     private String contrasenna;
     private String repetircontrasenna;
     private String noprofesional;
 
-    public UsuarioDto(Long identificador, Long id_rol, String nombre, String contrasenna, String repetircontrasenna, String noprofesional) {
-        this.identificador = identificador;
+    public UsuarioDto(Long id, Long id_rol, String nombre, String contrasenna, String repetircontrasenna, String noprofesional) {
+        this.id = id;
         this.id_rol = id_rol;
         this.nombre = nombre;
         this.contrasenna = contrasenna;
@@ -20,20 +20,20 @@ public class UsuarioDto {
     }
 
     public UsuarioDto(Usuario usuario) {
-        this.identificador = usuario.getId();
-        this.id_rol = usuario.getId_rol();
+        this.id = usuario.getId();
+        this.id_rol = usuario.getIdrol();
         this.nombre = usuario.getNombre();
         this.contrasenna = usuario.getContrasenna();
         this.repetircontrasenna = usuario.getRepetrircontrasenna();
         this.noprofesional = usuario.getNoprofesional();
     }
 
-    public Long getIdentificador() {
-        return identificador;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdentificador(Long identificador) {
-        this.identificador = identificador;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getId_rol() {

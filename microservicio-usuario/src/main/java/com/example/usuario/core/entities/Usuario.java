@@ -16,7 +16,7 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name ="id_rol")
-    private Long id_rol;
+    private Long idrol;
     @Column(name = "nombre")
     private String nombre;
     @Column(name ="contrasenna")
@@ -27,8 +27,8 @@ public class Usuario {
     private String noprofesional;
 
     public Usuario(UsuarioDto usuario) {
-        this.id = usuario.getIdentificador();
-        this.id_rol = usuario.getId_rol();
+        this.id = usuario.getId();
+        this.idrol = usuario.getId_rol();
         this.nombre = usuario.getNombre();
         this.contrasenna = usuario.getContrasenna();
         this.repetrircontrasenna = usuario.getRepetircontrasenna();

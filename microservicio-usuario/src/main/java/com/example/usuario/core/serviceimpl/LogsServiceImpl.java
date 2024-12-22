@@ -1,4 +1,4 @@
-package com.example.usuario.core.serviceImpl;
+package com.example.usuario.core.serviceimpl;
 
 import com.example.usuario.core.dto.LogDto;
 import com.example.usuario.core.entities.Logs;

@@ -21,6 +21,8 @@ import java.util.List;
 public class ParticipanteController {
     private ParticipanteService participanteService;
     private LogsService logsService;
+    private String aceptado = "Aceptado";
+    private String error = "Error";
 
     @Autowired
     public ParticipanteController(ParticipanteService participanteService, LogsService logsService) {
@@ -34,10 +36,10 @@ public class ParticipanteController {
     public ResponseEntity<?> insertarParticipante(@RequestBody ParticipanteDto participanteDto,HttpServletRequest request){
         try{
             participanteService.insertarParticipante(participanteDto);
-            logsService.insertarLog(request,"Aceptado","Se insertó un participante");
+            logsService.insertarLog(request,aceptado,"Se insertó un participante");
             return ResponseEntity.ok("Se insertó correctamente un participante");
         }catch (Exception e){
-            logsService.insertarLog(request,"Error",e.getMessage());
+            logsService.insertarLog(request,error,e.getMessage());
             return ResponseEntity.badRequest().body("No se pudo insertar devido a un error");
 
         }
@@ -46,13 +48,13 @@ public class ParticipanteController {
     @PutMapping("/update/{id}")
     @Operation(summary = "Modificar participante",
             description = "Permite modificar un participante")
-    public ResponseEntity<?> modificarParticipante(@RequestBody ParticipanteDto participanteDto,HttpServletRequest request){
+    public ResponseEntity<?> modificarParticipante(@RequestBody ParticipanteDto participanteDto,@PathVariable Long id,HttpServletRequest request){
         try{
-            participanteService.modificarParticipante(new Participante(participanteDto));
-            logsService.insertarLog(request,"Aceptado","Se modificó un participante");
+            participanteService.modificarParticipante(participanteDto,id);
+            logsService.insertarLog(request,aceptado,"Se modificó un participante");
             return ResponseEntity.ok("Se modificó un participante correctamente");
         }catch (Exception e){
-            logsService.insertarLog(request,"Error",e.getMessage());
+            logsService.insertarLog(request,error,e.getMessage());
             return ResponseEntity.badRequest().body("No se modificó debido a un error");
         }
     }
@@ -107,10 +109,10 @@ public class ParticipanteController {
     public ResponseEntity<?> eliminarUsuario(@PathVariable Long id, HttpServletRequest request){
         try{
             participanteService.eliminarParticipante(id);
-            logsService.insertarLog(request,"Aceptado","Se eliminó un participante");
+            logsService.insertarLog(request,aceptado,"Se eliminó un participante");
             return ResponseEntity.ok("Se eliminó el participante");
         }catch (Exception e){
-            logsService.insertarLog(request,"Error",e.getMessage());
+            logsService.insertarLog(request,error,e.getMessage());
             return ResponseEntity.badRequest().body("No se pudo eliminar devido a un error");
         }
     }

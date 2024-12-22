@@ -3,10 +3,19 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/gateaway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/microservicio-config/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservicio-config/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservicio-dato/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservicio-dato/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservicio-datos/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservicio-datos/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/microservicio-eureka/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservicio-eureka/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/microservicio-gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservicio-gateway/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/microservicio-participante/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservicio-participante/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/microservicio-usuario/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservicio-usuario/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>

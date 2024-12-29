@@ -104,6 +104,16 @@ public class ParticipanteController {
         }
     }
 
+    @GetMapping("/obtenerDatoXParticipante/{idparticipante}")
+    @Operation(summary = "Obtener datos para un participante", description = "Permite obtener una lista de datos a raíz del participante")
+    public ResponseEntity<?> obtenerDatoXParticipante(@PathVariable Long idparticipante){
+        try{
+            return ResponseEntity.ok(participanteService.obtenerDatosXParticipante(idparticipante));
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
     @DeleteMapping("/delete/{id}")
     @Operation(summary = "Eliminar participante por ID", description = "Permite eliminar un participante a raíz de su ID")
     public ResponseEntity<?> eliminarUsuario(@PathVariable Long id, HttpServletRequest request){

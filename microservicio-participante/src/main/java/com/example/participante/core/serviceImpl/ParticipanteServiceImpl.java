@@ -1,10 +1,13 @@
 package com.example.participante.core.serviceImpl;
 
+import com.example.participante.core.dto.DatoDto;
 import com.example.participante.core.dto.ParticipanteDto;
 import com.example.participante.core.entities.Participante;
 import com.example.participante.core.entities.UsuarioParticipante;
 import com.example.participante.core.exception.SearchException;
+import com.example.participante.core.feingclient.DatoClient;
 import com.example.participante.core.feingclient.UsuarioClient;
+import com.example.participante.core.http.response.DatosResponse;
 import com.example.participante.core.repository.ParticipanteRepository;
 import com.example.participante.core.service.ParticipanteService;
 import com.example.participante.core.service.UsuarioParticipanteService;
@@ -19,12 +22,14 @@ public class ParticipanteServiceImpl implements ParticipanteService {
     private ParticipanteRepository participanteRepository;
     private UsuarioParticipanteService usuarioParticipanteService;
     private UsuarioClient usuarioClient;
+    private DatoClient datoClient;
 
     @Autowired
-    public ParticipanteServiceImpl(ParticipanteRepository participanteRepository, UsuarioParticipanteService usuarioParticipanteService,UsuarioClient usuarioClient) {
+    public ParticipanteServiceImpl(ParticipanteRepository participanteRepository, UsuarioParticipanteService usuarioParticipanteService, UsuarioClient usuarioClient, DatoClient datoClient) {
         this.participanteRepository = participanteRepository;
         this.usuarioParticipanteService = usuarioParticipanteService;
         this.usuarioClient = usuarioClient;
+        this.datoClient = datoClient;
     }
 
     @Override
@@ -80,5 +85,19 @@ public class ParticipanteServiceImpl implements ParticipanteService {
     @Override
     public List<Participante> obtenerParticipanteXUsuario(Long id_usuario) throws SearchException {
         return usuarioParticipanteService.obtenerParticipanteXUsuario(id_usuario);
+    }
+
+    @Override
+    public DatosResponse obtenerDatosXParticipante(Long idparticipante) {
+        Participante participante = participanteRepository.findById(idparticipante).orElse(new Participante());
+        List<DatoDto> datoDtoList = datoClient.obtenerDatoXParticipante(idparticipante);
+        return DatosResponse.builder()
+                .nombre(participante.getNombre())
+                .ci(participante.getCi())
+                .sexo(participante.getSexo())
+                .telefono(participante.getTelefono())
+                .datoDtoList(datoDtoList)
+                .build();
+
     }
 }

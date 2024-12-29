@@ -17,6 +17,7 @@
         <option value="$PROJECT_DIR$/microservicio-participante/pom.xml" />
         <option value="$PROJECT_DIR$/microservicio-datos/pom.xml" />
         <option value="$PROJECT_DIR$/microservicio-dato/pom.xml" />
+        <option value="$PROJECT_DIR$/microservicio-patologia/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

@@ -22,6 +22,7 @@
     <module>microservicio-usuario</module>
     <module>microservicio-participante</module>
     <module>microservicio-dato</module>
+    <module>microservicio-patologia</module>
 
   </modules>
 

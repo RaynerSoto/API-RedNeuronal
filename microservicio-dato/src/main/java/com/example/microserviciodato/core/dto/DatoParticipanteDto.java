@@ -1,5 +1,6 @@
 package com.example.microserviciodato.core.dto;
 
+import com.example.microserviciodato.core.entities.DatoParticipante;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,4 +24,17 @@ public class DatoParticipanteDto {
     private double medicioncinturatobillo;
     private double largopierna;
     private double alturadelsensor;
+
+    public DatoParticipanteDto(DatoParticipante datoParticipante) {
+        this.id = datoParticipante.getId();
+        this.idparticipante = datoParticipante.getIdparticipante();
+        this.fecha = datoParticipante.getFecha();
+        this.hora = datoParticipante.getHora();
+        this.edad = datoParticipante.getEdad();
+        this.patologia = datoParticipante.isPatologia();
+        this.numerodecalzado = datoParticipante.getNumerodecalzado();
+        this.medicioncinturatobillo = datoParticipante.getMedicioncinturatobillo();
+        this.largopierna = datoParticipante.getLargopierna();
+        this.alturadelsensor = datoParticipante.getAlturadelsensor();
+    }
 }

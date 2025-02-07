@@ -91,6 +91,7 @@ public class ParticipanteServiceImpl implements ParticipanteService {
     public DatosResponse obtenerDatosXParticipante(Long idparticipante) {
         Participante participante = participanteRepository.findById(idparticipante).orElse(new Participante());
         List<DatoDto> datoDtoList = datoClient.obtenerDatoXParticipante(idparticipante);
+        datoDtoList.get(0);
         return DatosResponse.builder()
                 .nombre(participante.getNombre())
                 .ci(participante.getCi())

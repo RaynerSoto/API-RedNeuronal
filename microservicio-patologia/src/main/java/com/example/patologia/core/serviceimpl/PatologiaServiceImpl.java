@@ -4,6 +4,7 @@ import com.example.patologia.core.dto.PatologiaDto;
 import com.example.patologia.core.entities.Patologia;
 import com.example.patologia.core.exception.SearchException;
 import com.example.patologia.core.repository.PatologiaRepository;
+import com.example.patologia.core.service.DatoPatologiaService;
 import com.example.patologia.core.service.PatologiaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,11 +14,15 @@ import java.util.List;
 @Service
 public class PatologiaServiceImpl implements PatologiaService {
     private PatologiaRepository patologiaRepository;
+    private DatoPatologiaService datoPatologiaService;
+
 
     @Autowired
-    public PatologiaServiceImpl (PatologiaRepository patologiaRepository){
+    public PatologiaServiceImpl(PatologiaRepository patologiaRepository, DatoPatologiaService datoPatologiaService) {
         this.patologiaRepository = patologiaRepository;
+        this.datoPatologiaService = datoPatologiaService;
     }
+
     @Override
     public void insertarPatologia(PatologiaDto patologiaDto) {
         patologiaRepository.save(new Patologia(patologiaDto));
@@ -45,5 +50,10 @@ public class PatologiaServiceImpl implements PatologiaService {
     @Override
     public List<Patologia> obtenerPatologias() {
         return patologiaRepository.findAll();
+    }
+
+    @Override
+    public List<Patologia> obtenerPatologiaXDato(Long id_dato) throws SearchException {
+        return  datoPatologiaService.obtenerPatologiaXDato(id_dato);
     }
 }

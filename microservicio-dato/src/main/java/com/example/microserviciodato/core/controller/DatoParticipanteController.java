@@ -2,6 +2,8 @@ package com.example.microserviciodato.core.controller;
 
 import com.example.microserviciodato.core.dto.DatoParticipanteDto;
 import com.example.microserviciodato.core.entities.DatoParticipante;
+import com.example.microserviciodato.core.exception.SearchException;
+import com.example.microserviciodato.core.http.response.PatologiaResponse;
 import com.example.microserviciodato.core.service.DatoParticipanteService;
 import com.example.microserviciodato.core.service.LogsService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -76,10 +78,34 @@ public class DatoParticipanteController {
             description = "Permite obtener los datos de un participante")
     public ResponseEntity<?> obtenerDatoXParticipante(@PathVariable Long idparticipante){
         try{
-            List<DatoParticipante> datoParticipanteList = datoParticipanteService.obtenerDatosXParticipante(idparticipante);
+            List<PatologiaResponse> datoParticipanteList = datoParticipanteService.obtenerDatosXParticipante(idparticipante);
             return ResponseEntity.ok(datoParticipanteList);
         }catch (Exception e){
             return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @PatchMapping("/obtenerDato/{id}")
+    @Operation(summary = "Obtener dato por ID", description = "Permite obtener un dato a raíz de su ID")
+    public ResponseEntity<?> obtenerDatosPorId(@PathVariable Long id){
+        try{
+            DatoParticipanteDto datoParticipanteDto = new DatoParticipanteDto(datoParticipanteService.obtenerDatoXId(id).get());
+            return ResponseEntity.ok(datoParticipanteDto);
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/findbyid/{id}")
+    public ResponseEntity<?> existeDato(@PathVariable Long id){
+        try{
+            if(datoParticipanteService.existeDato(id)){
+                return ResponseEntity.ok(true);
+            }else{
+                return ResponseEntity.ok(false);
+            }
+        } catch (SearchException e) {
+            return ResponseEntity.badRequest().body(e);
         }
     }
 }

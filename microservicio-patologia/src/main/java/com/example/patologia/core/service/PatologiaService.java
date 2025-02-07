@@ -11,4 +11,6 @@ public interface PatologiaService {
     void modificarPatologia(PatologiaDto patologiaDto, Long idpatologia)throws SearchException;
     void eliminarPatologia(Long idpatologia)throws SearchException;
     List<Patologia> obtenerPatologias();
+    List<Patologia> obtenerPatologiaXDato(Long id_dato) throws SearchException;
+
 }

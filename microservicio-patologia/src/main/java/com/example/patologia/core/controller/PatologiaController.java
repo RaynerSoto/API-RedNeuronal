@@ -1,6 +1,7 @@
 package com.example.patologia.core.controller;
 
 import com.example.patologia.core.dto.PatologiaDto;
+import com.example.patologia.core.entities.Patologia;
 import com.example.patologia.core.service.LogsService;
 import com.example.patologia.core.service.PatologiaService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -9,6 +10,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/patologia")
@@ -73,6 +76,17 @@ public class PatologiaController {
     public ResponseEntity<?> obtenerPatologias(){
         try{
             return ResponseEntity.ok(patologiaService.obtenerPatologias());
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/obtenerPatologiaXDato/{id_dato}")
+    @Operation(summary = "Obtener participantes para un usuario", description = "Permite obtener una lista de participantes a raíz del usuario")
+    public ResponseEntity<?> obtenerPatologiaXDato(@PathVariable Long id_dato){
+        try{
+            List<Patologia> patologiaList = patologiaService.obtenerPatologiaXDato(id_dato);
+            return ResponseEntity.ok(patologiaList);
         }catch (Exception e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }

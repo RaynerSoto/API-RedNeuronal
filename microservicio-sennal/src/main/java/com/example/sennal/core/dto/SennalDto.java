@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 @Data
 @NoArgsConstructor
@@ -12,8 +13,8 @@ import java.time.LocalTime;
 public class SennalDto {
 
     private Long id;
-    private Long id_dato;
-    private LocalTime fecha;
+    private Long iddato;
+    private LocalDate fecha;
     private double acelerometrox;
     private double acelerometroy;
     private double acelerometroz;
@@ -31,7 +32,7 @@ public class SennalDto {
 
     public SennalDto(Sennal sennal) {
         this.id = sennal.getId();
-        this.id_dato = sennal.getId_dato();
+        this.iddato = sennal.getIddato();
         this.fecha = sennal.getFecha();
         this.acelerometrox = sennal.getAcelerometrox();
         this.acelerometroy = sennal.getAcelerometroy();

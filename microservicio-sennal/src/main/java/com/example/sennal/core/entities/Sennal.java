@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
@@ -19,10 +20,10 @@ public class Sennal {
     private Long id;
 
     @Column(name = "id_dato")
-    private Long id_dato;
+    private Long iddato;
 
     @Column(name = "fecha")
-    private LocalTime fecha;
+    private LocalDate fecha;
 
     @Column (name = "acelerometrox")
     private double acelerometrox;
@@ -54,13 +55,13 @@ public class Sennal {
     @Column (name = "temperatura")
     private double temperatura;
 
-    @Column (name = "rangoacelerómetro")
+    @Column (name = "rangoacelerometro")
     private double rangoacelerometro;
 
-    @Column (name = "rangogiroscópio")
+    @Column (name = "rangogiroscopio")
     private double rangogiroscopio;
 
-    @Column (name = "rangomagnetómetro")
+    @Column (name = "rangomagnetometro")
     private double rangomagnetometro;
 
     @Column (name = "frecuenciademuestreo")
@@ -68,7 +69,7 @@ public class Sennal {
 
     public Sennal(SennalDto sennalDto) {
         this.id = sennalDto.getId();
-        this.id_dato = sennalDto.getId_dato();
+        this.iddato = sennalDto.getIddato();
         this.fecha = sennalDto.getFecha();
         this.acelerometrox = sennalDto.getAcelerometrox();
         this.acelerometroy = sennalDto.getAcelerometroy();

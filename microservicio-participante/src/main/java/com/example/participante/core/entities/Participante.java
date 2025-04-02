@@ -1,6 +1,7 @@
 package com.example.participante.core.entities;
 
 import com.example.participante.core.dto.ParticipanteDto;
+import com.example.participante.core.dto.ParticipanteUpdateDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,6 +26,14 @@ public class Participante {
     private String telefono;
 
     public Participante(ParticipanteDto participanteDto) {
+        this.id = participanteDto.getId();
+        this.nombre = participanteDto.getNombre();
+        this.ci = participanteDto.getCi();
+        this.sexo = participanteDto.getSexo();
+        this.telefono = participanteDto.getTelefono();
+    }
+
+    public Participante(ParticipanteUpdateDto participanteDto) {
         this.id = participanteDto.getId();
         this.nombre = participanteDto.getNombre();
         this.ci = participanteDto.getCi();

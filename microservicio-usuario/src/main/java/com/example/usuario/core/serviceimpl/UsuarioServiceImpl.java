@@ -27,7 +27,10 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public void insertarUsuario(Usuario usuario) {
-        repository.save(usuario);
+        if(!repository.existsByNombre(usuario.getNombre())){
+            repository.save(usuario);
+        }
+
     }
 
     @Override
@@ -62,6 +65,11 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public boolean existeUsuario(Long id) throws SearchException {
         return repository.existsById(id);
+    }
+
+    @Override
+    public Long existeUsuariobynombre(String nombre) throws SearchException {
+        return repository.findIdByNombre(nombre);
     }
 
     @Override

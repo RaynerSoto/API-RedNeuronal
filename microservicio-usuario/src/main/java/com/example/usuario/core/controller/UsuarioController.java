@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/usuarios")
+@RequestMapping("/api/v1/usuario")
 @Tag(name = "Controlador de usuarios",
         description = "Controlador encargardo de todo lo referente con los usuarios del sistema")
 public class UsuarioController {
@@ -94,7 +94,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/existeUsuario/{id}")
-    public ResponseEntity<?> validateUsuario(@PathVariable Long id) {
+    public ResponseEntity<?> existeUsuariobynombre(@PathVariable Long id) {
         try{
             boolean exists = usuarioService.existeUsuario(id);
             return ResponseEntity.ok(exists);
@@ -107,6 +107,16 @@ public class UsuarioController {
     public ResponseEntity<?> obtenerParticipantesXUsuario(@PathVariable Long id) {
         try{
             return ResponseEntity.ok(usuarioService.obtenerParticipanteXUsuario(id));
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/existeUsuariobynombre/{nombre}")
+    public ResponseEntity<?> existeUsuariobynombre(@PathVariable String nombre) {
+        try{
+            Long id = usuarioService.existeUsuariobynombre(nombre);
+            return ResponseEntity.ok(id);
         }catch (Exception e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }

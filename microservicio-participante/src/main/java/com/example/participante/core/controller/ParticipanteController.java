@@ -1,6 +1,7 @@
 package com.example.participante.core.controller;
 
 import com.example.participante.core.dto.ParticipanteDto;
+import com.example.participante.core.dto.ParticipanteUpdateDto;
 import com.example.participante.core.entities.Participante;
 
 import com.example.participante.core.service.LogsService;
@@ -48,7 +49,7 @@ public class ParticipanteController {
     @PutMapping("/update/{id}")
     @Operation(summary = "Modificar participante",
             description = "Permite modificar un participante")
-    public ResponseEntity<?> modificarParticipante(@RequestBody ParticipanteDto participanteDto,@PathVariable Long id,HttpServletRequest request){
+    public ResponseEntity<?> modificarParticipante(@RequestBody ParticipanteUpdateDto participanteDto, @PathVariable Long id, HttpServletRequest request){
         try{
             participanteService.modificarParticipante(participanteDto,id);
             logsService.insertarLog(request,aceptado,"Se modificó un participante");
@@ -124,6 +125,16 @@ public class ParticipanteController {
         }catch (Exception e){
             logsService.insertarLog(request,error,e.getMessage());
             return ResponseEntity.badRequest().body("No se pudo eliminar devido a un error");
+        }
+    }
+
+    @GetMapping("/getIdbyParticipantebyCi/{ci}")
+    public ResponseEntity<?> existeParticipantebyCi(@PathVariable String ci) {
+        try{
+            Long idparticipante = participanteService.existeParticipantebyCi(ci);
+            return ResponseEntity.ok(idparticipante);
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 }

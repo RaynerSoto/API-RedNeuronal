@@ -1,7 +1,9 @@
 package com.example.patologia.core.controller;
 
+import com.example.patologia.core.dto.DatoPatologiaDto;
 import com.example.patologia.core.dto.PatologiaDto;
 import com.example.patologia.core.entities.Patologia;
+import com.example.patologia.core.service.DatoPatologiaService;
 import com.example.patologia.core.service.LogsService;
 import com.example.patologia.core.service.PatologiaService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -22,10 +24,11 @@ public class PatologiaController {
     private LogsService logsService;
     private String aceptado = "Aceptado";
     private String error = "Error";
-
+    private DatoPatologiaService datoPatologiaService;
     @Autowired
-    public PatologiaController(PatologiaService patologiaService, LogsService logsService){
+    public PatologiaController(PatologiaService patologiaService, LogsService logsService, DatoPatologiaService datoPatologiaService){
         this.patologiaService = patologiaService;
+        this.datoPatologiaService = datoPatologiaService;
         this.logsService = logsService;
     }
 
@@ -35,6 +38,20 @@ public class PatologiaController {
     public ResponseEntity<?> insertarPatologia(@RequestBody PatologiaDto patologiaDto, HttpServletRequest request){
         try{
             patologiaService.insertarPatologia(patologiaDto);
+            logsService.insertarLog(request,aceptado,"Se insertó una patologia");
+            return ResponseEntity.ok("Se insertó una patologia correctamente");
+        }catch (Exception e){
+            logsService.insertarLog(request,error,e.getMessage());
+            return ResponseEntity.badRequest().body("Ocurrio un error");
+        }
+    }
+
+    @PostMapping("/createrelacion")
+    @Operation(summary = "Crear la relacion dato-patologia",
+            description = "Permite crear relacion dato-patologia")
+    public ResponseEntity<?> crearRelacion(@RequestBody DatoPatologiaDto datoPatologiaDto, HttpServletRequest request){
+        try{
+            datoPatologiaService.crearRelacion(datoPatologiaDto);
             logsService.insertarLog(request,aceptado,"Se insertó una patologia");
             return ResponseEntity.ok("Se insertó una patologia correctamente");
         }catch (Exception e){
@@ -87,6 +104,25 @@ public class PatologiaController {
         try{
             List<Patologia> patologiaList = patologiaService.obtenerPatologiaXDato(id_dato);
             return ResponseEntity.ok(patologiaList);
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/obtenerIdbyNombre/{nombre}")
+    public ResponseEntity<?> obtenerIdbynombre(@PathVariable String nombre){
+        try{
+            return ResponseEntity.ok(patologiaService.obtenerIdbynombre(nombre));
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @DeleteMapping("/eliminarrelacion/iddato={iddato}&fecha={fecha}")
+    public ResponseEntity<?> eliminarRelacion(@PathVariable Long iddato, @PathVariable String fecha){
+        try{
+            datoPatologiaService.eliminarRelacion(iddato,fecha);
+            return ResponseEntity.ok("Se eliminó la relación");
         }catch (Exception e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }

@@ -25,7 +25,9 @@ public class PatologiaServiceImpl implements PatologiaService {
 
     @Override
     public void insertarPatologia(PatologiaDto patologiaDto) {
-        patologiaRepository.save(new Patologia(patologiaDto));
+        if(!patologiaRepository.existsByNombre(patologiaDto.getNombre())){
+            patologiaRepository.save(new Patologia(patologiaDto));
+        }
     }
 
     @Override
@@ -45,6 +47,11 @@ public class PatologiaServiceImpl implements PatologiaService {
         }else{
             throw new SearchException("No existe la patologia a eliminar");
         }
+    }
+
+    @Override
+    public Long obtenerIdbynombre(String nombre) {
+       return patologiaRepository.getIdbyNombre(nombre);
     }
 
     @Override

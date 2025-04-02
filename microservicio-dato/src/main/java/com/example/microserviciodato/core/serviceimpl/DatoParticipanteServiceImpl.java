@@ -1,5 +1,6 @@
 package com.example.microserviciodato.core.serviceimpl;
 
+import com.example.microserviciodato.core.dto.DatoIdDto;
 import com.example.microserviciodato.core.dto.DatoParticipanteDto;
 import com.example.microserviciodato.core.dto.PatologiaDto;
 import com.example.microserviciodato.core.entities.DatoParticipante;
@@ -10,7 +11,9 @@ import com.example.microserviciodato.core.repository.DatoParticipanteRepository;
 import com.example.microserviciodato.core.service.DatoParticipanteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -28,7 +31,9 @@ public class DatoParticipanteServiceImpl implements DatoParticipanteService {
 
     @Override
     public void insertarDato(DatoParticipante datoParticipante) {
-        datoParticipanteRepository.save(datoParticipante);
+        if(!datoParticipanteRepository.existsDatoParticipanteByFechaAndIdparticipante(datoParticipante.getFecha(),datoParticipante.getIdparticipante())){
+            datoParticipanteRepository.save(datoParticipante);
+        }
     }
 
     @Override
@@ -44,6 +49,11 @@ public class DatoParticipanteServiceImpl implements DatoParticipanteService {
         if(datoParticipanteRepository.existsById(id)){
             datoParticipanteRepository.deleteById(id);
         }
+    }
+
+    @Override
+    public Long obtenerIdbyparticipanteAndFecha(Long idParticipante,String fecha) {
+        return datoParticipanteRepository.getIdByIdparticipanteAndFecha(idParticipante, LocalDate.parse(fecha));
     }
 
     @Override

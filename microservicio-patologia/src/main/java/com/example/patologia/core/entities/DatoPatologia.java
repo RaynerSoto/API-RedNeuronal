@@ -24,4 +24,9 @@ public class DatoPatologia {
     @Column(name = "fecha_evaluacion")
     private LocalDate fechaevaluacion;
 
+    public DatoPatologia(DatoPatologiaDto datoPatologiaDto) {
+        this.iddato = datoPatologiaDto.getIddato();
+        this.idpatologia = datoPatologiaDto.getIdpatologia();
+        this.fechaevaluacion = LocalDate.parse(datoPatologiaDto.getFechaevaluacion());
+    }
 }

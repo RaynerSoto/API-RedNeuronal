@@ -1,5 +1,6 @@
 package com.example.microserviciodato.core.controller;
 
+import com.example.microserviciodato.core.dto.DatoIdDto;
 import com.example.microserviciodato.core.dto.DatoParticipanteDto;
 import com.example.microserviciodato.core.entities.DatoParticipante;
 import com.example.microserviciodato.core.exception.SearchException;
@@ -106,6 +107,16 @@ public class DatoParticipanteController {
             }
         } catch (SearchException e) {
             return ResponseEntity.badRequest().body(e);
+        }
+    }
+
+    @GetMapping("/obtenerIdbyparticipanteAndFecha/idParticipante={idParticipante}&fecha={fecha}")
+    public ResponseEntity<?> obtenerIdbyparticipanteAndFecha(@PathVariable Long idParticipante,@PathVariable String fecha){
+        try{
+            Long iddato=datoParticipanteService.obtenerIdbyparticipanteAndFecha(idParticipante,fecha);
+           return ResponseEntity.ok(iddato);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 }

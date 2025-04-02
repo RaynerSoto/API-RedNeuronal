@@ -39,8 +39,8 @@ public class DatoParticipante {
 
     public DatoParticipante(DatoParticipanteDto datoParticipanteDto) {
         this.idparticipante = datoParticipanteDto.getIdparticipante();
-        this.fecha = datoParticipanteDto.getFecha();
-        this.hora = datoParticipanteDto.getHora();
+        this.fecha = LocalDate.parse(datoParticipanteDto.getFecha());
+        this.hora = LocalTime.parse(datoParticipanteDto.getHora());
         this.edad = datoParticipanteDto.getEdad();
         this.patologia = datoParticipanteDto.isPatologia();
         this.numerodecalzado = datoParticipanteDto.getNumerodecalzado();

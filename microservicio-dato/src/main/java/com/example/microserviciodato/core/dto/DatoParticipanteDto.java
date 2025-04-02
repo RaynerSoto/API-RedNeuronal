@@ -16,8 +16,8 @@ import java.time.LocalTime;
 public class DatoParticipanteDto {
     private Long id;
     private Long idparticipante;
-    private LocalDate fecha;
-    private LocalTime hora;
+    private String fecha;
+    private String hora;
     private int edad;
     private boolean patologia;
     private double numerodecalzado;
@@ -28,8 +28,8 @@ public class DatoParticipanteDto {
     public DatoParticipanteDto(DatoParticipante datoParticipante) {
         this.id = datoParticipante.getId();
         this.idparticipante = datoParticipante.getIdparticipante();
-        this.fecha = datoParticipante.getFecha();
-        this.hora = datoParticipante.getHora();
+        this.fecha = datoParticipante.getFecha().toString();
+        this.hora = datoParticipante.getHora().toString();
         this.edad = datoParticipante.getEdad();
         this.patologia = datoParticipante.isPatologia();
         this.numerodecalzado = datoParticipante.getNumerodecalzado();

@@ -2,6 +2,7 @@ package com.example.participante.core.serviceImpl;
 
 import com.example.participante.core.dto.DatoDto;
 import com.example.participante.core.dto.ParticipanteDto;
+import com.example.participante.core.dto.ParticipanteUpdateDto;
 import com.example.participante.core.entities.Participante;
 import com.example.participante.core.entities.UsuarioParticipante;
 import com.example.participante.core.exception.SearchException;
@@ -35,21 +36,23 @@ public class ParticipanteServiceImpl implements ParticipanteService {
     @Override
     public void insertarParticipante(ParticipanteDto participanteDto) throws SearchException {
         if(usuarioClient.existeUsuario(participanteDto.getUsuario())){
-            participanteRepository.save(new Participante(participanteDto));
-            try{
-                if(participanteRepository.existsByCi(participanteDto.getCi())){
-                    Participante participante = obtenerParticipanteXCI(participanteDto.getCi()).get();
-                    usuarioParticipanteService.crearRelacion(new UsuarioParticipante(participanteDto.getUsuario(),participante.getId()));
-                }
-            }catch (Exception e){
-                throw new SearchException(e.getMessage());
-            }
+           if(!participanteRepository.existsByCi(participanteDto.getCi())){
+               participanteRepository.save(new Participante(participanteDto));
+               try{
+                   if(participanteRepository.existsByCi(participanteDto.getCi())){
+                       Participante participante = obtenerParticipanteXCI(participanteDto.getCi()).get();
+                       usuarioParticipanteService.crearRelacion(new UsuarioParticipante(participanteDto.getUsuario(),participante.getId()));
+                   }
+               }catch (Exception e){
+                   throw new SearchException(e.getMessage());
+               }
+           }
         }
 
     }
 
     @Override
-    public void modificarParticipante(ParticipanteDto participante, Long id) throws SearchException {
+    public void modificarParticipante(ParticipanteUpdateDto participante, Long id) throws SearchException {
         if(participanteRepository.existsById(id)){
             participante.setId(id);
             participanteRepository.save(new Participante(participante));
@@ -101,4 +104,11 @@ public class ParticipanteServiceImpl implements ParticipanteService {
                 .build();
 
     }
+
+    @Override
+    public Long existeParticipantebyCi(String ci) {
+        return participanteRepository.getIdByCi(ci);
+    }
+
+
 }

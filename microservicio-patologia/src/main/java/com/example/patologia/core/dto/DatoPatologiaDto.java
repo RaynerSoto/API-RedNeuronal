@@ -12,11 +12,11 @@ import java.time.LocalDate;
 public class DatoPatologiaDto {
     private Long iddato;
     private Long idpatologia;
-    private LocalDate fechaevaluacion;
+    private String fechaevaluacion;
 
     public DatoPatologiaDto (DatoPatologia datoPatologia){
         this.iddato = datoPatologia.getIddato();
         this.idpatologia = datoPatologia.getIdpatologia();
-        this.fechaevaluacion = datoPatologia.getFechaevaluacion();
+        this.fechaevaluacion = datoPatologia.getFechaevaluacion().toString();
     }
 }

@@ -16,6 +16,7 @@ public interface UsuarioService {
     List<Usuario> obtenerUsuarios();
     Optional<Usuario> obtenerUsuarioXId(Long id) throws SearchException;
     boolean existeUsuario(Long id) throws SearchException;
+    Long existeUsuariobynombre(String nombre) throws SearchException;
     ParticipantesByUsuarioResponse obtenerParticipanteXUsuario(Long idUsuario);
 
 }

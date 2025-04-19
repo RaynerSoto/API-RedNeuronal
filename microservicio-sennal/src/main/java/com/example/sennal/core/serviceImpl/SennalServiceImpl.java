@@ -9,6 +9,7 @@ import com.example.sennal.core.service.SennalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -23,7 +24,9 @@ public class SennalServiceImpl implements SennalService {
 
     @Override
     public void insertarsennal(SennalDto sennalDto) {
-        sennalRepository.save(new Sennal(sennalDto));
+        if(!sennalRepository.existsByIddatoAndFecha(sennalDto.getIddato(), LocalDate.parse(sennalDto.getFecha()))){
+            sennalRepository.save(new Sennal(sennalDto));
+        }
     }
 
     @Override

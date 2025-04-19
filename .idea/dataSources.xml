@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:postgresql://localhost:5432/sensores_inteligentes</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="red_neuronalBD" uuid="1cfaafaf-c795-4fb1-958a-8f7bb12cc865">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/red_neuronalBD</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

@@ -14,7 +14,7 @@ public class SennalDto {
 
     private Long id;
     private Long iddato;
-    private LocalDate fecha;
+    private String fecha;
     private double acelerometrox;
     private double acelerometroy;
     private double acelerometroz;
@@ -33,7 +33,7 @@ public class SennalDto {
     public SennalDto(Sennal sennal) {
         this.id = sennal.getId();
         this.iddato = sennal.getIddato();
-        this.fecha = sennal.getFecha();
+        this.fecha = sennal.getFecha().toString();
         this.acelerometrox = sennal.getAcelerometrox();
         this.acelerometroy = sennal.getAcelerometroy();
         this.acelerometroz = sennal.getAcelerometroz();

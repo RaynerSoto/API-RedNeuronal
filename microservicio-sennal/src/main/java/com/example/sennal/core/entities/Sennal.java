@@ -70,7 +70,7 @@ public class Sennal {
     public Sennal(SennalDto sennalDto) {
         this.id = sennalDto.getId();
         this.iddato = sennalDto.getIddato();
-        this.fecha = sennalDto.getFecha();
+        this.fecha = LocalDate.parse(sennalDto.getFecha());
         this.acelerometrox = sennalDto.getAcelerometrox();
         this.acelerometroy = sennalDto.getAcelerometroy();
         this.acelerometroz = sennalDto.getAcelerometroz();

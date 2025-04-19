@@ -23,6 +23,7 @@
     <module>microservicio-participante</module>
     <module>microservicio-dato</module>
     <module>microservicio-patologia</module>
+    <module>microservicio-redneuronal</module>
 
   </modules>
 

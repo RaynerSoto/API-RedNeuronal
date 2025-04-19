@@ -1,5 +1,6 @@
 package com.example.sennal.core.controller;
 
+import com.example.sennal.core.dto.ListaSenalesDTO;
 import com.example.sennal.core.dto.SennalDto;
 import com.example.sennal.core.entities.Sennal;
 import com.example.sennal.core.service.LogsService;
@@ -33,10 +34,15 @@ public class SennalController {
     @PostMapping("/create")
     @Operation(summary = "Insertar sennal",
             description = "Permite insertar una sennal")
-    public ResponseEntity<?> insertarPatologia(@RequestBody SennalDto sennalDto, HttpServletRequest request){
+    public ResponseEntity<?> insertarPatologia(@RequestBody ListaSenalesDTO listaSenales, HttpServletRequest request){
         try{
-            sennalService.insertarsennal(sennalDto);
-            logsService.insertarLog(request,aceptado,"Se insertó una sennal");
+            List<SennalDto> senales = listaSenales.getSenales();
+
+            for(SennalDto sennalDto: senales){
+                sennalService.insertarsennal(sennalDto);
+                logsService.insertarLog(request,aceptado,"Se insertó una sennal");
+            }
+
             return ResponseEntity.ok("Se insertó una sennal correctamente");
         }catch (Exception e){
             logsService.insertarLog(request,error,e.getMessage());

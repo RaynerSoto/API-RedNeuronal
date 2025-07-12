@@ -1,6 +1,6 @@
 package com.example.usuario.core.http.response;
 
-import com.example.usuario.core.dto.ParticipanteDto;
+import com.example.usuario.core.dto.ParticipantesDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,5 +15,5 @@ import java.util.List;
 public class ParticipantesByUsuarioResponse {
     private String nombre;
     private String noprofesional;
-    private List<ParticipanteDto> participanteList;
+    private List<ParticipantesDto> participanteList;
 }

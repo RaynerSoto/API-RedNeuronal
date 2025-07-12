@@ -9,4 +9,6 @@ public interface UsuarioClient {
 
     @GetMapping("/existeUsuario/{id}")
     boolean existeUsuario(@PathVariable Long id);
+
+
 }

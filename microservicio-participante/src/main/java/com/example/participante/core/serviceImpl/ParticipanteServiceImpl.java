@@ -1,6 +1,7 @@
 package com.example.participante.core.serviceImpl;
 
 import com.example.participante.core.dto.DatoDto;
+import com.example.participante.core.dto.ParticipanteAllDto;
 import com.example.participante.core.dto.ParticipanteDto;
 import com.example.participante.core.dto.ParticipanteUpdateDto;
 import com.example.participante.core.entities.Participante;
@@ -90,6 +91,7 @@ public class ParticipanteServiceImpl implements ParticipanteService {
         return usuarioParticipanteService.obtenerParticipanteXUsuario(id_usuario);
     }
 
+
     @Override
     public DatosResponse obtenerDatosXParticipante(Long idparticipante) {
         Participante participante = participanteRepository.findById(idparticipante).orElse(new Participante());
@@ -109,6 +111,7 @@ public class ParticipanteServiceImpl implements ParticipanteService {
     public Long existeParticipantebyCi(String ci) {
         return participanteRepository.getIdByCi(ci);
     }
+
 
 
 }

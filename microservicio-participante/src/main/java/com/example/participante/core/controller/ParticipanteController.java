@@ -137,4 +137,5 @@ public class ParticipanteController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
 }

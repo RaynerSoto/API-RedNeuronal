@@ -16,8 +16,10 @@ public class DatoDto {
     private LocalTime hora;
     private int edad;
     private boolean patologia;
+    private List<PatologiaDto> patologiaList;
     private double numerodecalzado;
     private double medicioncinturatobillo;
     private double largopierna;
     private double alturadelsensor;
+    private SennalDto sennalList;
 }

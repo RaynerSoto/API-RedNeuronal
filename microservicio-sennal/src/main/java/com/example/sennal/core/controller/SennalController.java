@@ -69,8 +69,7 @@ public class SennalController {
             description = "Permite obtener una sennal por el dato")
     public ResponseEntity<?> obtenerSennalXDato(@PathVariable  Long iddato){
         try{
-           List<Sennal> sennalList= sennalService.todassennal(iddato);
-            return ResponseEntity.ok(sennalList);
+            return ResponseEntity.ok(sennalService.todassennal(iddato));
         }catch (Exception e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }

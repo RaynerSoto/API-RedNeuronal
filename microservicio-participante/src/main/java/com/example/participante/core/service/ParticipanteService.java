@@ -1,5 +1,6 @@
 package com.example.participante.core.service;
 
+import com.example.participante.core.dto.ParticipanteAllDto;
 import com.example.participante.core.dto.ParticipanteDto;
 import com.example.participante.core.dto.ParticipanteUpdateDto;
 import com.example.participante.core.entities.Participante;

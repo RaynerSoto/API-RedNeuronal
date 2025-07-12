@@ -1,6 +1,7 @@
 package com.example.microserviciodato.core.http.response;
 
 import com.example.microserviciodato.core.dto.PatologiaDto;
+import com.example.microserviciodato.core.dto.SennalDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,4 +26,5 @@ public class PatologiaResponse {
     private double medicioncinturatobillo;
     private double largopierna;
     private double alturadelsensor;
+    private SennalDto sennalList;
 }

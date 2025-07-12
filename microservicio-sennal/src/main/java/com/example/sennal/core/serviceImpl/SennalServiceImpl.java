@@ -1,5 +1,6 @@
 package com.example.sennal.core.serviceImpl;
 
+import com.example.sennal.core.dto.ListaSensoresDto;
 import com.example.sennal.core.dto.SennalDto;
 import com.example.sennal.core.entities.Sennal;
 import com.example.sennal.core.exception.SearchException;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class SennalServiceImpl implements SennalService {
@@ -24,9 +26,8 @@ public class SennalServiceImpl implements SennalService {
 
     @Override
     public void insertarsennal(SennalDto sennalDto) {
-        if(!sennalRepository.existsByIddatoAndFecha(sennalDto.getIddato(), LocalDate.parse(sennalDto.getFecha()))){
-            sennalRepository.save(new Sennal(sennalDto));
-        }
+        sennalRepository.save(new Sennal(sennalDto));
+
     }
 
     @Override
@@ -39,11 +40,43 @@ public class SennalServiceImpl implements SennalService {
     }
 
     @Override
-    public List<Sennal> todassennal(Long iddato) {
-        List<Sennal> sennalList = null;
-        if(datoClient.existeDato(iddato)){
-            sennalList = sennalRepository.findAllByIddato(iddato);
+    public ListaSensoresDto todassennal(Long iddato) {
+        ListaSensoresDto listaSensoresDto = new ListaSensoresDto();
+
+        if (datoClient.existeDato(iddato)) {
+            List<Sennal> sennalList = sennalRepository.findAllByIddato(iddato);
+
+            listaSensoresDto.setAcelerometroX(
+                    sennalList.stream().map(Sennal::getAcelerometrox).collect(Collectors.toList())
+            );
+            listaSensoresDto.setAcelerometroY(
+                    sennalList.stream().map(Sennal::getAcelerometroy).collect(Collectors.toList())
+            );
+            listaSensoresDto.setAcelerometroZ(
+                    sennalList.stream().map(Sennal::getAcelerometroz).collect(Collectors.toList())
+            );
+
+            listaSensoresDto.setGiroscopioX(
+                    sennalList.stream().map(Sennal::getGiroscopiox).collect(Collectors.toList())
+            );
+            listaSensoresDto.setGiroscopioY(
+                    sennalList.stream().map(Sennal::getGiroscopioy).collect(Collectors.toList())
+            );
+            listaSensoresDto.setGiroscopioZ(
+                    sennalList.stream().map(Sennal::getGiroscopioz).collect(Collectors.toList())
+            );
+
+            listaSensoresDto.setMagnetometroX(
+                    sennalList.stream().map(Sennal::getMagnetometrox).collect(Collectors.toList())
+            );
+            listaSensoresDto.setMagnetometroY(
+                    sennalList.stream().map(Sennal::getMagnetometroy).collect(Collectors.toList())
+            );
+            listaSensoresDto.setMagnetometroZ(
+                    sennalList.stream().map(Sennal::getMagnetometroz).collect(Collectors.toList())
+            );
         }
-        return sennalList;
+
+        return listaSensoresDto;
     }
 }

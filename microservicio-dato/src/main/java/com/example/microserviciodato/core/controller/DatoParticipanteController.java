@@ -76,7 +76,7 @@ public class DatoParticipanteController {
 
     @GetMapping("/allbyParticipante/{idparticipante}")
     @Operation(summary = "Obtener los datos del participante",
-            description = "Permite obtener los datos de un participante")
+            description = "Permite obtener los datos de un participante, las patologias y las señales")
     public ResponseEntity<?> obtenerDatoXParticipante(@PathVariable Long idparticipante){
         try{
             List<PatologiaResponse> datoParticipanteList = datoParticipanteService.obtenerDatosXParticipante(idparticipante);

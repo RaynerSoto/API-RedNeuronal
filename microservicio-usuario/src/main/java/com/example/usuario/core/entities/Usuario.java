@@ -34,4 +34,5 @@ public class Usuario {
         this.repetrircontrasenna = usuario.getRepetircontrasenna();
         this.noprofesional = usuario.getNoprofesional();
     }
+
 }

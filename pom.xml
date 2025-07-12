@@ -24,6 +24,7 @@
     <module>microservicio-dato</module>
     <module>microservicio-patologia</module>
     <module>microservicio-redneuronal</module>
+    <module>microservicio-pdf</module>
 
   </modules>
 

@@ -1,5 +1,6 @@
 package com.example.usuario.core.controller;
 
+import com.example.usuario.core.dto.UserName;
 import com.example.usuario.core.dto.UsuarioDto;
 import com.example.usuario.core.entities.Usuario;
 import com.example.usuario.core.service.LogsService;
@@ -117,6 +118,17 @@ public class UsuarioController {
         try{
             Long id = usuarioService.existeUsuariobynombre(nombre);
             return ResponseEntity.ok(id);
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/obtenerUsuarioporNombre/{nombre}")
+    @Operation(summary = "Obtener usuario por Nombre", description = "Permite obtener un usuario a raíz de su nombre")
+    public ResponseEntity<?> obtenerDatosPorId(@PathVariable String nombre){
+        try{
+            UserName usuario = new UserName(usuarioService.obtenerUsuarioXNombre(nombre));
+            return ResponseEntity.ok(usuario);
         }catch (Exception e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }

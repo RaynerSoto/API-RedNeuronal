@@ -3,9 +3,11 @@ package com.example.microserviciodato.core.serviceimpl;
 import com.example.microserviciodato.core.dto.DatoIdDto;
 import com.example.microserviciodato.core.dto.DatoParticipanteDto;
 import com.example.microserviciodato.core.dto.PatologiaDto;
+import com.example.microserviciodato.core.dto.SennalDto;
 import com.example.microserviciodato.core.entities.DatoParticipante;
 import com.example.microserviciodato.core.exception.SearchException;
 import com.example.microserviciodato.core.feingclient.PatologiaClient;
+import com.example.microserviciodato.core.feingclient.SennalClient;
 import com.example.microserviciodato.core.http.response.PatologiaResponse;
 import com.example.microserviciodato.core.repository.DatoParticipanteRepository;
 import com.example.microserviciodato.core.service.DatoParticipanteService;
@@ -22,11 +24,13 @@ import java.util.stream.Collectors;
 public class DatoParticipanteServiceImpl implements DatoParticipanteService {
     private DatoParticipanteRepository datoParticipanteRepository;
     private PatologiaClient patologiaClient;
+    private SennalClient sennalClient;
 
     @Autowired
-    public DatoParticipanteServiceImpl(DatoParticipanteRepository datoParticipanteRepository, PatologiaClient patologiaClient) {
+    public DatoParticipanteServiceImpl(DatoParticipanteRepository datoParticipanteRepository, PatologiaClient patologiaClient, SennalClient sennalClient) {
         this.datoParticipanteRepository = datoParticipanteRepository;
         this.patologiaClient = patologiaClient;
+        this.sennalClient = sennalClient;
     }
 
     @Override
@@ -40,7 +44,7 @@ public class DatoParticipanteServiceImpl implements DatoParticipanteService {
     public void modificarDato(DatoParticipanteDto datoParticipante, Long id) {
         if(datoParticipanteRepository.existsById(id)){
             datoParticipante.setId(id);
-      datoParticipanteRepository.save(new DatoParticipante(datoParticipante));
+            datoParticipanteRepository.save(new DatoParticipante(datoParticipante));
         }
     }
 
@@ -66,6 +70,7 @@ public class DatoParticipanteServiceImpl implements DatoParticipanteService {
 
         return (List<PatologiaResponse>) datoParticipanteList.stream().map(dato -> {
             List<PatologiaDto> patologiaDtoList = patologiaClient.obtenerPatologiaXDato(dato.getId());
+            SennalDto sennalDtoList = sennalClient.obtenerSennalXDato(dato.getId());
 
             return PatologiaResponse.builder()
                     .id(dato.getId())
@@ -79,6 +84,7 @@ public class DatoParticipanteServiceImpl implements DatoParticipanteService {
                     .medicioncinturatobillo(dato.getMedicioncinturatobillo())
                     .largopierna(dato.getLargopierna())
                     .alturadelsensor(dato.getAlturadelsensor())
+                    .sennalList(sennalDtoList)
                     .build();
         }).collect(Collectors.toList());
     }

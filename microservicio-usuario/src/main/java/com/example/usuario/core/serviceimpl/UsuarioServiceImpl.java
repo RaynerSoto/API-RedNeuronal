@@ -1,6 +1,7 @@
 package com.example.usuario.core.serviceimpl;
 
-import com.example.usuario.core.dto.ParticipanteDto;
+import com.example.usuario.core.dto.ParticipantesDto;
+import com.example.usuario.core.dto.UserName;
 import com.example.usuario.core.dto.UsuarioDto;
 import com.example.usuario.core.entities.Usuario;
 import com.example.usuario.core.exception.SearchException;
@@ -63,6 +64,11 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
+    public Usuario obtenerUsuarioXNombre(String nombre) throws SearchException {
+        return repository.findByNombre(nombre);
+    }
+
+    @Override
     public boolean existeUsuario(Long id) throws SearchException {
         return repository.existsById(id);
     }
@@ -75,7 +81,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public ParticipantesByUsuarioResponse obtenerParticipanteXUsuario(Long idUsuario) {
         Usuario usuario = repository.findById(idUsuario).orElse(new Usuario());
-        List<ParticipanteDto> participanteDtoList = participanteClient.obtenerParticipanteXUsuario(idUsuario);
+        List<ParticipantesDto> participanteDtoList = participanteClient.obtenerParticipanteXUsuario(idUsuario);
 
         return ParticipantesByUsuarioResponse.builder()
                 .nombre(usuario.getNombre())

@@ -1,5 +1,6 @@
 package com.example.usuario.core.service;
 
+import com.example.usuario.core.dto.UserName;
 import com.example.usuario.core.dto.UsuarioDto;
 import com.example.usuario.core.entities.Usuario;
 import com.example.usuario.core.exception.SearchException;
@@ -15,6 +16,7 @@ public interface UsuarioService {
     void eliminarUsuario(Long id) throws SearchException;
     List<Usuario> obtenerUsuarios();
     Optional<Usuario> obtenerUsuarioXId(Long id) throws SearchException;
+    Usuario obtenerUsuarioXNombre(String nombre) throws SearchException;
     boolean existeUsuario(Long id) throws SearchException;
     Long existeUsuariobynombre(String nombre) throws SearchException;
     ParticipantesByUsuarioResponse obtenerParticipanteXUsuario(Long idUsuario);

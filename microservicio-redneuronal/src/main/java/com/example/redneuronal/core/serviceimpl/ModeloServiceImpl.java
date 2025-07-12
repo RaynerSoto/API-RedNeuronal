@@ -96,7 +96,18 @@ public class ModeloServiceImpl implements ModeloService {
         List<String> top3 = new ArrayList<>();
         for (int i = 0; i < Math.min(3, predicciones.size()); i++) {
             Prediccion p = predicciones.get(i);
-            top3.add(enfermedades.get(p.getIndice()) + " " + String.format("%.2f%%", p.getValor() * 100));
+            double valor = p.getValor();
+
+            if (Double.isNaN(valor)) {
+                top3.add("No se pudo predecir la enfermedad");
+                continue; // pasa al siguiente si hay más
+            }
+
+            String nombre = (p.getIndice() < enfermedades.size())
+                    ? enfermedades.get(p.getIndice())
+                    : "Desconocido";
+
+            top3.add(nombre + " " + String.format("%.2f%%", valor * 100));
         }
         return top3;
     }

@@ -1,7 +1,7 @@
-package com.example.usuario.core.serviceimpl;
+package com.example.usuario.core.service.serviceimpl;
 
 import com.example.usuario.core.dto.LogDto;
-import com.example.usuario.core.entities.Logs;
+import com.example.usuario.core.model.Logs;
 import com.example.usuario.core.repository.LogsRepository;
 import com.example.usuario.core.service.LogsService;
 import com.example.usuario.util.IpUtils;

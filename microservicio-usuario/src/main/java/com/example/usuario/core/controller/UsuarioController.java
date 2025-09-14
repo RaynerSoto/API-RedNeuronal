@@ -2,10 +2,11 @@ package com.example.usuario.core.controller;
 
 import com.example.usuario.core.dto.UserName;
 import com.example.usuario.core.dto.UsuarioDto;
-import com.example.usuario.core.entities.Usuario;
+import com.example.usuario.core.model.Usuario;
 import com.example.usuario.core.exception.SearchException;
 import com.example.usuario.core.service.LogsService;
 import com.example.usuario.core.service.UsuarioService;
+import com.example.usuario.core.serviceController.UsuarioControllerService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
@@ -24,22 +25,22 @@ public class UsuarioController {
     private static Logger logger = Logger.getLogger(UsuarioController.class.getName());
     private final UsuarioService usuarioService;
     private final LogsService logsService;
+    private final UsuarioControllerService usuarioControllerService;
     private static final String ACEPTADO = "Aceptado";
     private static final String ERROR = "Error";
 
     @Autowired
-    public UsuarioController(UsuarioService usuarioService,LogsService logsService) {
+    public UsuarioController(UsuarioService usuarioService, LogsService logsService, UsuarioControllerService usuarioControllerService) {
         this.usuarioService = usuarioService;
         this.logsService = logsService;
+        this.usuarioControllerService = usuarioControllerService;
     }
 
     @PostMapping("/create")
     @Operation(summary = "Insertar usuario",
             description = "Permite insertar un usuario")
-    public ResponseEntity<?> insertarUsuario(@RequestBody UsuarioDto usuario, HttpServletRequest request){
-        usuarioService.insertarUsuario(new Usuario(usuario));
-        logsService.insertarLog(request, ACEPTADO,"Se insertó un usuario");
-        return ResponseEntity.ok("El usuario se insertó correctamente");
+    public ResponseEntity<?> insertarUsuario(@RequestBody UsuarioDto usuario, HttpServletRequest request) throws SearchException {
+        return ResponseEntity.ok(usuarioControllerService.insertarUsuario(usuario,request));
     }
 
     @GetMapping("/all")
@@ -101,5 +102,4 @@ public class UsuarioController {
         UserName usuario = new UserName(usuarioService.obtenerUsuarioXNombre(nombre));
         return ResponseEntity.ok(usuario);
     }
-
 }

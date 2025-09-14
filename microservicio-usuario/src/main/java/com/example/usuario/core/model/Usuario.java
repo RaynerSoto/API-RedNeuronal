@@ -1,0 +1,66 @@
+package com.example.usuario.core.model;
+
+import com.example.usuario.core.dto.UsuarioDto;
+import com.example.usuario.util.Validacion;
+import jakarta.persistence.*;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import lombok.*;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "usuario")
+@Builder
+public class Usuario {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique = true, nullable = false)
+    private Long id;
+
+    @Column(name ="id_rol",nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "id", nullable = false)
+    private Rol idrol;
+
+    @Column(name = "nombre",nullable = false)
+    @NotBlank(message = "El nombre no puede ser nullo o vacío")
+    @Size(min = 5,max = 255,message = "El nombre debe ser entre 5 y 255 caracteres")
+    private String nombre;
+
+    @Column(name = "username",nullable = false,unique = true)
+    @NotBlank(message = "El nombre de usuario no puede ser nullo o vacío")
+    @Size(min = 5,max = 255,message = "El nombre de usuario debe ser entre 5 y 255 caracteres")
+    private String username;
+
+    @Column(name ="contrasenna")
+    @NotBlank(message = "La contraseña no puede ser nullo o vacío")
+    @Size(min = 5,max = 255,message = "La contraseña debe ser entre 5 y 255 caracteres")
+    private String contrasenna;
+
+    @Column(name ="noprofesional", unique = true,nullable = false)
+    @NotBlank(message = "El número de profesional no puede ser nullo o vacío")
+    @Size(min = 5,max = 255,message = "El número de profesional debe ser entre 5 y 255 caracteres")
+    private String noprofesional;
+
+    public Usuario(UsuarioDto usuario,Rol rol) {
+        this.id = usuario.getId();
+        this.idrol = rol;
+        this.nombre = usuario.getNombre();
+        this.contrasenna = usuario.getContrasenna();
+        this.noprofesional = usuario.getNoprofesional();
+    }
+
+    @PrePersist
+    public void prePersist() {
+        Validacion.validarElemento(this);
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        Validacion.validarElemento(this);
+    }
+}

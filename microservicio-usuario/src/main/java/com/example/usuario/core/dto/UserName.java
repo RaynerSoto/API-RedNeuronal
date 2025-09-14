@@ -1,6 +1,6 @@
 package com.example.usuario.core.dto;
 
-import com.example.usuario.core.entities.Usuario;
+import com.example.usuario.core.model.Usuario;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,7 +17,7 @@ public class UserName {
 
     public UserName(Usuario usuario) {
         this.id = usuario.getId();
-        this.id_rol = usuario.getIdrol();
+        this.id_rol = usuario.getIdrol().getId();
         this.nombre = usuario.getNombre();
     }
 }

@@ -1,9 +1,8 @@
-package com.example.usuario.core.serviceimpl;
+package com.example.usuario.core.service.serviceimpl;
 
 import com.example.usuario.core.dto.ParticipantesDto;
-import com.example.usuario.core.dto.UserName;
 import com.example.usuario.core.dto.UsuarioDto;
-import com.example.usuario.core.entities.Usuario;
+import com.example.usuario.core.model.Usuario;
 import com.example.usuario.core.exception.SearchException;
 import com.example.usuario.core.feignClient.ParticipanteClient;
 import com.example.usuario.core.http.response.ParticipantesByUsuarioResponse;

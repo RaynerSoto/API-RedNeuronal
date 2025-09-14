@@ -2,7 +2,6 @@ package com.example.usuario.core.controller;
 
 import com.example.usuario.core.dto.UserName;
 import com.example.usuario.core.dto.UsuarioDto;
-import com.example.usuario.core.model.Usuario;
 import com.example.usuario.core.exception.SearchException;
 import com.example.usuario.core.service.LogsService;
 import com.example.usuario.core.service.UsuarioService;
@@ -13,8 +12,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 import java.util.logging.Logger;
 
 @RestController
@@ -46,43 +43,32 @@ public class UsuarioController {
     @GetMapping("/all")
     @Operation(summary = "Listado de usuarios",
             description = "Permite listar todos los usuarios del sistema")
-    public ResponseEntity<?> listarUsuarios() throws SearchException {
-       try{
-           List<Usuario> usuarios = usuarioService.obtenerUsuarios();
-           return ResponseEntity.ok(usuarios);
-       }finally{
-           throw new SearchException("No se puede acceder a la lista de usuarios");
-       }
+    public ResponseEntity<?> listarUsuarios(HttpServletRequest request) throws SearchException {
+        return ResponseEntity.ok(usuarioControllerService.listarUsuarios(request));
     }
 
     @PutMapping("/update/{id}")
     @Operation(summary = "Modificar usuarios por ID",
             description = "Permite modificar un usuario a raíz de su ID")
     public ResponseEntity<?> modificarUsuario(@RequestBody UsuarioDto usuario,@PathVariable Long id, HttpServletRequest request) throws SearchException {
-        usuarioService.modificarUsuario(usuario, id);
-        logsService.insertarLog(request, ACEPTADO,"Se modificó un usuario");
-        return ResponseEntity.ok("Usuario Modificado correctamente");
+        return ResponseEntity.ok(usuarioControllerService.modificarUsuario(usuario,id,request));
     }
 
     @DeleteMapping("/delete/{id}")
     @Operation(summary = "Eliminar usuario por ID", description = "Permite eliminar un usuario a raíz de su ID")
     public ResponseEntity<?> eliminarUsuario(@PathVariable Long id, HttpServletRequest request) throws SearchException {
-        usuarioService.eliminarUsuario(id);
-        logsService.insertarLog(request, ACEPTADO,"Se eliminó un usuario");
-        return ResponseEntity.ok("Se eliminó el usuario");
+        return ResponseEntity.ok(usuarioControllerService.eliminarUsuario(id, request));
     }
 
     @PatchMapping("/obtenerUsuario/{id}")
     @Operation(summary = "Obtener usuario por ID", description = "Permite obtener un usuario a raíz de su ID")
-    public ResponseEntity<?> obtenerDatosPorId(@PathVariable Long id) throws SearchException {
-        UsuarioDto usuario = new UsuarioDto(usuarioService.obtenerUsuarioXId(id).get());
-        return ResponseEntity.ok(usuario);
+    public ResponseEntity<?> obtenerDatosPorId(@PathVariable Long id,HttpServletRequest request) throws SearchException {
+        return ResponseEntity.ok(usuarioControllerService.obtenerDatosPorId(id,request));
     }
 
     @GetMapping("/existeUsuario/{id}")
-    public ResponseEntity<?> existeUsuariobynombre(@PathVariable Long id) throws SearchException {
-        boolean exists = usuarioService.existeUsuario(id);
-        return ResponseEntity.ok(exists);
+    public ResponseEntity<?> existeUsuariobynombre(@PathVariable Long id, HttpServletRequest request) throws SearchException {
+        return ResponseEntity.ok(usuarioControllerService.existeUsuariobynombre(id,request));
     }
 
     @GetMapping("/participantesXUsuario/{id}")
@@ -90,11 +76,6 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioService.obtenerParticipanteXUsuario(id));
     }
 
-    @GetMapping("/existeUsuariobynombre/{nombre}")
-    public ResponseEntity<?> existeUsuariobynombre(@PathVariable String nombre) throws SearchException {
-        Long id = usuarioService.existeUsuariobynombre(nombre);
-        return ResponseEntity.ok(id);
-    }
 
     @GetMapping("/obtenerUsuarioporNombre/{nombre}")
     @Operation(summary = "Obtener usuario por Nombre", description = "Permite obtener un usuario a raíz de su nombre")

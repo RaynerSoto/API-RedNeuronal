@@ -65,7 +65,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public Usuario obtenerUsuarioXNombre(String nombre) throws SearchException {
-        return repository.findByNombre(nombre);
+        return repository.findByNombre(nombre).orElseThrow(()-> new SearchException("No existe un usuario con ese nombre"));
     }
 
     @Override

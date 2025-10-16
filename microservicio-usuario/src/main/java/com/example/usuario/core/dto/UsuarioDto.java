@@ -23,7 +23,7 @@ public class UsuarioDto {
 
     public UsuarioDto(Usuario usuario) {
         this.id = usuario.getId();
-        this.id_rol = usuario.getIdrol().getId();
+        this.id_rol = usuario.getRol().getId();
         this.nombre = usuario.getNombre();
         this.contrasenna = usuario.getContrasenna();
         this.noprofesional = usuario.getNoprofesional();

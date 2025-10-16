@@ -17,7 +17,7 @@ public class UserName {
 
     public UserName(Usuario usuario) {
         this.id = usuario.getId();
-        this.id_rol = usuario.getIdrol().getId();
+        this.id_rol = usuario.getRol().getId();
         this.nombre = usuario.getNombre();
     }
 }

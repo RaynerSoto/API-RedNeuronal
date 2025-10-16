@@ -21,11 +21,10 @@ public class Rol {
     @Column(name = "id",unique = true, nullable = false)
     private Long id;
 
-    //Amorcito por favor comprueba bien este mapeamiento
     @Column(name = "nombre",unique = true,nullable = false)
     private String nombreRol;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "idrol")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "rol")
     private List<Usuario> usuarios;
 
     @PrePersist

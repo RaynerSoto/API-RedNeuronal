@@ -24,7 +24,6 @@ public class UsuarioController {
     private final LogsService logsService;
     private final UsuarioControllerService usuarioControllerService;
     private static final String ACEPTADO = "Aceptado";
-    private static final String ERROR = "Error";
 
     @Autowired
     public UsuarioController(UsuarioService usuarioService, LogsService logsService, UsuarioControllerService usuarioControllerService) {

@@ -21,10 +21,9 @@ public class Usuario {
     @Column(unique = true, nullable = false)
     private Long id;
 
-    @Column(name ="id_rol",nullable = false)
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "id", nullable = false)
-    private Rol idrol;
+    @JoinColumn(name = "rol_id",referencedColumnName = "id", nullable = false, foreignKey = @ForeignKey(name = "fk_usuario_rol"))
+    private Rol rol;
 
     @Column(name = "nombre",nullable = false)
     @NotBlank(message = "El nombre no puede ser nullo o vacío")
@@ -48,7 +47,7 @@ public class Usuario {
 
     public Usuario(UsuarioDto usuario,Rol rol) {
         this.id = usuario.getId();
-        this.idrol = rol;
+        this.rol = rol;
         this.nombre = usuario.getNombre();
         this.contrasenna = usuario.getContrasenna();
         this.noprofesional = usuario.getNoprofesional();

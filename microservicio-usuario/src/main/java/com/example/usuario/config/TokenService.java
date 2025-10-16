@@ -10,20 +10,24 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.util.logging.Logger;
 
 @Service
 public class TokenService {
+
+    Logger logger = Logger.getLogger(TokenService.class.getName());
 
     public String generarToken(Usuario usuario){
         try {
             Algorithm algorithm = Algorithm.HMAC256("${jwt.secreto}");
             String token = JWT.create()
-                    .withIssuer("Sistema Apicola de Gestión")
+                    .withIssuer("Dianelis")
                     .withClaim("id",usuario.getId())
                     .withSubject(usuario.getUsername())
                     .withClaim("Rol",usuario.getRol().getNombreRol())
                     .withExpiresAt(generarFechaExpiracion())
                     .sign(algorithm);
+            logger.info("Token generado para el usuario: " + usuario.getUsername());
             return token;
         } catch (JWTCreationException exception){
             throw new RuntimeException(exception);
@@ -42,7 +46,7 @@ public class TokenService {
             Algorithm algorithm = Algorithm.HMAC256("${jwt.secreto}");
             JWTVerifier verifier = JWT.require(algorithm)
                     // specify any specific claim validations
-                    .withIssuer("Sistema Apicola de Gestión")
+                    .withIssuer("Dianelis")
                     // reusable verifier instance
                     .build();
             decodedJWT = verifier.verify(token);

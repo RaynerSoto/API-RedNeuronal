@@ -14,10 +14,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import java.util.logging.Logger;
+
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
 public class SecurityConfigurations {
+    private Logger logger = Logger.getLogger(SecurityConfigurations.class.getName());
+
     @Autowired
     private SecurityFilter securityFilter;
 

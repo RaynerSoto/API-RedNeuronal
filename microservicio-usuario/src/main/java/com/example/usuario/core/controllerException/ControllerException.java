@@ -29,6 +29,7 @@ public class ControllerException {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleException(Exception exception, HttpServletRequest request) {
+        logger.warning("Se ha producido un error: " + exception.getMessage());
         logsService.insertarLog(request, ERROR,exception.getMessage());
         return ResponseEntity.badRequest().body(errors.entrySet().stream()
                 .filter(e -> e.getKey().equals(exception.getMessage()))

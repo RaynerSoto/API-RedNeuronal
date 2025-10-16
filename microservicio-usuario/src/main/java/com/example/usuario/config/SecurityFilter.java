@@ -14,6 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
 @Component
 public class SecurityFilter{
@@ -22,6 +23,7 @@ public class SecurityFilter{
     private UsuarioRepository usuarioRepository;
     @Autowired
     private TokenService tokenService;
+    private Logger logger = Logger.getLogger(SecurityFilter.class.getName());
 
     @SneakyThrows
     //@Override

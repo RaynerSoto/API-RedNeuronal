@@ -12,12 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 import java.util.logging.Logger;
 
 @Component
-public class SecurityFilter{
+public class SecurityFilter extends OncePerRequestFilter {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
@@ -52,6 +53,9 @@ public class SecurityFilter{
             else {
                 throw new Exception("Usuario no encontrado");
             }
+        }
+        else if (token.getToken() == null && !request.getRequestURI().contains("/login")){
+            throw new SecurityException("Acción invalida");
         }
         filterChain.doFilter(request, response);
     }

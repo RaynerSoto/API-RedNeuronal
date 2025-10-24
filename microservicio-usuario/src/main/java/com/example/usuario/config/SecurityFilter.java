@@ -23,7 +23,7 @@ public class SecurityFilter{
     private UsuarioRepository usuarioRepository;
     @Autowired
     private TokenService tokenService;
-    private Logger logger = Logger.getLogger(SecurityFilter.class.getName());
+    private final Logger logger = Logger.getLogger(SecurityFilter.class.getName());
 
     @SneakyThrows
     //@Override

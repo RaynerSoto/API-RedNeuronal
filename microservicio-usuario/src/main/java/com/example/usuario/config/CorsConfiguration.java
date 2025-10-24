@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 @Configuration
 public class CorsConfiguration implements WebMvcConfigurer {
 
-    Logger logger = Logger.getLogger(CorsConfiguration.class.getName());
+    private final Logger logger = Logger.getLogger(CorsConfiguration.class.getName());
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {

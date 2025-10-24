@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class SimpleCorsFilter implements Filter {
 
-    Logger logger = Logger.getLogger(SimpleCorsFilter.class.getName());
+    private final Logger logger = Logger.getLogger(SimpleCorsFilter.class.getName());
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {

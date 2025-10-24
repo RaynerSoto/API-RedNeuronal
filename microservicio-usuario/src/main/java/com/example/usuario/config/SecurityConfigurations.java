@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 @EnableWebSecurity
 @EnableMethodSecurity
 public class SecurityConfigurations {
-    private Logger logger = Logger.getLogger(SecurityConfigurations.class.getName());
+    private final Logger logger = Logger.getLogger(SecurityConfigurations.class.getName());
 
     @Autowired
     private SecurityFilter securityFilter;

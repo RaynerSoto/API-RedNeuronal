@@ -14,9 +14,7 @@ import java.util.logging.Logger;
 
 @Service
 public class TokenService {
-
-    Logger logger = Logger.getLogger(TokenService.class.getName());
-
+    private final Logger logger = Logger.getLogger(TokenService.class.getName());
     public String generarToken(Usuario usuario){
         try {
             Algorithm algorithm = Algorithm.HMAC256("${jwt.secreto}");
@@ -29,7 +27,9 @@ public class TokenService {
                     .sign(algorithm);
             logger.info("Token generado para el usuario: " + usuario.getUsername());
             return token;
-        } catch (JWTCreationException exception){
+        } catch (Exception exception){
+            logger.severe("Tipo de excepción: " + exception.getClass().getName());
+            logger.severe("Error al generar el token: " + exception.getMessage());
             throw new RuntimeException(exception);
         }
     }
@@ -50,6 +50,7 @@ public class TokenService {
                     // reusable verifier instance
                     .build();
             decodedJWT = verifier.verify(token);
+            logger.info(decodedJWT.getSubject());
         } catch (JWTVerificationException exception) {
             throw new Exception("No se puede validar el token");
         }

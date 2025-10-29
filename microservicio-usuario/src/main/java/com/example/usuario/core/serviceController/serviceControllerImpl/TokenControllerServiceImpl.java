@@ -42,6 +42,7 @@ public class TokenControllerServiceImpl implements TokenControllerService {
         try {
             TokenDto token = TokenUtils.requestToken(request);
             Validacion.validarElemento(token);
+            token.setToken(token.getToken().replace("Bearer ", "").replaceAll(" ","").replaceAll("\"",""));
             Algorithm algorithm = Algorithm.HMAC256("${jwt.secreto}");
             JWTVerifier verifier = JWT.require(algorithm)
                     // specify any specific claim validations

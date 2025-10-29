@@ -38,7 +38,7 @@ public class SecurityFilter extends OncePerRequestFilter {
         System.out.println(request.getRemotePort());
         System.out.println(request.getServerPort());
         System.out.println(request.getContextPath());
-        if (token.getToken() != null){
+        if (token.getToken() != null && !request.getRequestURI().contains("/login")){
             Validacion.validarElemento(token);
             token.setToken(token.getToken().replace("Bearer ", "").replaceAll(" ","").replaceAll("\"",""));
             var user = tokenService.getSubjetc(token.getToken());

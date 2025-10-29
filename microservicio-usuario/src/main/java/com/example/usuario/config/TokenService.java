@@ -22,6 +22,7 @@ public class TokenService {
                     .withIssuer("Dianelis")
                     .withClaim("id",usuario.getId())
                     .withSubject(usuario.getUsername())
+                    .withClaim("password",usuario.getPassword())
                     .withClaim("Rol",usuario.getRol().getNombreRol())
                     .withExpiresAt(generarFechaExpiracion())
                     .sign(algorithm);

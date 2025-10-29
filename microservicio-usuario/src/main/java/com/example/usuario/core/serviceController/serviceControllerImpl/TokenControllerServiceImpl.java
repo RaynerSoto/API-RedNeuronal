@@ -1,0 +1,61 @@
+package com.example.usuario.core.serviceController.serviceControllerImpl;
+
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.DecodedJWT;
+import com.example.usuario.core.dto.TokenDto;
+import com.example.usuario.core.exception.SearchException;
+import com.example.usuario.core.model.Rol;
+import com.example.usuario.core.model.Usuario;
+import com.example.usuario.core.repository.RolRepository;
+import com.example.usuario.core.repository.UsuarioRepository;
+import com.example.usuario.core.serviceController.TokenControllerService;
+import com.example.usuario.util.TokenUtils;
+import com.example.usuario.util.Validacion;
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import java.util.Date;
+import java.util.logging.Logger;
+
+@Service
+public class TokenControllerServiceImpl implements TokenControllerService {
+    private final UsuarioRepository usuarioRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final RolRepository rolRepository;
+    private Logger logger = Logger.getLogger(TokenControllerServiceImpl.class.getName());
+
+    @Autowired
+    public TokenControllerServiceImpl(UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder, RolRepository rolRepository) {
+        this.usuarioRepository = usuarioRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.rolRepository = rolRepository;
+    }
+
+    @Override
+    public boolean validarToken(HttpServletRequest request) {
+        try {
+            TokenDto token = TokenUtils.requestToken(request);
+            Validacion.validarElemento(token);
+            Algorithm algorithm = Algorithm.HMAC256("${jwt.secreto}");
+            JWTVerifier verifier = JWT.require(algorithm)
+                    // specify any specific claim validations
+                    .withIssuer("Dianelis")
+                    // reusable verifier instance
+                    .build();
+            DecodedJWT decodedJWT =  verifier.verify(token.getToken());
+            logger.info("JWT verifier: " + verifier.verify(token.getToken()));
+            Usuario usuario = usuarioRepository.getByUsernameEquals(decodedJWT.getSubject()).orElseThrow(() -> new SearchException("Usuario no encontrado"));
+            Rol rol = rolRepository.findByNombreRolEquals(decodedJWT.getClaim("rol")).orElseThrow(() -> new SearchException("Rol no encontrado"));
+            return (passwordEncoder.matches(usuario.getPassword(),decodedJWT.getClaim("password").asString())
+                    && decodedJWT.getExpiresAt().before(new Date()));
+        }
+        catch (Exception e) {
+            return false;
+        }
+
+    }
+}

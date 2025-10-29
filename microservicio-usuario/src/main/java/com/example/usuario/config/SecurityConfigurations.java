@@ -23,7 +23,6 @@ import java.util.logging.Logger;
 @EnableMethodSecurity
 public class SecurityConfigurations {
     private final Logger logger = Logger.getLogger(SecurityConfigurations.class.getName());
-
     @Autowired
     private SecurityFilter securityFilter;
 

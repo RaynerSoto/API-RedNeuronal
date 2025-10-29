@@ -32,7 +32,7 @@ public class TokenController {
 
     @GetMapping("/")
     @Operation(summary = "")
-    public ResponseEntity<boolean> validarTokenMicroservicios(HttpServletRequest request){
+    public ResponseEntity<Boolean> validarTokenMicroservicios(HttpServletRequest request){
         return ResponseEntity.ok(tokenControllerService.validarToken(request));
     }
 }

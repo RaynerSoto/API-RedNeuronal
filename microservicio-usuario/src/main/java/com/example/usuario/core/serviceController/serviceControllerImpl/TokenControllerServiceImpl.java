@@ -18,7 +18,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Service
@@ -50,10 +52,12 @@ public class TokenControllerServiceImpl implements TokenControllerService {
             logger.info("JWT verifier: " + verifier.verify(token.getToken()));
             Usuario usuario = usuarioRepository.getByUsernameEquals(decodedJWT.getSubject()).orElseThrow(() -> new SearchException("Usuario no encontrado"));
             Rol rol = rolRepository.findByNombreRolEquals(decodedJWT.getClaim("rol")).orElseThrow(() -> new SearchException("Rol no encontrado"));
+            logger.info("Solamente queda el retorno de la información");
             return (passwordEncoder.matches(usuario.getPassword(),decodedJWT.getClaim("password").asString())
                     && decodedJWT.getExpiresAt().before(new Date()));
         }
         catch (Exception e) {
+            logger.severe(e.getMessage());
             return false;
         }
 

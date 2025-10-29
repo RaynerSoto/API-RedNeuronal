@@ -10,6 +10,7 @@ import com.example.usuario.core.http.response.ParticipantesByUsuarioResponse;
 import com.example.usuario.core.repository.UsuarioRepository;
 import com.example.usuario.core.service.UsuarioService;
 import org.springframework.beans.factory.annotation.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,11 +20,13 @@ import java.util.Optional;
 public class UsuarioServiceImpl implements UsuarioService {
     private UsuarioRepository repository;
     private ParticipanteClient participanteClient;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UsuarioServiceImpl(UsuarioRepository repository,ParticipanteClient participanteClient) {
+    public UsuarioServiceImpl(UsuarioRepository repository, ParticipanteClient participanteClient, PasswordEncoder passwordEncoder) {
         this.repository = repository;
         this.participanteClient = participanteClient;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -38,7 +41,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     public void modificarUsuario(UsuarioDto usuarioDto, Long id, Rol rol) throws SearchException {
         if(repository.existsById(id)){
             usuarioDto.setId(id);
-            repository.save(new Usuario(usuarioDto,rol));
+            repository.save(new Usuario(usuarioDto,rol,passwordEncoder.encode(usuarioDto.getContrasenna())));
         }else{
             throw new SearchException("No existe el usuario a modificar");
         }

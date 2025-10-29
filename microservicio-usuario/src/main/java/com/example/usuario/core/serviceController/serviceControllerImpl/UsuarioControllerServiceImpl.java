@@ -13,6 +13,7 @@ import com.example.usuario.core.service.UsuarioService;
 import com.example.usuario.core.serviceController.UsuarioControllerService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,21 +26,23 @@ public class UsuarioControllerServiceImpl implements UsuarioControllerService {
     private final LogsService logsService;
     private final RolRepository  rolRepository;
     private final UsuarioRepository usuarioRepository;
+    private final PasswordEncoder passwordEncoder;
     private static final String ACEPTADO = "Aceptado";
     private static final String ERROR = "Error";
 
     @Autowired
-    public UsuarioControllerServiceImpl(UsuarioService usuarioService, LogsService logsService, RolRepository rolRepository, UsuarioRepository usuarioRepository) {
+    public UsuarioControllerServiceImpl(UsuarioService usuarioService, LogsService logsService, RolRepository rolRepository, UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder) {
         this.usuarioService = usuarioService;
         this.logsService = logsService;
         this.rolRepository = rolRepository;
         this.usuarioRepository = usuarioRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public String insertarUsuario(UsuarioDto usuario, HttpServletRequest request) throws SearchException {
         Rol rol = rolRepository.findById(usuario.getId()).orElseThrow(() -> new SearchException("No se ha encontrado el rol específico"));
-        usuarioService.insertarUsuario(new Usuario(usuario,rol));
+        usuarioService.insertarUsuario(new Usuario(usuario,rol, passwordEncoder.encode(usuario.getContrasenna())));
         logsService.insertarLog(request, ACEPTADO,"Se insertó un usuario");
         return "El usuario se insertó correctamente";
     }

@@ -59,6 +59,14 @@ public class Usuario implements UserDetails {
         this.noprofesional = usuario.getNoprofesional();
     }
 
+    public Usuario(UsuarioDto usuario,Rol rol,String password) {
+        this.id = usuario.getId();
+        this.rol = rol;
+        this.nombre = usuario.getNombre();
+        this.contrasenna = password;
+        this.noprofesional = usuario.getNoprofesional();
+    }
+
     @PrePersist
     public void prePersist() {
         Validacion.validarElemento(this);

@@ -15,10 +15,26 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.logging.Logger;
 
 @Component
 public class SecurityFilter extends OncePerRequestFilter {
+
+    private static final String[] AUTH_WHITELIST = {
+            // -- Swagger UI v2
+            "/v2/api-docs",
+            "/swagger-resources",
+            "/swagger-resources/**",
+            "/configuration/ui",
+            "/configuration/security",
+            "/swagger-ui.html",
+            "/webjars/**",
+            // -- Swagger UI v3 (OpenAPI)
+            "/v3/api-docs/**",
+            "/swagger-ui/**"
+            // other public endpoints of your API may be appended to this array
+    };
 
     @Autowired
     private UsuarioRepository usuarioRepository;
@@ -38,7 +54,11 @@ public class SecurityFilter extends OncePerRequestFilter {
         System.out.println(request.getRemotePort());
         System.out.println(request.getServerPort());
         System.out.println(request.getContextPath());
-        if (token.getToken() != null && !request.getRequestURI().contains("/login")){
+        boolean swagger = !Arrays.stream(AUTH_WHITELIST).filter(s -> request.getRequestURI().contains(s)).toList().isEmpty();
+        if(!swagger){
+            logger.info(request.getRequestURI());
+        }
+        else if (token.getToken() != null && !request.getRequestURI().contains("/login")){
             Validacion.validarElemento(token);
             token.setToken(token.getToken().replace("Bearer ", "").replaceAll(" ","").replaceAll("\"",""));
             var user = tokenService.getSubjetc(token.getToken());
@@ -54,7 +74,7 @@ public class SecurityFilter extends OncePerRequestFilter {
                 throw new Exception("Usuario no encontrado");
             }
         }
-        else if (token.getToken() == null && !request.getRequestURI().contains("/login")){
+        else if (token.getToken() == null && !request.getRequestURI().contains("/login") && swagger){
             throw new SecurityException("Acción invalida");
         }
         filterChain.doFilter(request, response);

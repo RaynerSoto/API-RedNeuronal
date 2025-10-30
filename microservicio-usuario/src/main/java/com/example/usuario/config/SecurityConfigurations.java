@@ -45,9 +45,8 @@ public class SecurityConfigurations {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(reques -> reques.requestMatchers("/api/v1/usuarios/**")
-                        .authenticated().requestMatchers("api/login/**").permitAll())
-                //.addFilterBefore(new SimpleCorsFilter(), UsernamePasswordAuthenticationFilter.class)
+                .authorizeHttpRequests(reques -> reques.anyRequest().permitAll())
+                .addFilterBefore(new SimpleCorsFilter(), UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(this.securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }

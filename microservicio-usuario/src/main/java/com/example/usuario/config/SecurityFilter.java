@@ -1,6 +1,8 @@
 package com.example.usuario.config;
 
 import com.example.usuario.core.dto.TokenDto;
+import com.example.usuario.core.exception.SearchException;
+import com.example.usuario.core.model.Usuario;
 import com.example.usuario.core.repository.UsuarioRepository;
 import com.example.usuario.util.TokenUtils;
 import com.example.usuario.util.Validacion;
@@ -64,10 +66,10 @@ public class SecurityFilter extends OncePerRequestFilter {
             var user = tokenService.getSubjetc(token.getToken());
             System.out.println(token);
             if(user != null){
-                var usuario = usuarioRepository.findByUsernameEqualsIgnoreCase(user);
+                Usuario usuario = usuarioRepository.findByUsernameEquals(user).orElseThrow(() -> new SearchException("Usuario no encontrado"));
                 //Forzar inicio de sesión
                 System.out.println(usuario.get().getAuthorities());
-                var autenticacion = new UsernamePasswordAuthenticationToken(usuario,null,usuario.get().getAuthorities());
+                var autenticacion = new UsernamePasswordAuthenticationToken(usuario,null,usuario.getAuthorities());
                 SecurityContextHolder.getContext().setAuthentication(autenticacion);
             }
             else {

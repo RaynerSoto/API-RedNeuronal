@@ -20,13 +20,5 @@
       <jdbc-url>jdbc:postgresql://localhost:5432/red_neuronalBD</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="jdbc:postgresql://localhost:5432/Sensores_inteligentes [DEBUG]" group="​Microservicio Usuario" uuid="6eca2674-0b24-40ef-b818-2aadd4b70fd4">
-      <driver-ref>postgresql</driver-ref>
-      <synchronize>true</synchronize>
-      <imported>true</imported>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5432/Sensores_inteligentes</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
   </component>
 </project>

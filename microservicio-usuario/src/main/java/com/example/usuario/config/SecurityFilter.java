@@ -68,7 +68,7 @@ public class SecurityFilter extends OncePerRequestFilter {
             if(user != null){
                 Usuario usuario = usuarioRepository.findByUsernameEquals(user).orElseThrow(() -> new SearchException("Usuario no encontrado"));
                 //Forzar inicio de sesión
-                System.out.println(usuario.get().getAuthorities());
+                System.out.println(usuario.getAuthorities());
                 var autenticacion = new UsernamePasswordAuthenticationToken(usuario,null,usuario.getAuthorities());
                 SecurityContextHolder.getContext().setAuthentication(autenticacion);
             }

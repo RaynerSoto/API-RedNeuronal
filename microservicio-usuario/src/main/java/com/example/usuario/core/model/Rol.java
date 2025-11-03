@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@Table(name = "roles",schema = "public")
+@Table(name = "rol",schema = "public")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

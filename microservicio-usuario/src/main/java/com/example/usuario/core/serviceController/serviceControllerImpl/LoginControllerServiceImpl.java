@@ -33,7 +33,7 @@ public class LoginControllerServiceImpl implements LoginControllerService {
     @Override
     public String login(UsuarioLogin usuarioLogin, HttpServletRequest request) throws SearchException {
         Usuario user = usuarioRepository.findByUsernameEquals(usuarioLogin.username()).orElseThrow(() -> new SearchException("No se encontro el usuario especificado"));
-        if (!(passwordEncoder.matches(usuarioLogin.password(), user.getPassword())) || user.getPassword().equals(usuarioLogin.password())) {
+        if (!(passwordEncoder.matches(usuarioLogin.password(), user.getPassword())) || !user.getPassword().equals(usuarioLogin.password())) {
             throw new SecurityException("No se encontró el usuario especificado");
         }
         return tokenService.generarToken(user);

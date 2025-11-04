@@ -41,7 +41,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     public void modificarUsuario(UsuarioDto usuarioDto, Long id, Rol rol) throws SearchException {
         if(repository.existsById(id)){
             usuarioDto.setId(id);
-            repository.save(new Usuario(usuarioDto,rol,passwordEncoder.encode(usuarioDto.getContrasenna())));
+            repository.save(new Usuario(usuarioDto,rol,usuarioDto.getContrasenna()));
         }else{
             throw new SearchException("No existe el usuario a modificar");
         }

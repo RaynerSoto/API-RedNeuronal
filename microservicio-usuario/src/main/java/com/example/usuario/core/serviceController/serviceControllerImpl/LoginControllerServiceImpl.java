@@ -7,6 +7,7 @@ import com.example.usuario.core.model.Usuario;
 import com.example.usuario.core.repository.UsuarioRepository;
 import com.example.usuario.core.service.UsuarioService;
 import com.example.usuario.core.serviceController.LoginControllerService;
+import com.example.usuario.util.DescrifradoBase64Android;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -33,7 +34,7 @@ public class LoginControllerServiceImpl implements LoginControllerService {
     @Override
     public String login(UsuarioLogin usuarioLogin, HttpServletRequest request) throws SearchException {
         Usuario user = usuarioRepository.findByUsernameEquals(usuarioLogin.username()).orElseThrow(() -> new SearchException("No se encontro el usuario especificado"));
-        if (!(passwordEncoder.matches(usuarioLogin.password(), user.getPassword())) || !user.getPassword().equals(usuarioLogin.password())) {
+        if (!DescrifradoBase64Android.getdesencriptacion(user.getPassword()).equals(usuarioLogin.password()) && !DescrifradoBase64Android.getdesencriptacion(user.getPassword()).equals(DescrifradoBase64Android.getdesencriptacion(usuarioLogin.password()))) {
             throw new SecurityException("No se encontró el usuario especificado");
         }
         return tokenService.generarToken(user);

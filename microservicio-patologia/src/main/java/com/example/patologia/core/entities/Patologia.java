@@ -3,6 +3,7 @@ package com.example.patologia.core.entities;
 import com.example.patologia.core.dto.PatologiaDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "patologia")
+@Builder
 public class Patologia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

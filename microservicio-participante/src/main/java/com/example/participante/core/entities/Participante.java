@@ -4,6 +4,7 @@ import com.example.participante.core.dto.ParticipanteDto;
 import com.example.participante.core.dto.ParticipanteUpdateDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name="participante")
+@Builder
 public class Participante {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

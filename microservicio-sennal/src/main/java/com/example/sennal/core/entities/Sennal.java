@@ -3,6 +3,7 @@ package com.example.sennal.core.entities;
 import com.example.sennal.core.dto.SennalDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +15,7 @@ import java.time.LocalTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="sennal")
+@Builder
 public class Sennal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -2,136 +2,84 @@ package com.example.usuario.core.controller;
 
 import com.example.usuario.core.dto.UserName;
 import com.example.usuario.core.dto.UsuarioDto;
-import com.example.usuario.core.entities.Usuario;
+import com.example.usuario.core.exception.SearchException;
 import com.example.usuario.core.service.LogsService;
 import com.example.usuario.core.service.UsuarioService;
+import com.example.usuario.core.serviceController.UsuarioControllerService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/api/v1/usuario")
 @Tag(name = "Controlador de usuarios",
         description = "Controlador encargardo de todo lo referente con los usuarios del sistema")
 public class UsuarioController {
+    private static Logger logger = Logger.getLogger(UsuarioController.class.getName());
     private final UsuarioService usuarioService;
     private final LogsService logsService;
-    private static final String aceptado = "Aceptado";
-    private static final String error = "Error";
+    private final UsuarioControllerService usuarioControllerService;
+    private static final String ACEPTADO = "Aceptado";
 
     @Autowired
-    public UsuarioController(UsuarioService usuarioService,LogsService logsService) {
+    public UsuarioController(UsuarioService usuarioService, LogsService logsService, UsuarioControllerService usuarioControllerService) {
         this.usuarioService = usuarioService;
         this.logsService = logsService;
+        this.usuarioControllerService = usuarioControllerService;
     }
 
     @PostMapping("/create")
     @Operation(summary = "Insertar usuario",
             description = "Permite insertar un usuario")
-    public ResponseEntity<?> insertarUsuario(@RequestBody UsuarioDto usuario, HttpServletRequest request){
-        try{
-            usuarioService.insertarUsuario(new Usuario(usuario));
-            logsService.insertarLog(request, aceptado,"Se insertó un usuario");
-            return ResponseEntity.ok("El usuario se insertó correctamente");
-        }catch (Exception e){
-            logsService.insertarLog(request, error,e.getMessage());
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
+    public ResponseEntity<?> insertarUsuario(@RequestBody UsuarioDto usuario, HttpServletRequest request) throws SearchException {
+        return ResponseEntity.ok(usuarioControllerService.insertarUsuario(usuario,request));
     }
 
     @GetMapping("/all")
     @Operation(summary = "Listado de usuarios",
             description = "Permite listar todos los usuarios del sistema")
-    public ResponseEntity<?> listarUsuarios(){
-       try{
-           List<Usuario> usuarios = usuarioService.obtenerUsuarios();
-           return ResponseEntity.ok(usuarios);
-       }catch (Exception e){
-           return ResponseEntity.badRequest().body("No se puede acceder a la lista de usuarios");
-       }
+    public ResponseEntity<?> listarUsuarios(HttpServletRequest request) throws SearchException {
+        return ResponseEntity.ok(usuarioControllerService.listarUsuarios(request));
     }
 
     @PutMapping("/update/{id}")
     @Operation(summary = "Modificar usuarios por ID",
             description = "Permite modificar un usuario a raíz de su ID")
-    public ResponseEntity<?> modificarUsuario(@RequestBody UsuarioDto usuario,@PathVariable Long id, HttpServletRequest request){
-        try{
-            usuarioService.modificarUsuario(usuario, id);
-            logsService.insertarLog(request, aceptado,"Se modificó un usuario");
-            return ResponseEntity.ok("Usuario Modificado correctamente");
-        }catch (Exception e){
-            logsService.insertarLog(request, error,e.getMessage());
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
+    public ResponseEntity<?> modificarUsuario(@RequestBody UsuarioDto usuario,@PathVariable Long id, HttpServletRequest request) throws SearchException {
+        return ResponseEntity.ok(usuarioControllerService.modificarUsuario(usuario,id,request));
     }
 
     @DeleteMapping("/delete/{id}")
     @Operation(summary = "Eliminar usuario por ID", description = "Permite eliminar un usuario a raíz de su ID")
-    public ResponseEntity<?> eliminarUsuario(@PathVariable Long id, HttpServletRequest request){
-        try{
-            usuarioService.eliminarUsuario(id);
-            logsService.insertarLog(request, aceptado,"Se eliminó un usuario");
-            return ResponseEntity.ok("Se eliminó el usuario");
-        }catch (Exception e){
-            logsService.insertarLog(request, error,e.getMessage());
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
+    public ResponseEntity<?> eliminarUsuario(@PathVariable Long id, HttpServletRequest request) throws SearchException {
+        return ResponseEntity.ok(usuarioControllerService.eliminarUsuario(id, request));
     }
 
     @PatchMapping("/obtenerUsuario/{id}")
     @Operation(summary = "Obtener usuario por ID", description = "Permite obtener un usuario a raíz de su ID")
-    public ResponseEntity<?> obtenerDatosPorId(@PathVariable Long id){
-        try{
-            UsuarioDto usuario = new UsuarioDto(usuarioService.obtenerUsuarioXId(id).get());
-            return ResponseEntity.ok(usuario);
-        }catch (Exception e){
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
+    public ResponseEntity<?> obtenerDatosPorId(@PathVariable Long id,HttpServletRequest request) throws SearchException {
+        return ResponseEntity.ok(usuarioControllerService.obtenerDatosPorId(id,request));
     }
 
     @GetMapping("/existeUsuario/{id}")
-    public ResponseEntity<?> existeUsuariobynombre(@PathVariable Long id) {
-        try{
-            boolean exists = usuarioService.existeUsuario(id);
-            return ResponseEntity.ok(exists);
-        }catch (Exception e){
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
+    public ResponseEntity<?> existeUsuariobynombre(@PathVariable Long id, HttpServletRequest request) throws SearchException {
+        return ResponseEntity.ok(usuarioControllerService.existeUsuariobynombre(id,request));
     }
 
     @GetMapping("/participantesXUsuario/{id}")
     public ResponseEntity<?> obtenerParticipantesXUsuario(@PathVariable Long id) {
-        try{
-            return ResponseEntity.ok(usuarioService.obtenerParticipanteXUsuario(id));
-        }catch (Exception e){
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
+        return ResponseEntity.ok(usuarioService.obtenerParticipanteXUsuario(id));
     }
 
-    @GetMapping("/existeUsuariobynombre/{nombre}")
-    public ResponseEntity<?> existeUsuariobynombre(@PathVariable String nombre) {
-        try{
-            Long id = usuarioService.existeUsuariobynombre(nombre);
-            return ResponseEntity.ok(id);
-        }catch (Exception e){
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
-    }
 
     @GetMapping("/obtenerUsuarioporNombre/{nombre}")
     @Operation(summary = "Obtener usuario por Nombre", description = "Permite obtener un usuario a raíz de su nombre")
-    public ResponseEntity<?> obtenerDatosPorId(@PathVariable String nombre){
-        try{
-            UserName usuario = new UserName(usuarioService.obtenerUsuarioXNombre(nombre));
-            return ResponseEntity.ok(usuario);
-        }catch (Exception e){
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
+    public ResponseEntity<?> obtenerDatosPorId(@PathVariable String nombre) throws SearchException {
+        UserName usuario = new UserName(usuarioService.obtenerUsuarioXNombre(nombre));
+        return ResponseEntity.ok(usuario);
     }
-
 }

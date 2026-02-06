@@ -13,6 +13,7 @@ import org.neuroph.nnet.MultiLayerPerceptron;
 import org.neuroph.nnet.learning.BackPropagation;
 import org.neuroph.util.TransferFunctionType;
 
+
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

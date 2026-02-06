@@ -1,15 +1,16 @@
-package com.example.usuario.core.serviceimpl;
+package com.example.usuario.core.service.serviceimpl;
 
 import com.example.usuario.core.dto.ParticipantesDto;
-import com.example.usuario.core.dto.UserName;
 import com.example.usuario.core.dto.UsuarioDto;
-import com.example.usuario.core.entities.Usuario;
+import com.example.usuario.core.model.Rol;
+import com.example.usuario.core.model.Usuario;
 import com.example.usuario.core.exception.SearchException;
 import com.example.usuario.core.feignClient.ParticipanteClient;
 import com.example.usuario.core.http.response.ParticipantesByUsuarioResponse;
 import com.example.usuario.core.repository.UsuarioRepository;
 import com.example.usuario.core.service.UsuarioService;
 import org.springframework.beans.factory.annotation.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,11 +20,13 @@ import java.util.Optional;
 public class UsuarioServiceImpl implements UsuarioService {
     private UsuarioRepository repository;
     private ParticipanteClient participanteClient;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UsuarioServiceImpl(UsuarioRepository repository,ParticipanteClient participanteClient) {
+    public UsuarioServiceImpl(UsuarioRepository repository, ParticipanteClient participanteClient, PasswordEncoder passwordEncoder) {
         this.repository = repository;
         this.participanteClient = participanteClient;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -35,10 +38,10 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public void modificarUsuario(UsuarioDto usuarioDto, Long id) throws SearchException {
+    public void modificarUsuario(UsuarioDto usuarioDto, Long id, Rol rol) throws SearchException {
         if(repository.existsById(id)){
             usuarioDto.setId(id);
-            repository.save(new Usuario(usuarioDto));
+            repository.save(new Usuario(usuarioDto,rol,usuarioDto.getContrasenna()));
         }else{
             throw new SearchException("No existe el usuario a modificar");
         }
@@ -65,7 +68,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public Usuario obtenerUsuarioXNombre(String nombre) throws SearchException {
-        return repository.findByNombre(nombre);
+        return repository.findByNombre(nombre).orElseThrow(()-> new SearchException("No existe un usuario con ese nombre"));
     }
 
     @Override

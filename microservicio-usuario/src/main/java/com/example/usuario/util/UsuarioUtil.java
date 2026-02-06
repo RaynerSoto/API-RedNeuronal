@@ -1,4 +1,4 @@
-package com.example.usuario.core.util;
+package com.example.usuario.util;
 
 import jakarta.servlet.http.HttpServletRequest;
 

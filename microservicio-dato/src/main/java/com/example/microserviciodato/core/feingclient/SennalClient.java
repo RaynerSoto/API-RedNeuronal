@@ -8,6 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
+
+/**
+ * Cliente Feign para comunicarse con el microservicio de patología.
+ * @author Rayne Alejandro Soto Martínez
+ */
 @FeignClient(name = "microservicio-sennal", url = "localhost:8089/api/v1/sennal")
 public interface SennalClient {
 

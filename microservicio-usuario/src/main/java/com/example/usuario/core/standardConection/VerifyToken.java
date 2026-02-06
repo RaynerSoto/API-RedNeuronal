@@ -1,0 +1,30 @@
+package com.example.usuario.core.standardConection;
+
+import com.google.gson.Gson;
+import java.io.IOException;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.time.Duration;
+
+public class VerifyToken {
+
+    public static boolean verify(String token) throws IOException, InterruptedException {
+        if (token == null){
+            return false;
+        }
+        else {
+            try{
+                HttpClient httpClient = HttpClient.newHttpClient();
+                HttpRequest httpRequest = HttpRequest.newBuilder()
+                        .uri(java.net.URI.create("http://localhost:8085/api/v1/token/")).GET()
+                        .timeout(Duration.ofMinutes(20))
+                        .build();
+                HttpResponse<String> response = httpClient.send(httpRequest,HttpResponse.BodyHandlers.ofString());
+                return new Gson().fromJson(response.body(),Boolean.class);
+            } catch (Exception e) {
+                return false;
+            }
+        }
+    }
+}

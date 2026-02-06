@@ -31,7 +31,7 @@ public class TokenController {
     }
 
     @GetMapping("/")
-    @Operation(summary = "")
+    @Operation(summary = "Permite validar si un token está activo o no")
     public ResponseEntity<Boolean> validarTokenMicroservicios(HttpServletRequest request){
         return ResponseEntity.ok(tokenControllerService.validarToken(request));
     }

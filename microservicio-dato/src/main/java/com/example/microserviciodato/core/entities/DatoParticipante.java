@@ -3,6 +3,7 @@ package com.example.microserviciodato.core.entities;
 import com.example.microserviciodato.core.dto.DatoParticipanteDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +15,7 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @Entity
 @Table(name="datoparticipante")
+@Builder
 public class DatoParticipante {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

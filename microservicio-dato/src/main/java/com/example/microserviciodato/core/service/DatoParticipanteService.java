@@ -2,7 +2,7 @@ package com.example.microserviciodato.core.service;
 
 
 import com.example.microserviciodato.core.dto.DatoParticipanteDto;
-import com.example.microserviciodato.core.entities.DatoParticipante;
+import com.example.microserviciodato.core.model.DatoParticipante;
 import com.example.microserviciodato.core.exception.SearchException;
 import com.example.microserviciodato.core.http.response.PatologiaResponse;
 import java.util.List;

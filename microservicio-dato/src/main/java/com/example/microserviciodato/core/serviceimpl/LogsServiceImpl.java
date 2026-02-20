@@ -1,7 +1,7 @@
 package com.example.microserviciodato.core.serviceimpl;
 
 import com.example.microserviciodato.core.dto.LogDto;
-import com.example.microserviciodato.core.entities.Logs;
+import com.example.microserviciodato.core.model.Logs;
 import com.example.microserviciodato.core.repository.LogsRepository;
 import com.example.microserviciodato.core.service.LogsService;
 import com.example.microserviciodato.util.IpUtils;

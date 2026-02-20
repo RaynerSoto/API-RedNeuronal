@@ -1,13 +1,7 @@
 package com.example.microserviciodato.core.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+public record PatologiaDto(
+     Long id,
+     String nombre){
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class PatologiaDto {
-    private Long id;
-    private String nombre;
 }

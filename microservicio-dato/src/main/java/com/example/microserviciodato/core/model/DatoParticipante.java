@@ -1,4 +1,4 @@
-package com.example.microserviciodato.core.entities;
+package com.example.microserviciodato.core.model;
 
 import com.example.microserviciodato.core.dto.DatoParticipanteDto;
 import jakarta.persistence.*;
@@ -40,14 +40,14 @@ public class DatoParticipante {
     private double alturadelsensor;
 
     public DatoParticipante(DatoParticipanteDto datoParticipanteDto) {
-        this.idparticipante = datoParticipanteDto.getIdparticipante();
-        this.fecha = LocalDate.parse(datoParticipanteDto.getFecha());
-        this.hora = LocalTime.parse(datoParticipanteDto.getHora());
-        this.edad = datoParticipanteDto.getEdad();
-        this.patologia = datoParticipanteDto.isPatologia();
-        this.numerodecalzado = datoParticipanteDto.getNumerodecalzado();
-        this.medicioncinturatobillo = datoParticipanteDto.getMedicioncinturatobillo();
-        this.largopierna = datoParticipanteDto.getLargopierna();
-        this.alturadelsensor = datoParticipanteDto.getAlturadelsensor();
+        this.idparticipante = datoParticipanteDto.idparticipante();
+        this.fecha = LocalDate.parse(datoParticipanteDto.fecha());
+        this.hora = LocalTime.parse(datoParticipanteDto.hora());
+        this.edad = datoParticipanteDto.edad();
+        this.patologia = datoParticipanteDto.patologia();
+        this.numerodecalzado = datoParticipanteDto.numerodecalzado();
+        this.medicioncinturatobillo = datoParticipanteDto.medicioncinturatobillo();
+        this.largopierna = datoParticipanteDto.largopierna();
+        this.alturadelsensor = datoParticipanteDto.alturadelsensor();
     }
 }

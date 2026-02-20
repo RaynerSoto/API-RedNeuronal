@@ -3,7 +3,7 @@ package com.example.microserviciodato.core.serviceimpl;
 import com.example.microserviciodato.core.dto.DatoParticipanteDto;
 import com.example.microserviciodato.core.dto.PatologiaDto;
 import com.example.microserviciodato.core.dto.SennalDto;
-import com.example.microserviciodato.core.entities.DatoParticipante;
+import com.example.microserviciodato.core.model.DatoParticipante;
 import com.example.microserviciodato.core.exception.SearchException;
 import com.example.microserviciodato.core.feingclient.PatologiaClient;
 import com.example.microserviciodato.core.feingclient.SennalClient;
@@ -39,10 +39,9 @@ public class DatoParticipanteServiceImpl implements DatoParticipanteService {
     }
 
     @Override
-    public void modificarDato(DatoParticipanteDto datoParticipante, Long id) {
+    public void modificarDato(DatoParticipanteDto datoParticipanteDto, Long id) {
         if(datoParticipanteRepository.existsById(id)){
-            datoParticipante.setId(id);
-            datoParticipanteRepository.save(new DatoParticipante(datoParticipante));
+            datoParticipanteRepository.save(new DatoParticipante(DatoParticipanteDto.fromDatoParticipanteDtoID(datoParticipanteDto,id)));
         }
     }
 

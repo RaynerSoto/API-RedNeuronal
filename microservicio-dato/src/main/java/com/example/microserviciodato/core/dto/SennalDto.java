@@ -6,17 +6,13 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class SennalDto {
-    List<Double> acelerometroX;
-    List<Double> acelerometroY;
-    List<Double> acelerometroZ;
-    List<Double> giroscopioX;
-    List<Double> giroscopioY;
-    List<Double> giroscopioZ;
-    List<Double> magnetometroX;
-    List<Double> magnetometroY;
-    List<Double> magnetometroZ;
-}
+public record SennalDto(
+    List<Double> acelerometroX,
+    List<Double> acelerometroY,
+    List<Double> acelerometroZ,
+    List<Double> giroscopioX,
+    List<Double> giroscopioY,
+    List<Double> giroscopioZ,
+    List<Double> magnetometroX,
+    List<Double> magnetometroY,
+    List<Double> magnetometroZ){}

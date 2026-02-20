@@ -24,6 +24,7 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/gateaway/pom.xml" />
+        <option value="$PROJECT_DIR$/microservicio-config/pom.xml" />
         <option value="$PROJECT_DIR$/microservicio-datos/pom.xml" />
       </set>
     </option>

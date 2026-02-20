@@ -13,8 +13,8 @@ import lombok.NoArgsConstructor;
 public class LogDto {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Date event_date;
-    @NotNull(message = "El estado no puede ser null")
-    @NotBlank(message = "El estado no puede estar vacío")
+
+    @NotBlank(message = "El estado no puede estar vacío o nullo")
     private String log_level;
 
     private String user_name;

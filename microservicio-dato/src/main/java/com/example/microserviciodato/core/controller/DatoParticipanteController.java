@@ -1,6 +1,5 @@
 package com.example.microserviciodato.core.controller;
 
-import com.example.microserviciodato.core.dto.DatoIdDto;
 import com.example.microserviciodato.core.dto.DatoParticipanteDto;
 import com.example.microserviciodato.core.entities.DatoParticipante;
 import com.example.microserviciodato.core.exception.SearchException;

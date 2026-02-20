@@ -1,6 +1,5 @@
 package com.example.microserviciodato.core.serviceimpl;
 
-import com.example.microserviciodato.core.dto.DatoIdDto;
 import com.example.microserviciodato.core.dto.DatoParticipanteDto;
 import com.example.microserviciodato.core.dto.PatologiaDto;
 import com.example.microserviciodato.core.dto.SennalDto;
@@ -13,7 +12,6 @@ import com.example.microserviciodato.core.repository.DatoParticipanteRepository;
 import com.example.microserviciodato.core.service.DatoParticipanteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -71,7 +69,6 @@ public class DatoParticipanteServiceImpl implements DatoParticipanteService {
         return (List<PatologiaResponse>) datoParticipanteList.stream().map(dato -> {
             List<PatologiaDto> patologiaDtoList = patologiaClient.obtenerPatologiaXDato(dato.getId());
             SennalDto sennalDtoList = sennalClient.obtenerSennalXDato(dato.getId());
-
             return PatologiaResponse.builder()
                     .id(dato.getId())
                     .idparticipante(dato.getIdparticipante())

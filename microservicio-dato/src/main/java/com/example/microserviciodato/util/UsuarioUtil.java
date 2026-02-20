@@ -1,4 +1,4 @@
-package com.example.microserviciodato.core.util;
+package com.example.microserviciodato.util;
 
 import jakarta.servlet.http.HttpServletRequest;
 

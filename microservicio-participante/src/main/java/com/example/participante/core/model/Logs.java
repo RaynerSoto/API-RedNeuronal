@@ -1,4 +1,4 @@
-package com.example.participante.core.entities;
+package com.example.participante.core.model;
 
 import com.example.participante.core.dto.LogDto;
 import jakarta.persistence.*;

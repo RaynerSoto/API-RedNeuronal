@@ -1,4 +1,4 @@
-package com.example.participante.core.util;
+package com.example.participante.util;
 
 import jakarta.servlet.http.HttpServletRequest;
 

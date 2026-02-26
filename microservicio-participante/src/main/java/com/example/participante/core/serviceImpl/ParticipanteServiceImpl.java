@@ -1,11 +1,10 @@
 package com.example.participante.core.serviceImpl;
 
 import com.example.participante.core.dto.DatoDto;
-import com.example.participante.core.dto.ParticipanteAllDto;
 import com.example.participante.core.dto.ParticipanteDto;
 import com.example.participante.core.dto.ParticipanteUpdateDto;
-import com.example.participante.core.entities.Participante;
-import com.example.participante.core.entities.UsuarioParticipante;
+import com.example.participante.core.model.Participante;
+import com.example.participante.core.model.UsuarioParticipante;
 import com.example.participante.core.exception.SearchException;
 import com.example.participante.core.feingclient.DatoClient;
 import com.example.participante.core.feingclient.UsuarioClient;

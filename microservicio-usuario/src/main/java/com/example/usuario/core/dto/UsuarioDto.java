@@ -1,78 +1,34 @@
 package com.example.usuario.core.dto;
 
-import com.example.usuario.core.entities.Usuario;
+import com.example.usuario.core.model.Usuario;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
 public class UsuarioDto {
     private Long id;
     private Long id_rol;
     private String nombre;
+    private String username;
     private String contrasenna;
-    private String repetircontrasenna;
     private String noprofesional;
 
-    public UsuarioDto(Long id, Long id_rol, String nombre, String contrasenna, String repetircontrasenna, String noprofesional) {
+    public UsuarioDto(Long id, Long id_rol, String nombre,String username ,String contrasenna, String noprofesional) {
         this.id = id;
         this.id_rol = id_rol;
         this.nombre = nombre;
+        this.username = username;
         this.contrasenna = contrasenna;
-        this.repetircontrasenna = repetircontrasenna;
         this.noprofesional = noprofesional;
     }
 
     public UsuarioDto(Usuario usuario) {
         this.id = usuario.getId();
-        this.id_rol = usuario.getIdrol();
+        this.id_rol = usuario.getRol().getId();
         this.nombre = usuario.getNombre();
+        this.username = usuario.getUsername();
         this.contrasenna = usuario.getContrasenna();
-        this.repetircontrasenna = usuario.getRepetrircontrasenna();
         this.noprofesional = usuario.getNoprofesional();
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId_rol() {
-        return id_rol;
-    }
-
-    public void setId_rol(Long id_rol) {
-        this.id_rol = id_rol;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getContrasenna() {
-        return contrasenna;
-    }
-
-    public void setContrasenna(String contrasenna) {
-        this.contrasenna = contrasenna;
-    }
-
-    public String getRepetircontrasenna() {
-        return repetircontrasenna;
-    }
-
-    public void setRepetircontrasenna(String repetircontrasenna) {
-        this.repetircontrasenna = repetircontrasenna;
-    }
-
-    public String getNoprofesional() {
-        return noprofesional;
-    }
-
-    public void setNoprofesional(String noprofesional) {
-        this.noprofesional = noprofesional;
     }
 }

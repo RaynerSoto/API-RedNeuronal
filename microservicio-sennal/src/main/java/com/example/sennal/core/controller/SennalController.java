@@ -36,12 +36,8 @@ public class SennalController {
             description = "Permite insertar una sennal")
     public ResponseEntity<?> insertarPatologia(@RequestBody ListaSenalesDTO listaSenales, HttpServletRequest request){
         try{
-            List<SennalDto> senales = listaSenales.getSenales();
-
-            for(SennalDto sennalDto: senales){
-                sennalService.insertarsennal(sennalDto);
-                logsService.insertarLog(request,aceptado,"Se insertó una sennal");
-            }
+            sennalService.insertarsennal(listaSenales);
+            logsService.insertarLog(request,aceptado,"Se insertaron las sennales");
 
             return ResponseEntity.ok("Se insertó una sennal correctamente");
         }catch (Exception e){

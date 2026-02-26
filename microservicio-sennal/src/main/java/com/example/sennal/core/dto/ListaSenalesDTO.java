@@ -10,4 +10,5 @@ import java.util.List;
 @AllArgsConstructor
 public class ListaSenalesDTO {
     private List<SennalDto> senales;
+    private List<String> enfermedades;
 }

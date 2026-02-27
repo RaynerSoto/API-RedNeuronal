@@ -4,7 +4,6 @@ import com.example.usuario.core.dto.LogDto;
 import com.example.usuario.util.Validacion;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,7 +17,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "log")
+@Table(name = "log",schema = "public")
 @Builder
 public class Logs {
     @Id
@@ -27,7 +26,7 @@ public class Logs {
     private Long id;
 
     @Column(name="event_date", nullable = false)
-    @NotNull(message = "La fecha y hora del log a generar no puede ser nullo o vacío")
+    @NotBlank(message = "La fecha y hora del log a generar no puede ser nullo o vacío")
     private LocalDate event_date;
 
     @Column(name="log_level", nullable = false)

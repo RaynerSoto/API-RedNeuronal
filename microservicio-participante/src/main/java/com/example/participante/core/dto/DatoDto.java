@@ -8,18 +8,11 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class DatoDto {
-    private LocalDate fecha;
-    private LocalTime hora;
-    private int edad;
-    private boolean patologia;
-    private List<PatologiaDto> patologiaList;
-    private double numerodecalzado;
-    private double medicioncinturatobillo;
-    private double largopierna;
-    private double alturadelsensor;
-    private SennalDto sennalList;
-}
+public record DatoDto (LocalDate fecha, LocalTime hora, int edad, boolean patologia,
+    List<PatologiaDto> patologiaList,
+    double numerodecalzado,
+    double medicioncinturatobillo,
+    double largopierna,
+    double alturadelsensor,
+    SennalDto sennalList
+) {}

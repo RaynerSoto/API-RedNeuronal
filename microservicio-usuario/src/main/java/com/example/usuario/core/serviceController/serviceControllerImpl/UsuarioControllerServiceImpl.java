@@ -41,7 +41,7 @@ public class UsuarioControllerServiceImpl implements UsuarioControllerService {
 
     @Override
     public String insertarUsuario(UsuarioDto usuario, HttpServletRequest request) throws SearchException {
-        Rol rol = rolRepository.findById(usuario.getId_rol()).orElseThrow(() -> new SearchException("No se ha encontrado el rol específico"));
+        Rol rol = rolRepository.findById(usuario.getId()).orElseThrow(() -> new SearchException("No se ha encontrado el rol específico"));
         usuarioService.insertarUsuario(new Usuario(usuario,rol,usuario.getContrasenna()));
         logsService.insertarLog(request, ACEPTADO,"Se insertó un usuario");
         return "El usuario se insertó correctamente";

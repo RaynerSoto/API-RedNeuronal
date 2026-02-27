@@ -18,14 +18,13 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "usuario")
+@Table(name = "usuario",schema = "public")
 @Builder
 public class Usuario implements UserDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usuario_seq")
-    @SequenceGenerator(name = "usuario_seq", sequenceName = "usuario_id_seq", initialValue = 1, allocationSize = 1)
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique = true, nullable = false)
     private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
@@ -56,7 +55,6 @@ public class Usuario implements UserDetails {
         this.id = usuario.getId();
         this.rol = rol;
         this.nombre = usuario.getNombre();
-        this.username = usuario.getUsername();
         this.contrasenna = usuario.getContrasenna();
         this.noprofesional = usuario.getNoprofesional();
     }
@@ -65,7 +63,6 @@ public class Usuario implements UserDetails {
         this.id = usuario.getId();
         this.rol = rol;
         this.nombre = usuario.getNombre();
-        this.username = usuario.getUsername();
         this.contrasenna = password;
         this.noprofesional = usuario.getNoprofesional();
     }

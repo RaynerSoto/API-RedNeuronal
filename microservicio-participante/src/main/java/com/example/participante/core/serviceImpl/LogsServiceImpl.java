@@ -1,7 +1,7 @@
 package com.example.participante.core.serviceImpl;
 
 import com.example.participante.core.dto.LogDto;
-import com.example.participante.core.entities.Logs;
+import com.example.participante.core.model.Logs;
 import com.example.participante.core.repository.LogsRepository;
 import com.example.participante.core.service.LogsService;
 import com.example.participante.core.util.IpUtils;

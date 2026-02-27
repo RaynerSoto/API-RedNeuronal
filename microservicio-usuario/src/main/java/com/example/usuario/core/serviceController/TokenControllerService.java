@@ -4,4 +4,5 @@ import jakarta.servlet.http.HttpServletRequest;
 
 public interface TokenControllerService {
     boolean validarToken(HttpServletRequest request);
+    boolean validarToken(String token);
 }

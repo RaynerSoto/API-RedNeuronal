@@ -59,6 +59,31 @@ public class TokenControllerServiceImpl implements TokenControllerService {
             logger.severe(e.getMessage());
             return false;
         }
+    }
 
+    @Override
+    public boolean validarToken(String token_data) {
+        try {
+            TokenDto token = new TokenDto(token_data);
+            Validacion.validarElemento(token);
+            token.setToken(token.getToken().replace("Bearer ", "").replaceAll(" ","").replaceAll("\"",""));
+            Algorithm algorithm = Algorithm.HMAC256("${jwt.secreto}");
+            JWTVerifier verifier = JWT.require(algorithm)
+                    // specify any specific claim validations
+                    .withIssuer("Dianelis")
+                    // reusable verifier instance
+                    .build();
+            DecodedJWT decodedJWT =  verifier.verify(token.getToken());
+            logger.info("JWT verifier: " + verifier.verify(token.getToken()));
+            Usuario usuario = usuarioRepository.findByUsernameEquals(decodedJWT.getSubject()).orElseThrow(() -> new SearchException("Usuario no encontrado"));
+            Rol rol = rolRepository.findByNombreRolEquals(decodedJWT.getClaim("rol")).orElseThrow(() -> new SearchException("Rol no encontrado"));
+            logger.info("Solamente queda el retorno de la información");
+            return (passwordEncoder.matches(usuario.getPassword(),decodedJWT.getClaim("password").asString())
+                    && decodedJWT.getExpiresAt().before(new Date()));
+        }
+        catch (Exception e) {
+            logger.severe(e.getMessage());
+            return false;
+        }
     }
 }

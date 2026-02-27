@@ -1,6 +1,6 @@
 package com.example.participante.core.dto;
 
-import com.example.participante.core.entities.Participante;
+import com.example.participante.core.model.Participante;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

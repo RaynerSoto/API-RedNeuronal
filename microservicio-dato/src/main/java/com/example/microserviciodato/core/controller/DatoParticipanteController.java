@@ -1,8 +1,7 @@
 package com.example.microserviciodato.core.controller;
 
-import com.example.microserviciodato.core.dto.DatoIdDto;
 import com.example.microserviciodato.core.dto.DatoParticipanteDto;
-import com.example.microserviciodato.core.entities.DatoParticipante;
+import com.example.microserviciodato.core.model.DatoParticipante;
 import com.example.microserviciodato.core.exception.SearchException;
 import com.example.microserviciodato.core.http.response.PatologiaResponse;
 import com.example.microserviciodato.core.service.DatoParticipanteService;
@@ -90,7 +89,7 @@ public class DatoParticipanteController {
     @Operation(summary = "Obtener dato por ID", description = "Permite obtener un dato a raíz de su ID")
     public ResponseEntity<?> obtenerDatosPorId(@PathVariable Long id){
         try{
-            DatoParticipanteDto datoParticipanteDto = new DatoParticipanteDto(datoParticipanteService.obtenerDatoXId(id).get());
+            DatoParticipanteDto datoParticipanteDto = DatoParticipanteDto.fromDatoParticipanteDto(datoParticipanteService.obtenerDatoXId(id).orElseThrow(() -> new SearchException("No se encontró el dato con ID: " + id)));
             return ResponseEntity.ok(datoParticipanteDto);
         }catch (Exception e){
             return ResponseEntity.badRequest().body(e.getMessage());

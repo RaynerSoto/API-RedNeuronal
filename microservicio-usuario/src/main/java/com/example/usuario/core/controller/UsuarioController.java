@@ -75,6 +75,7 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioService.obtenerParticipanteXUsuario(id));
     }
 
+    
 
     @GetMapping("/obtenerUsuarioporNombre/{nombre}")
     @Operation(summary = "Obtener usuario por Nombre", description = "Permite obtener un usuario a raíz de su nombre")
@@ -82,5 +83,4 @@ public class UsuarioController {
         UserName usuario = new UserName(usuarioService.obtenerUsuarioXNombre(nombre));
         return ResponseEntity.ok(usuario);
     }
-
 }

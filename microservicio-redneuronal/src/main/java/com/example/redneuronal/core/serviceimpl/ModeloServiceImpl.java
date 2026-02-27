@@ -11,6 +11,7 @@ import org.neuroph.core.data.DataSet;
 import org.neuroph.core.data.DataSetRow;
 import org.neuroph.nnet.MultiLayerPerceptron;
 import org.neuroph.nnet.learning.BackPropagation;
+import org.neuroph.nnet.learning.MomentumBackpropagation;
 import org.neuroph.util.TransferFunctionType;
 
 
@@ -50,6 +51,8 @@ public class ModeloServiceImpl implements ModeloService {
 
         int salidas = request.getEnfermedades().size();
         DataSet dataset = new DataSet(ENTRADAS, salidas);
+        //Determinar si es pocas señales
+        int repeticion= (request.getSennalList().size()<10)? 100:1;
 
         for (Sennal p : request.getSennalList()) {
             double[] entrada = ObtenerCaracteristicas.getInputFeatures(p);
@@ -58,7 +61,9 @@ public class ModeloServiceImpl implements ModeloService {
             if (diagnosticos != null && !diagnosticos.isEmpty()) {
                 // Señal etiquetada: entrenamos con su salida esperada
                 double[] salida = generarSalidasDesdeDiagnosticos(diagnosticos, request.getEnfermedades());
-                dataset.add(new DataSetRow(entrada, salida));
+                for(int i =0; i<repeticion;i++){
+                    dataset.add(new DataSetRow(entrada, salida));
+                }
             } else {
                 // Señal no etiquetada: usamos la red para pseudoetiquetar
                 red.setInput(entrada);
@@ -71,7 +76,17 @@ public class ModeloServiceImpl implements ModeloService {
                 }
             }
         }
-
+        //Ajuste dinámico de la regla de aprendizaje
+        BackPropagation regla = (BackPropagation) red.getLearningRule();
+        if(repeticion > 1){
+            //Para pequeños lotes
+            regla.setLearningRate(0.2);
+            regla.setMaxIterations(200);
+        }else{
+            //Grandes lotes
+            regla.setLearningRate(0.1);
+            regla.setMaxIterations(500);
+        }
         red.learn(dataset);
         return red;
     }

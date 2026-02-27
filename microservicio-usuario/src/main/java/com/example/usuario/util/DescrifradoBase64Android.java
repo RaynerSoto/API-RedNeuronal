@@ -22,10 +22,11 @@ public class DescrifradoBase64Android {
     public static String getdesencriptacion(String passwordBase64) {
         String desencrip = null;
         try {
+            String cleanData = passwordBase64.trim().replaceAll("\\s", "");
             SecretKey key = getSecretKey();
             Cipher cipher = Cipher.getInstance("AES");
             cipher.init(Cipher.DECRYPT_MODE, key);
-            byte[] datosDesencriptadosBase64 = Base64.getDecoder().decode(passwordBase64);
+            byte[] datosDesencriptadosBase64 = Base64.getDecoder().decode(cleanData);
             byte[] datosDesencriptadosByte = cipher.doFinal(datosDesencriptadosBase64);
             desencrip = new String(datosDesencriptadosByte, "UTF-8");
 

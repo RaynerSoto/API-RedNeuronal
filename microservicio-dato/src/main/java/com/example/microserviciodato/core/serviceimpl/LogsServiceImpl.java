@@ -1,11 +1,11 @@
 package com.example.microserviciodato.core.serviceimpl;
 
 import com.example.microserviciodato.core.dto.LogDto;
-import com.example.microserviciodato.core.entities.Logs;
+import com.example.microserviciodato.core.model.Logs;
 import com.example.microserviciodato.core.repository.LogsRepository;
 import com.example.microserviciodato.core.service.LogsService;
-import com.example.microserviciodato.core.util.IpUtils;
-import com.example.microserviciodato.core.util.UsuarioUtil;
+import com.example.microserviciodato.util.IpUtils;
+import com.example.microserviciodato.util.UsuarioUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

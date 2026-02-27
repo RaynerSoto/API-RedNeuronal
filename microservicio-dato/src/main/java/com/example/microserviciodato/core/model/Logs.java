@@ -1,4 +1,4 @@
-package com.example.microserviciodato.core.entities;
+package com.example.microserviciodato.core.model;
 
 import com.example.microserviciodato.core.dto.LogDto;
 import jakarta.persistence.*;

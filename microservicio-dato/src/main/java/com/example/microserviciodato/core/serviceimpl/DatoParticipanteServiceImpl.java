@@ -1,10 +1,9 @@
 package com.example.microserviciodato.core.serviceimpl;
 
-import com.example.microserviciodato.core.dto.DatoIdDto;
 import com.example.microserviciodato.core.dto.DatoParticipanteDto;
 import com.example.microserviciodato.core.dto.PatologiaDto;
 import com.example.microserviciodato.core.dto.SennalDto;
-import com.example.microserviciodato.core.entities.DatoParticipante;
+import com.example.microserviciodato.core.model.DatoParticipante;
 import com.example.microserviciodato.core.exception.SearchException;
 import com.example.microserviciodato.core.feingclient.PatologiaClient;
 import com.example.microserviciodato.core.feingclient.SennalClient;
@@ -13,7 +12,6 @@ import com.example.microserviciodato.core.repository.DatoParticipanteRepository;
 import com.example.microserviciodato.core.service.DatoParticipanteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -41,10 +39,9 @@ public class DatoParticipanteServiceImpl implements DatoParticipanteService {
     }
 
     @Override
-    public void modificarDato(DatoParticipanteDto datoParticipante, Long id) {
+    public void modificarDato(DatoParticipanteDto datoParticipanteDto, Long id) {
         if(datoParticipanteRepository.existsById(id)){
-            datoParticipante.setId(id);
-            datoParticipanteRepository.save(new DatoParticipante(datoParticipante));
+            datoParticipanteRepository.save(new DatoParticipante(DatoParticipanteDto.fromDatoParticipanteDtoID(datoParticipanteDto,id)));
         }
     }
 
@@ -71,7 +68,6 @@ public class DatoParticipanteServiceImpl implements DatoParticipanteService {
         return (List<PatologiaResponse>) datoParticipanteList.stream().map(dato -> {
             List<PatologiaDto> patologiaDtoList = patologiaClient.obtenerPatologiaXDato(dato.getId());
             SennalDto sennalDtoList = sennalClient.obtenerSennalXDato(dato.getId());
-
             return PatologiaResponse.builder()
                     .id(dato.getId())
                     .idparticipante(dato.getIdparticipante())

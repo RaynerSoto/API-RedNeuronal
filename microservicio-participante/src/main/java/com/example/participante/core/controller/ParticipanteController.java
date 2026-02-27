@@ -2,7 +2,7 @@ package com.example.participante.core.controller;
 
 import com.example.participante.core.dto.ParticipanteDto;
 import com.example.participante.core.dto.ParticipanteUpdateDto;
-import com.example.participante.core.entities.Participante;
+import com.example.participante.core.model.Participante;
 
 import com.example.participante.core.service.LogsService;
 import com.example.participante.core.service.ParticipanteService;

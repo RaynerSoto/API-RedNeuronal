@@ -28,6 +28,7 @@ public class LoginController {
     private final UsuarioControllerService usuarioControllerService;
     private static final String ACEPTADO = "Aceptado";
 
+
     @Autowired
     public LoginController(UsuarioService usuarioService, LoginControllerService loginControllerService, LogsService logsService, UsuarioControllerService usuarioControllerService) {
         this.usuarioService = usuarioService;

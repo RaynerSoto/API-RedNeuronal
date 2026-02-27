@@ -1,7 +1,7 @@
 package com.example.participante.core.serviceImpl;
 
-import com.example.participante.core.entities.Participante;
-import com.example.participante.core.entities.UsuarioParticipante;
+import com.example.participante.core.model.Participante;
+import com.example.participante.core.model.UsuarioParticipante;
 import com.example.participante.core.exception.SearchException;
 import com.example.participante.core.repository.UsuarioParticipanteRepository;
 import com.example.participante.core.service.UsuarioParticipanteService;
@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UsuarioParticipanteServiceImpl implements UsuarioParticipanteService {

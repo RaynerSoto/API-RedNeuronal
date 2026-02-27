@@ -1,12 +1,11 @@
 package com.example.participante.core.repository;
 
-import com.example.participante.core.entities.Participante;
-import com.example.participante.core.entities.UsuarioParticipante;
+import com.example.participante.core.model.Participante;
+import com.example.participante.core.model.UsuarioParticipante;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface UsuarioParticipanteRepository extends JpaRepository<UsuarioParticipante,Long> {
     @Query(

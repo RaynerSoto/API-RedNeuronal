@@ -116,10 +116,13 @@ public class ModeloServiceImpl implements ModeloService {
 
     private double[] generarSalidasDesdeDiagnosticos(List<String> diagnosticos, List<String> enfermedades) {
         double[] salida = new double[enfermedades.size()];
-        for (int i = 0; i < diagnosticos.size(); i++) {
+        diagnosticos.stream().map(enfermedades::indexOf)
+                .filter(idx -> idx >= 0)
+                .forEach(idx -> salida[idx] = 1.0 - (idx * 0.3));
+        /*for (int i = 0; i < diagnosticos.size(); i++) {
             int idx = enfermedades.indexOf(diagnosticos.get(i));
             if (idx >= 0) salida[idx] = 1.0 - (i * 0.3);
-        }
+        }*/
         return salida;
     }
 

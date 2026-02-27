@@ -14,9 +14,9 @@ public class PatologiaDto {
     private Long id;
     private String nombre;
 
-
    public PatologiaDto (Patologia patologia){
        this.id = patologia.getId();
        this.nombre= patologia.getNombre();
    }
 }
+

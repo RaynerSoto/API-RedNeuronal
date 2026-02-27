@@ -1,4 +1,4 @@
-package com.example.patologia.core.util;
+package com.example.patologia.util;
 
 import jakarta.servlet.http.HttpServletRequest;
 

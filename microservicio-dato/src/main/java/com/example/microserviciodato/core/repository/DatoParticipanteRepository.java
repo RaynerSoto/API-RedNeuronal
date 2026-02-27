@@ -1,6 +1,6 @@
 package com.example.microserviciodato.core.repository;
 
-import com.example.microserviciodato.core.entities.DatoParticipante;
+import com.example.microserviciodato.core.model.DatoParticipante;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

@@ -1,40 +1,43 @@
 package com.example.microserviciodato.core.dto;
 
-import com.example.microserviciodato.core.entities.DatoParticipante;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.example.microserviciodato.core.model.DatoParticipante;
 
-import java.sql.Date;
-import java.sql.Time;
-import java.time.LocalDate;
-import java.time.LocalTime;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class DatoParticipanteDto {
-    private Long id;
-    private Long idparticipante;
-    private String fecha;
-    private String hora;
-    private int edad;
-    private boolean patologia;
-    private double numerodecalzado;
-    private double medicioncinturatobillo;
-    private double largopierna;
-    private double alturadelsensor;
+public record DatoParticipanteDto(
+     Long id,
+     Long idparticipante,
+     String fecha,
+     String hora,
+     int edad,
+     boolean patologia,
+     double numerodecalzado,
+     double medicioncinturatobillo,
+     double largopierna,
+     double alturadelsensor) {
 
-    public DatoParticipanteDto(DatoParticipante datoParticipante) {
-        this.id = datoParticipante.getId();
-        this.idparticipante = datoParticipante.getIdparticipante();
-        this.fecha = datoParticipante.getFecha().toString();
-        this.hora = datoParticipante.getHora().toString();
-        this.edad = datoParticipante.getEdad();
-        this.patologia = datoParticipante.isPatologia();
-        this.numerodecalzado = datoParticipante.getNumerodecalzado();
-        this.medicioncinturatobillo = datoParticipante.getMedicioncinturatobillo();
-        this.largopierna = datoParticipante.getLargopierna();
-        this.alturadelsensor = datoParticipante.getAlturadelsensor();
+    public static DatoParticipanteDto fromDatoParticipanteDto(DatoParticipante datoParticipante){
+        return new DatoParticipanteDto(datoParticipante.getId(),
+                datoParticipante.getIdparticipante(),
+                datoParticipante.getFecha().toString(),
+                datoParticipante.getHora().toString(),
+                datoParticipante.getEdad(),
+                datoParticipante.isPatologia(),
+                datoParticipante.getNumerodecalzado(),
+                datoParticipante.getMedicioncinturatobillo(),
+                datoParticipante.getLargopierna(),
+                datoParticipante.getAlturadelsensor());
+    }
+
+    public static DatoParticipanteDto fromDatoParticipanteDtoID(DatoParticipanteDto datoParticipanteDto, Long id){
+        return new DatoParticipanteDto(id,
+                datoParticipanteDto.idparticipante(),
+                datoParticipanteDto.fecha(),
+                datoParticipanteDto.hora(),
+                datoParticipanteDto.edad(),
+                datoParticipanteDto.patologia(),
+                datoParticipanteDto.numerodecalzado(),
+                datoParticipanteDto.medicioncinturatobillo(),
+                datoParticipanteDto.largopierna(),
+                datoParticipanteDto.alturadelsensor());
     }
 }

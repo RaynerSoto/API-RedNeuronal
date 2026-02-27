@@ -3,7 +3,6 @@ package com.example.usuario.core.controller;
 import com.example.usuario.core.service.LogsService;
 import com.example.usuario.core.service.UsuarioService;
 import com.example.usuario.core.serviceController.TokenControllerService;
-import com.example.usuario.core.serviceController.UsuarioControllerService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;

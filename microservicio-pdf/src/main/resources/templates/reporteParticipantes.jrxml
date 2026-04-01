@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports
+                                  http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="ReporteParticipantes" language="java" pageWidth="595" pageHeight="842"
+              columnWidth="555" columnSpacing="0" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+
+    <!-- Parámetros del reporte -->
+    <parameter name="acelerometroChartImage" class="java.awt.Image"/>
+    <parameter name="giroscopioChartImage" class="java.awt.Image"/>
+    <parameter name="magnetometroChartImage" class="java.awt.Image"/>
+    <parameter name="patologias" class="java.lang.String"/>
+    <parameter name="nombreParticipante" class="java.lang.String"/>
+    <parameter name="REPORT_DATE" class="java.util.Date"/>
+
+    <!-- Campos de datos -->
+    <field name="edad" class="java.lang.Integer"/>
+    <field name="numerodecalzado" class="java.lang.Integer"/>
+    <field name="medicioncinturatobillo" class="java.lang.Double"/>
+    <field name="largopierna" class="java.lang.Double"/>
+    <field name="alturadelsensor" class="java.lang.Double"/>
+    <field name="medicionID" class="java.lang.Integer"/>
+
+    <!-- Agrupación de datos por participante -->
+    <group name="grupoParticipante">
+        <groupExpression><![CDATA[$P{nombreParticipante}]]></groupExpression>
+        <groupHeader>
+            <band height="1"/>
+        </groupHeader>
+        <groupFooter>
+            <band height="10">
+                <!-- Salto de página -->
+                <textField>
+                    <reportElement x="0" y="0" width="555" height="10"/>
+                    <textFieldExpression><![CDATA[""]]></textFieldExpression>
+                </textField>
+            </band>
+        </groupFooter>
+    </group>
+
+    <!-- Detalles del reporte -->
+    <detail>
+        <band height="800" splitType="Stretch">
+            <!-- Nombre del participante: Solo en la primera página -->
+            <textField>
+                <reportElement x="0" y="0" width="400" height="20"/>
+                <textElement>
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{nombreParticipante}]]></textFieldExpression>
+            </textField>
+
+            <!-- Fecha del reporte -->
+            <textField pattern="dd/MM/yyyy">
+                <reportElement x="400" y="0" width="150" height="20"/>
+                <textElement>
+                    <font size="10"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{REPORT_DATE}]]></textFieldExpression>
+            </textField>
+
+            <!-- Línea divisora -->
+            <line>
+                <reportElement x="0" y="25" width="555" height="1"/>
+            </line>
+
+            <!-- Edad del participante -->
+            <staticText>
+                <reportElement x="0" y="30" width="150" height="20"/>
+                <textElement><font size="12" isBold="true"/></textElement>
+                <text><![CDATA[Edad:]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="160" y="30" width="395" height="20"/>
+                <textFieldExpression><![CDATA[$F{edad}]]></textFieldExpression>
+            </textField>
+
+            <!-- Número de calzado -->
+            <staticText>
+                <reportElement x="0" y="60" width="150" height="20"/>
+                <textElement><font size="12" isBold="true"/></textElement>
+                <text><![CDATA[Número de Calzado:]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="160" y="60" width="395" height="20"/>
+                <textFieldExpression><![CDATA[$F{numerodecalzado}]]></textFieldExpression>
+            </textField>
+
+            <!-- Medición cintura tobillo -->
+            <staticText>
+                <reportElement x="0" y="90" width="200" height="20"/>
+                <textElement><font size="12" isBold="true"/></textElement>
+                <text><![CDATA[Medición Cintura Tobillo:]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="210" y="90" width="345" height="20"/>
+                <textFieldExpression><![CDATA[$F{medicioncinturatobillo}]]></textFieldExpression>
+            </textField>
+
+            <!-- Línea divisora -->
+            <line>
+                <reportElement x="0" y="120" width="555" height="1"/>
+            </line>
+
+            <!-- Patologías -->
+            <staticText>
+                <reportElement x="0" y="140" width="150" height="20"/>
+                <textElement><font size="14" isBold="true"/></textElement>
+                <text><![CDATA[Patologías:]]></text>
+            </staticText>
+            <textField isStretchWithOverflow="true">
+                <reportElement x="160" y="140" width="395" height="40"/>
+                <textFieldExpression><![CDATA[$P{patologias}]]></textFieldExpression>
+            </textField>
+
+            <!-- Línea divisora después de patologías -->
+            <line>
+                <reportElement x="0" y="190" width="555" height="1"/>
+            </line>
+
+            <!-- Gráfico Acelerómetro -->
+            <staticText>
+                <reportElement x="0" y="210" width="555" height="20"/>
+                <textElement><font size="14" isBold="true"/></textElement>
+                <text><![CDATA[Acelerómetro]]></text>
+            </staticText>
+            <image>
+                <reportElement x="0" y="230" width="555" height="250"/>
+                <imageExpression><![CDATA[$P{acelerometroChartImage}]]></imageExpression>
+            </image>
+
+            <!-- Giroscopio -->
+            <staticText>
+                <reportElement x="0" y="490" width="555" height="20"/>
+                <textElement><font size="14" isBold="true"/></textElement>
+                <text><![CDATA[Giroscopio]]></text>
+            </staticText>
+            <image>
+                <reportElement x="0" y="510" width="555" height="250"/>
+                <imageExpression><![CDATA[$P{giroscopioChartImage}]]></imageExpression>
+            </image>
+
+            <!-- Magnetómetro -->
+            <staticText>
+                <reportElement x="0" y="770" width="555" height="20"/>
+                <textElement><font size="14" isBold="true"/></textElement>
+                <text><![CDATA[Magnetómetro]]></text>
+            </staticText>
+            <image>
+                <reportElement x="0" y="790" width="555" height="250"/>
+                <imageExpression><![CDATA[$P{magnetometroChartImage}]]></imageExpression>
+            </image>
+
+        </band>
+    </detail>
+</jasperReport>
+

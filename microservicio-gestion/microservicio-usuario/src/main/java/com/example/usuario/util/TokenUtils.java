@@ -3,6 +3,7 @@ import com.example.usuario.config.TokenService;
 import com.example.usuario.core.dto.TokenDto;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -24,6 +25,7 @@ public class TokenUtils {
         return new TokenDto(request.getHeader("Authorization").replace("Bearer ", "").replaceAll(" ","").replaceAll("\"",""));
     }
 
+    @Bean
     public String usernameToken(HttpServletRequest request){
         try {
             TokenDto token = requestTokenCleanHttp(request);

@@ -3,15 +3,18 @@ package com.example.usuario.util;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Component
 public class Validacion{
     private static Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
 
     private Validacion(){}
+
 
     public static <T> Set<String> listarValidacionesNoCumplidastoSet(T elemento){
         return validator.validate(elemento).

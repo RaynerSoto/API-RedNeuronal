@@ -5,4 +5,9 @@
       <PhpCSConfiguration asDefaultInterpreter="true" />
     </phpcs_settings>
   </component>
+  <component name="Psalm">
+    <Psalm_settings>
+      <PsalmConfiguration asDefaultInterpreter="true" />
+    </Psalm_settings>
+  </component>
 </project>

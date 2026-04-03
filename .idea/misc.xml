@@ -1,35 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="FrameworkDetectionExcludesConfiguration">
-    <file type="web" url="file://$PROJECT_DIR$/demo" />
-    <file type="web" url="file://$PROJECT_DIR$/microservicio-eureka" />
+  <component name="GoImports">
+    <option name="excludedPackages">
+      <array>
+        <option value="github.com/pkg/errors" />
+        <option value="golang.org/x/net/context" />
+      </array>
+    </option>
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/gateaway/pom.xml" />
-        <option value="$PROJECT_DIR$/microservicio-gateway/pom.xml" />
-        <option value="$PROJECT_DIR$/microservicio-eureka/pom.xml" />
-        <option value="$PROJECT_DIR$/microservicio-config/pom.xml" />
-        <option value="$PROJECT_DIR$/microservicio-usuario/pom.xml" />
-        <option value="$PROJECT_DIR$/microservicio-participante/pom.xml" />
-        <option value="$PROJECT_DIR$/microservicio-datos/pom.xml" />
-        <option value="$PROJECT_DIR$/microservicio-dato/pom.xml" />
-        <option value="$PROJECT_DIR$/microservicio-patologia/pom.xml" />
-        <option value="$PROJECT_DIR$/microservicio-sennal/pom.xml" />
-        <option value="$PROJECT_DIR$/microservicio-redneuronal/pom.xml" />
       </list>
     </option>
-    <option name="ignoredFiles">
-      <set>
-        <option value="$PROJECT_DIR$/gateaway/pom.xml" />
-        <option value="$PROJECT_DIR$/microservicio-config/pom.xml" />
-        <option value="$PROJECT_DIR$/microservicio-datos/pom.xml" />
-      </set>
-    </option>
-  </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17" project-jdk-type="JavaSDK">
-    <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

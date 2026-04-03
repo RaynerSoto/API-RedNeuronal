@@ -19,12 +19,12 @@
         <option value="$PROJECT_DIR$/microservicio-patologia/pom.xml" />
         <option value="$PROJECT_DIR$/microservicio-sennal/pom.xml" />
         <option value="$PROJECT_DIR$/microservicio-redneuronal/pom.xml" />
-        <option value="$PROJECT_DIR$/microservicio-gestion/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/gateaway/pom.xml" />
+        <option value="$PROJECT_DIR$/microservicio-config/pom.xml" />
         <option value="$PROJECT_DIR$/microservicio-datos/pom.xml" />
       </set>
     </option>

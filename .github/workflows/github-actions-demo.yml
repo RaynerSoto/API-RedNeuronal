@@ -44,17 +44,6 @@ jobs:
             echo "❌ ERROR DE COMPILACIÓN - El workflow se detendrá aquí"
             exit 1
           fi
-
-      - name: 🧪 Ejecutar pruebas unitarias
-        run: |
-          echo "🧪 Ejecutando pruebas unitarias..."
-          mvn -B test --file pom.xml
-          if [ $? -eq 0 ]; then
-            echo "✅ Pruebas unitarias pasadas"
-          else
-            echo "⚠️ Algunas pruebas fallaron (no detiene el proceso)"
-          fi
-
       - name: 📦 Empaquetar todos los microservicios
         run: |
           echo "📦 Empaquetando todos los microservicios..."

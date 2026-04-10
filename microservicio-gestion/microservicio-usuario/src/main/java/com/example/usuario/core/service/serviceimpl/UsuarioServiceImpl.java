@@ -18,31 +18,31 @@ import java.util.Optional;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
-    private UsuarioRepository repository;
+    private UsuarioRepository usuarioRepository;
     private ParticipanteClient participanteClient;
     private final PasswordEncoder passwordEncoder;
 
 
     @Autowired
-    public UsuarioServiceImpl(UsuarioRepository repository, ParticipanteClient participanteClient, PasswordEncoder passwordEncoder) {
-        this.repository = repository;
+    public UsuarioServiceImpl(UsuarioRepository usuarioRepository, ParticipanteClient participanteClient, PasswordEncoder passwordEncoder) {
+        this.usuarioRepository = usuarioRepository;
         this.participanteClient = participanteClient;
         this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public void insertarUsuario(Usuario usuario) {
-        if(!repository.existsByNombre(usuario.getNombre())){
-            repository.save(usuario);
+        if(!usuarioRepository.existsByNombre(usuario.getNombre())){
+            usuarioRepository.save(usuario);
         }
 
     }
 
     @Override
     public void modificarUsuario(UsuarioDto usuarioDto, Long id, Rol rol) throws SearchException {
-        if(repository.existsById(id)){
+        if(usuarioRepository.existsById(id)){
             usuarioDto.setId(id);
-            repository.save(new Usuario(usuarioDto,rol,usuarioDto.getContrasenna()));
+            usuarioRepository.save(new Usuario(usuarioDto,rol,usuarioDto.getContrasenna()));
         }else{
             throw new SearchException("No existe el usuario a modificar");
         }
@@ -50,8 +50,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public void eliminarUsuario(Long id) throws SearchException {
-        if(repository.existsById(id)){
-            repository.deleteById(id);
+        if(usuarioRepository.existsById(id)){
+            usuarioRepository.deleteById(id);
         }else{
             throw new SearchException("No existe el usuario a eliminar");
         }
@@ -59,32 +59,32 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public List<Usuario> obtenerUsuarios() {
-        return repository.findAll();
+        return usuarioRepository.findAll();
     }
 
     @Override
     public Optional<Usuario> obtenerUsuarioXId(Long id) throws SearchException {
-        return Optional.ofNullable(repository.findById(id).orElseThrow(()-> new SearchException("No existe un usuario con ese ID")));
+        return Optional.ofNullable(usuarioRepository.findById(id).orElseThrow(()-> new SearchException("No existe un usuario con ese ID")));
     }
 
     @Override
     public Usuario obtenerUsuarioXNombre(String nombre) throws SearchException {
-        return repository.findByNombre(nombre).orElseThrow(()-> new SearchException("No existe un usuario con ese nombre"));
+        return usuarioRepository.findByNombre(nombre).orElseThrow(()-> new SearchException("No existe un usuario con ese nombre"));
     }
 
     @Override
     public boolean existeUsuario(Long id) throws SearchException {
-        return repository.existsById(id);
+        return usuarioRepository.existsById(id);
     }
 
     @Override
     public Long existeUsuariobynombre(String nombre) throws SearchException {
-        return repository.findIdByNombre(nombre);
+        return usuarioRepository.findIdByNombre(nombre);
     }
 
     @Override
     public ParticipantesByUsuarioResponse obtenerParticipanteXUsuario(Long idUsuario) {
-        Usuario usuario = repository.findById(idUsuario).orElse(new Usuario());
+        Usuario usuario = usuarioRepository.findById(idUsuario).orElse(new Usuario());
         List<ParticipantesDto> participanteDtoList = participanteClient.obtenerParticipanteXUsuario(idUsuario);
 
         return ParticipantesByUsuarioResponse.builder()

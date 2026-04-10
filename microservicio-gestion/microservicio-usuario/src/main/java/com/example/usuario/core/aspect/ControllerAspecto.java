@@ -18,9 +18,13 @@ import java.util.logging.Logger;
 @Aspect
 @Component
 public class ControllerAspecto {
-    Logger log = Logger.getLogger(this.getClass().getName());
+    private final Logger log = Logger.getLogger(this.getClass().getName());
+    private final LogsService LogsService;
+
     @Autowired
-    private LogsService LogsService;
+    public ControllerAspecto(LogsService logsService) {
+        LogsService = logsService;
+    }
 
     @Before(value = "execution(* com.example.usuario.core.controller.UsuarioController.*(..))")
     public void logBeforeControllerUsuario(JoinPoint joinPoint){

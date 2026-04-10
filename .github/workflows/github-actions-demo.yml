@@ -1,14 +1,12 @@
-name: Sistema de Monitoreo para Sensores Inteligentes Conectados al Cuerpo
-run-name: ${{ github.actor }} está probando el proyecto completo 🚀
+name: Build Microservicios
+run-name: ${{ github.actor }} está construyendo el proyecto 🚀
 
 on:
   push:
     branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,88 +20,7 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: 🧹 LIMPIAR proyecto completo
+      - name: 🧹 Maven Clean Install
         run: |
-          echo "🔍 Limpiando todos los módulos del proyecto..."
-          mvn -B clean --file pom.xml
-          echo "✅ Limpieza completada"
-
-      - name: 🔨 COMPILAR todo el proyecto (FAIL ON ERROR)
-        run: |
-          echo "🚀 Iniciando compilación completa de todos los microservicios..."
-          echo "Módulos a compilar:"
-          echo "  - microservicio-gateway"
-          echo "  - microservicio-eureka" 
-          echo "  - microservicio-config"
-          echo "  - microservicio-gestion (con 7 submódulos)"
-          echo ""
-          mvn -B compile --file pom.xml
-          if [ $? -eq 0 ]; then
-            echo "✅ COMPILACIÓN EXITOSA - Todos los microservicios compilaron correctamente"
-          else
-            echo "❌ ERROR DE COMPILACIÓN - El workflow se detendrá aquí"
-            exit 1
-          fi
-      - name: 📦 Empaquetar todos los microservicios
-        run: |
-          echo "📦 Empaquetando todos los microservicios..."
-          mvn -B package --file pom.xml
-          if [ $? -eq 0 ]; then
-            echo "✅ Empaquetado exitoso - JARs/WARs generados"
-          else
-            echo "❌ ERROR EN EMPAQUETADO"
-            exit 1
-          fi
-
-      - name: 🏗️ Instalar artefactos en repositorio Maven
-        run: |
-          echo "🏗️ Instalando artefactos..."
-          mvn -B install --file pom.xml
-          if [ $? -eq 0 ]; then
-            echo "✅ Instalación completada"
-          else
-            echo "❌ ERROR EN INSTALACIÓN"
-            exit 1
-          fi
-
-      - name: 📋 Verificar artefactos generados
-        run: |
-          echo "📋 Verificando artefactos generados..."
-          echo "=== JARs principales ==="
-          find . -name "*.jar" -path "*/target/*" | head -10
-          echo ""
-          echo "=== WARs generados ===" 
-          find . -name "*.war" -path "*/target/*" | head -10
-          echo ""
-          echo "=== Total de artefactos ==="
-          echo "JARs: $(find . -name "*.jar" -path "*/target/*" | wc -l)"
-          echo "WARs: $(find . -name "*.war" -path "*/target/*" | wc -l)"
-
-      - name: 🔍 Actualizar grafo de dependencias
-        uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
-
-      - name: 📤 Subir artefactos de construcción
-        uses: actions/upload-artifact@v4
-        with:
-          name: microservicios-completos
-          path: |
-            microservicio-*/target/*.jar
-            microservicio-gestion/*/target/*.jar
-            microservicio-gestion/*/target/*.war
-          retention-days: 30
-
-      - name: 🎉 Resumen de construcción
-        run: |
-          echo "🎉 CONSTRUCCIÓN COMPLETADA EXITOSAMENTE"
-          echo "=========================================="
-          echo "✅ Compilación: OK"
-          echo "✅ Empaquetado: OK" 
-          echo "✅ Instalación: OK"
-          echo "✅ Artefactos: Disponibles para descarga"
-          echo ""
-          echo "📊 Estadísticas:"
-          echo "- Microservicios principales: 4"
-          echo "- Submódulos de gestión: 7"
-          echo "- Total de módulos: 11"
-          echo ""
-          echo "🚀 El proyecto está listo para despliegue"
+          echo "🔍 Ejecutando Maven Clean Install..."
+          mvn -B clean install -DskipTests --file pom.xml

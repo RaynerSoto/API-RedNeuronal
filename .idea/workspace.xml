@@ -13,47 +13,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="97948ea1-4391-4a7e-b8f2-95b5d053fd41" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-dato/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-dato/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-dato/src/main/java/com/example/microserviciodato/core/feingclient/PatologiaClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-dato/src/main/java/com/example/microserviciodato/core/feingclient/PatologiaClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-participante/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-participante/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-patologia/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-patologia/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/MicroservicioPdfApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/ServletInitializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/controller/ParticipanteController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/dto/DatoDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/dto/ParticipanteDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/dto/ParticipantesDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/dto/PatologiaDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/dto/SennalDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/dto/UserName.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/dto/predecir/ModeloRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/dto/predecir/Sennal.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/feignClient/ParticipanteClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/feignClient/PatologiasClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/feignClient/RedNeuronalClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/feignClient/UsuarioParticipanteClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/http/response/ParticipanteResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/http/response/PatologiasResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/service/ParticipantesUsuarioService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/serviceInpl/ChartGenerator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/serviceInpl/CrearPDF.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/serviceInpl/ParticipantesUsuario.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/resources/templates/reporteParticipantes.jrxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/test/java/com/example/generarpdf/MicroservicioPdfApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-redneuronal/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-redneuronal/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-sennal/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-sennal/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/core/controller/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/core/controller/UsuarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/core/service/LogsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/core/service/LogsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/core/service/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/core/service/UsuarioService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,10 +27,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="zPbIzaq0" />
   </component>
@@ -342,7 +303,7 @@
       <workItem from="1775214880743" duration="5894000" />
       <workItem from="1775494962015" duration="2612000" />
       <workItem from="1775500237639" duration="186000" />
-      <workItem from="1775833942799" duration="4382000" />
+      <workItem from="1775833942799" duration="5842000" />
     </task>
     <servers />
   </component>

@@ -76,21 +76,4 @@ public class UsuarioServiceImpl implements UsuarioService {
     public boolean existeUsuario(Long id) throws SearchException {
         return usuarioRepository.existsById(id);
     }
-
-    @Override
-    public Long existeUsuariobynombre(String nombre) throws SearchException {
-        return usuarioRepository.findIdByNombre(nombre);
-    }
-
-    @Override
-    public ParticipantesByUsuarioResponse obtenerParticipanteXUsuario(Long idUsuario) {
-        Usuario usuario = usuarioRepository.findById(idUsuario).orElse(new Usuario());
-        List<ParticipantesDto> participanteDtoList = participanteClient.obtenerParticipanteXUsuario(idUsuario);
-
-        return ParticipantesByUsuarioResponse.builder()
-                .nombre(usuario.getNombre())
-                .noprofesional(usuario.getNoprofesional())
-                    .participanteList(participanteDtoList)
-            .build();
-    }
 }

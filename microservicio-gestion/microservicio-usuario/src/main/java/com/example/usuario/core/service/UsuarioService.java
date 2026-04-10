@@ -22,7 +22,4 @@ public interface UsuarioService {
     Optional<Usuario> obtenerUsuarioXId(Long id) throws SearchException;
     Usuario obtenerUsuarioXNombre(String nombre) throws SearchException;
     boolean existeUsuario(Long id) throws SearchException;
-    Long existeUsuariobynombre(String nombre) throws SearchException;
-    ParticipantesByUsuarioResponse obtenerParticipanteXUsuario(Long idUsuario);
-
 }

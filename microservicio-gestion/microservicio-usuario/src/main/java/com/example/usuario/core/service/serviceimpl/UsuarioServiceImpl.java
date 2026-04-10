@@ -22,6 +22,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     private ParticipanteClient participanteClient;
     private final PasswordEncoder passwordEncoder;
 
+
     @Autowired
     public UsuarioServiceImpl(UsuarioRepository repository, ParticipanteClient participanteClient, PasswordEncoder passwordEncoder) {
         this.repository = repository;

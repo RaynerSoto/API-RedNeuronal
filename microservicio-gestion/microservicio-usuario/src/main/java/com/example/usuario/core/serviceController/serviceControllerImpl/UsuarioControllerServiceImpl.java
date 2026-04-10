@@ -27,38 +27,37 @@ public class UsuarioControllerServiceImpl implements UsuarioControllerService {
     private final RolRepository  rolRepository;
     private final UsuarioRepository usuarioRepository;
     private final PasswordEncoder passwordEncoder;
-    private static final String ACEPTADO = "Aceptado";
-    private static final String ERROR = "Error";
+    private final List<Rol> rolesLista;
 
     @Autowired
-    public UsuarioControllerServiceImpl(UsuarioService usuarioService, LogsService logsService, RolRepository rolRepository, UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder) {
+    public UsuarioControllerServiceImpl(UsuarioService usuarioService, LogsService logsService, RolRepository rolRepository, UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder, List<Rol> rolesLista) {
         this.usuarioService = usuarioService;
         this.logsService = logsService;
         this.rolRepository = rolRepository;
         this.usuarioRepository = usuarioRepository;
         this.passwordEncoder = passwordEncoder;
+        this.rolesLista = rolesLista;
     }
 
     @Override
     public String insertarUsuario(UsuarioDto usuario, HttpServletRequest request) throws SearchException {
-        Rol rol = rolRepository.findById(usuario.getId_rol()).orElseThrow(() -> new SearchException("No se ha encontrado el rol específico"));
+        Rol rol = rolesLista.stream()
+                .filter(s -> s.getId() == usuario.getId_rol()).findFirst().orElseThrow(() -> new SearchException("No se ha encontrado el rol específico"));
         usuarioService.insertarUsuario(new Usuario(usuario,rol,usuario.getContrasenna()));
-        logsService.insertarLog(request, ACEPTADO,"Se insertó un usuario");
         return "El usuario se insertó correctamente";
     }
 
     @Override
     public String modificarUsuario(UsuarioDto usuario,Long id, HttpServletRequest request) throws SearchException {
-        Rol rol = rolRepository.findById(usuario.getId_rol()).orElseThrow(() -> new SearchException("No se ha encontrado el rol específico"));
+        Rol rol = rolesLista.stream()
+                .filter(s -> s.getId() == usuario.getId_rol()).findFirst().orElseThrow(() -> new SearchException("No se ha encontrado el rol específico"));
         usuarioService.modificarUsuario(usuario, id,rol);
-        logsService.insertarLog(request, ACEPTADO,"Se modificó un usuario");
         return "Usuario Modificado correctamente";
     }
 
     @Override
     public String eliminarUsuario(Long id, HttpServletRequest request) throws SearchException {
         usuarioService.eliminarUsuario(id);
-        logsService.insertarLog(request, ACEPTADO,"Se eliminó un usuario");
         return "Se eliminó el usuario";
     }
 

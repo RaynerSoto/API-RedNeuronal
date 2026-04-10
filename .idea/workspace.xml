@@ -12,7 +12,12 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="97948ea1-4391-4a7e-b8f2-95b5d053fd41" name="Changes" comment="" />
+    <list default="true" id="97948ea1-4391-4a7e-b8f2-95b5d053fd41" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/config/ListadosString.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/core/model/Estado.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/core/repository/EstadoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,7 +29,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -317,7 +324,7 @@
       <workItem from="1775214880743" duration="5894000" />
       <workItem from="1775494962015" duration="2612000" />
       <workItem from="1775500237639" duration="186000" />
-      <workItem from="1775833942799" duration="9679000" />
+      <workItem from="1775833942799" duration="13076000" />
     </task>
     <servers />
   </component>

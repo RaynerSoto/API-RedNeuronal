@@ -28,6 +28,7 @@
     </scm>
     <properties>
         <java.version>17</java.version>
+        <spring-cloud.version>2023.0.4</spring-cloud.version>
     </properties>
 
     <dependencies>
@@ -44,20 +45,6 @@
             <version>1.5_r4</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/libs/neuroph-2.98/Framework/android-1.5_r4.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>libs</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.0.13</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/neuroph-2.98/Framework/logback-classic-1.0.13.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>libs</groupId>
-            <artifactId>logback-core</artifactId>
-            <version>1.1.2</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/neuroph-2.98/Framework/logback-core-1.1.2.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>libs</groupId>
@@ -87,21 +74,7 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/libs/neuroph-2.98/Framework/neuroph-ocr-2.98.jar</systemPath>
         </dependency>
-        <dependency>
-            <groupId>libs</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.5</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/neuroph-2.98/Framework/slf4j-api-1.7.5.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>libs</groupId>
-            <artifactId>slf4j-nop</artifactId>
-            <version>1.7.6</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/neuroph-2.98/Framework/slf4j-nop-1.7.6.jar</systemPath>
-        </dependency>
-        <dependency>
+                <dependency>
             <groupId>libs</groupId>
             <artifactId>visrec-api</artifactId>
             <version>1.0.0</version>
@@ -109,6 +82,17 @@
             <systemPath>${project.basedir}/libs/neuroph-2.98/Framework/visrec-api-1.0.0.jar</systemPath>
         </dependency>
     </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <build>
         <plugins>
             <plugin>

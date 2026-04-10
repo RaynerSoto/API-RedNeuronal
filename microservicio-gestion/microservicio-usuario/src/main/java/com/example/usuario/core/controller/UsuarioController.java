@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import java.util.logging.Logger;
 
@@ -35,6 +36,7 @@ public class UsuarioController {
     @PostMapping("/create")
     @Operation(summary = "Insertar usuario",
             description = "Permite insertar un usuario")
+    @PreAuthorize("hasAnyRole('ROLE_Administrador','ROLE_Super Administrador')")
     public ResponseEntity<?> insertarUsuario(@RequestBody UsuarioDto usuario, HttpServletRequest request) throws SearchException {
         return ResponseEntity.ok(usuarioControllerService.insertarUsuario(usuario,request));
     }
@@ -42,6 +44,7 @@ public class UsuarioController {
     @GetMapping("/all")
     @Operation(summary = "Listado de usuarios",
             description = "Permite listar todos los usuarios del sistema")
+    @PreAuthorize("hasAnyRole('ROLE_Administrador','ROLE_Super Administrador')")
     public ResponseEntity<?> listarUsuarios(HttpServletRequest request) throws SearchException {
         return ResponseEntity.ok(usuarioControllerService.listarUsuarios(request));
     }
@@ -49,11 +52,13 @@ public class UsuarioController {
     @PutMapping("/update/{id}")
     @Operation(summary = "Modificar usuarios por ID",
             description = "Permite modificar un usuario a raíz de su ID")
+    @PreAuthorize("hasAnyRole('ROLE_Administrador','ROLE_Super Administrador')")
     public ResponseEntity<?> modificarUsuario(@RequestBody UsuarioDto usuario,@PathVariable Long id, HttpServletRequest request) throws SearchException {
         return ResponseEntity.ok(usuarioControllerService.modificarUsuario(usuario,id,request));
     }
 
     @DeleteMapping("/delete/{id}")
+    @PreAuthorize("hasAnyRole('ROLE_Administrador','ROLE_Super Administrador')")
     @Operation(summary = "Eliminar usuario por ID", description = "Permite eliminar un usuario a raíz de su ID")
     public ResponseEntity<?> eliminarUsuario(@PathVariable Long id, HttpServletRequest request) throws SearchException {
         return ResponseEntity.ok(usuarioControllerService.eliminarUsuario(id, request));
@@ -61,26 +66,8 @@ public class UsuarioController {
 
     @PatchMapping("/obtenerUsuario/{id}")
     @Operation(summary = "Obtener usuario por ID", description = "Permite obtener un usuario a raíz de su ID")
+    @PreAuthorize("hasAnyRole('ROLE_Administrador','ROLE_Super Administrador')")
     public ResponseEntity<?> obtenerDatosPorId(@PathVariable Long id,HttpServletRequest request) throws SearchException {
         return ResponseEntity.ok(usuarioControllerService.obtenerDatosPorId(id,request));
     }
-
-    @GetMapping("/existeUsuario/{id}")
-    public ResponseEntity<?> existeUsuariobynombre(@PathVariable Long id, HttpServletRequest request) throws SearchException {
-        return ResponseEntity.ok(usuarioControllerService.existeUsuariobynombre(id,request));
-    }
-
-    @GetMapping("/participantesXUsuario/{id}")
-    public ResponseEntity<?> obtenerParticipantesXUsuario(@PathVariable Long id) {
-        return ResponseEntity.ok(usuarioService.obtenerParticipanteXUsuario(id));
-    }
-
-
-    @GetMapping("/obtenerUsuarioporNombre/{nombre}")
-    @Operation(summary = "Obtener usuario por Nombre", description = "Permite obtener un usuario a raíz de su nombre")
-    public ResponseEntity<?> obtenerDatosPorId(@PathVariable String nombre) throws SearchException {
-        UserName usuario = new UserName(usuarioService.obtenerUsuarioXNombre(nombre));
-        return ResponseEntity.ok(usuario);
-    }
-
 }

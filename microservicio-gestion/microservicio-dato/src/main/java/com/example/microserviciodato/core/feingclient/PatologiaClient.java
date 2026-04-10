@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-@FeignClient(name = "microservicio-patologiatologia", url = "localhost:8088/api/v1/patologia")
+@FeignClient(name = "microservicio-patologia", url = "localhost:8088/api/v1/patologia")
 public interface PatologiaClient {
 
     @GetMapping("/obtenerPatologiaXDato/{id_dato}")

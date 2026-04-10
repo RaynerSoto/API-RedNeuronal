@@ -13,11 +13,47 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="97948ea1-4391-4a7e-b8f2-95b5d053fd41" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/microservicio-eureka/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservicio-gateway/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-eureka/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-eureka/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-dato/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-dato/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-dato/src/main/java/com/example/microserviciodato/core/feingclient/PatologiaClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-dato/src/main/java/com/example/microserviciodato/core/feingclient/PatologiaClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-participante/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-participante/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-patologia/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-patologia/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/MicroservicioPdfApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/ServletInitializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/controller/ParticipanteController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/dto/DatoDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/dto/ParticipanteDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/dto/ParticipantesDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/dto/PatologiaDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/dto/SennalDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/dto/UserName.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/dto/predecir/ModeloRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/dto/predecir/Sennal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/feignClient/ParticipanteClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/feignClient/PatologiasClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/feignClient/RedNeuronalClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/feignClient/UsuarioParticipanteClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/http/response/ParticipanteResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/http/response/PatologiasResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/service/ParticipantesUsuarioService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/serviceInpl/ChartGenerator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/serviceInpl/CrearPDF.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/java/com/example/generarpdf/core/serviceInpl/ParticipantesUsuario.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/main/resources/templates/reporteParticipantes.jrxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-pdf/src/test/java/com/example/generarpdf/MicroservicioPdfApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-redneuronal/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-redneuronal/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-sennal/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-sennal/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/core/controller/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/core/controller/UsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +66,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
+  <component name="KubernetesApiProvider"><![CDATA[{
+  "isMigrated": true
+}]]></component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="zPbIzaq0" />
   </component>
@@ -37,23 +77,39 @@
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="3BqC6OKdfGGhWqAx6f262LxFvl2" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "Merging master",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "settings.sync"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RubyModuleManagerSettings">
     <option name="blackListedRootsPaths">
       <list>
@@ -61,17 +117,18 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="GoApplicationRunConfiguration" />
+        <option value="KtorApplicationConfigurationType" />
+        <option value="MicronautRunConfigurationType" />
+        <option value="QuarkusRunConfigurationType" />
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.MicroservicioConfigApplication">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="API_sensores" />
       <method v="2">
@@ -105,6 +162,75 @@
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
       <method v="2" />
+    </configuration>
+    <configuration name="MicroservicioConfigApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="microservicio-config" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.config.MicroservicioConfigApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MicroservicioDatoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="microservicio-dato" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.microserviciodato.MicroservicioDatoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MicroservicioEurekaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="microservicio-eureka" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.eureka.MicroservicioEurekaApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MicroservicioGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="microservicio-gateway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.microservicio.gateway.MicroservicioGatewayApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MicroservicioParticipanteApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="microservicio-participante" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.participante.MicroservicioParticipanteApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MicroservicioPatologiaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="microservicio-patologia" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.patologia.MicroservicioPatologiaApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MicroservicioRedneuronalApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="microservicio-redneuronal" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.redneuronal.MicroservicioRedneuronalApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MicroservicioSennalApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="microservicio-sennal" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.sennal.MicroservicioSennalApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MicroservicioUsuarioApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="microservicio-usuario" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.usuario.MicroservicioUsuarioApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="Tox" factoryName="Tox">
       <module name="API_sensores" />
@@ -211,7 +337,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1775207041786</updated>
-      <workItem from="1775207056115" duration="3490000" />
+      <workItem from="1775207056115" duration="4108000" />
+      <workItem from="1775214155948" duration="615000" />
+      <workItem from="1775214880743" duration="5894000" />
+      <workItem from="1775494962015" duration="2612000" />
+      <workItem from="1775500237639" duration="186000" />
+      <workItem from="1775833942799" duration="4382000" />
     </task>
     <servers />
   </component>

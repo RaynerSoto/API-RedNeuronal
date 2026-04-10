@@ -31,4 +31,8 @@ public class UsuarioDto {
         this.contrasenna = usuario.getContrasenna();
         this.noprofesional = usuario.getNoprofesional();
     }
+
+    public static UsuarioDto toUsuarioDtoRol(UsuarioDto dto , Long id_rol){
+        return new UsuarioDto(dto.getId(), id_rol, dto.getNombre(), dto.getUsername(), dto.getContrasenna(), dto.getNoprofesional());
+    }
 }

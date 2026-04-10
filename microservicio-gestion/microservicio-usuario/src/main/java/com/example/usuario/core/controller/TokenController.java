@@ -31,7 +31,7 @@ public class TokenController {
     }
 
     @GetMapping("/")
-    @Operation(summary = "")
+    @Operation(summary = "Valida el token del microservicio",description = "Valida el token del microservicio que lo necesite")
     public ResponseEntity<Boolean> validarTokenMicroservicios(HttpServletRequest request){
         return ResponseEntity.ok(tokenControllerService.validarToken(request));
     }

@@ -1,6 +1,7 @@
 package com.example.usuario.core.feignClient;
 
 import com.example.usuario.core.dto.ParticipantesDto;
+import com.zaxxer.hikari.util.UtilityElf;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

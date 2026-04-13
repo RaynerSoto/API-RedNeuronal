@@ -11,7 +11,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,10 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.logging.Logger;
 
 @RestController
-@RequestMapping("/api/v1usuarioApp")
+@RequestMapping("/api/v1/usuarioApp")
 @Tag(name = "UsuarioAppController", description = "Controlador de usuarios de la app sin seguridad")
 public class UsuarioAppController {
-    private static Logger logger = Logger.getLogger(UsuarioController.class.getName());
+    private final Logger logger = Logger.getLogger(this.getClass().getName());
     private final UsuarioService usuarioService;
     private final LogsService logsService;
     private final UsuarioControllerService usuarioControllerService;
@@ -39,7 +38,7 @@ public class UsuarioAppController {
 
     @PostMapping("/create")
     @Operation(summary = "Insertar usuario",
-            description = "Permite insertar un usuario")
+            description = "Permite insertar un usuario paciente")
     public ResponseEntity<?> insertarUsuario(@RequestBody UsuarioDto usuario, HttpServletRequest request) throws SearchException {
         return ResponseEntity.ok(usuarioControllerService.insertarUsuario(usuarioDtoService.userModificacion(usuario),request));
     }

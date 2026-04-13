@@ -38,6 +38,7 @@ public class UsuarioController {
             description = "Permite insertar un usuario")
     @PreAuthorize("hasAnyRole('ROLE_Administrador','ROLE_Super Administrador')")
     public ResponseEntity<?> insertarUsuario(@RequestBody UsuarioDto usuario, HttpServletRequest request) throws SearchException {
+        logger.info("Iniciando insertar usuario");
         return ResponseEntity.ok(usuarioControllerService.insertarUsuario(usuario,request));
     }
 
@@ -46,6 +47,7 @@ public class UsuarioController {
             description = "Permite listar todos los usuarios del sistema")
     @PreAuthorize("hasAnyRole('ROLE_Administrador','ROLE_Super Administrador')")
     public ResponseEntity<?> listarUsuarios(HttpServletRequest request) throws SearchException {
+        logger.info("Listando usuarios");
         return ResponseEntity.ok(usuarioControllerService.listarUsuarios(request));
     }
 
@@ -54,6 +56,7 @@ public class UsuarioController {
             description = "Permite modificar un usuario a raíz de su ID")
     @PreAuthorize("hasAnyRole('ROLE_Administrador','ROLE_Super Administrador')")
     public ResponseEntity<?> modificarUsuario(@RequestBody UsuarioDto usuario,@PathVariable Long id, HttpServletRequest request) throws SearchException {
+        logger.info("Modificando usuarios");
         return ResponseEntity.ok(usuarioControllerService.modificarUsuario(usuario,id,request));
     }
 
@@ -61,13 +64,15 @@ public class UsuarioController {
     @PreAuthorize("hasAnyRole('ROLE_Administrador','ROLE_Super Administrador')")
     @Operation(summary = "Eliminar usuario por ID", description = "Permite eliminar un usuario a raíz de su ID")
     public ResponseEntity<?> eliminarUsuario(@PathVariable Long id, HttpServletRequest request) throws SearchException {
+        logger.info("Eliminando usuario");
         return ResponseEntity.ok(usuarioControllerService.eliminarUsuario(id, request));
     }
 
     @PatchMapping("/obtenerUsuario/{id}")
     @Operation(summary = "Obtener usuario por ID", description = "Permite obtener un usuario a raíz de su ID")
     @PreAuthorize("hasAnyRole('ROLE_Administrador','ROLE_Super Administrador')")
-    public ResponseEntity<?> obtenerDatosPorId(@PathVariable Long id,HttpServletRequest request) throws SearchException {
+    public ResponseEntity<?> obtenerUsuarioPorId(@PathVariable Long id,HttpServletRequest request) throws SearchException {
+        logger.info("Obtener un usuario por ID");
         return ResponseEntity.ok(usuarioControllerService.obtenerDatosPorId(id,request));
     }
 }

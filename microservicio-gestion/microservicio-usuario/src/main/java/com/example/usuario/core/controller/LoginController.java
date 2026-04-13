@@ -39,6 +39,7 @@ public class LoginController {
     @PostMapping("/")
     @Operation(summary = "Login",description = "Endpoint empleado para el Login")
     public ResponseEntity<?> login(@RequestBody UsuarioLogin usuario, HttpServletRequest request) throws SearchException {
+        logger.info("Iniciando login");
         return ResponseEntity.ok(loginControllerService.login(usuario,request));
     }
 }

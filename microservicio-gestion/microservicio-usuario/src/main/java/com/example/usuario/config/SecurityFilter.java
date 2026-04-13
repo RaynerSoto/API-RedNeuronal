@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -47,20 +48,20 @@ public class SecurityFilter extends OncePerRequestFilter {
     @SneakyThrows
     //@Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        System.out.println("Inicio doFilter");
+        logger.info("Inicio doFilter");
         TokenDto token = TokenUtils.requestToken(request);
         String requesUri = request.getRequestURI();
-        System.out.println(requesUri);
-        System.out.println(request.getHeader("Referer"));
-        System.out.println(request.getHeader("Origin"));
+        logger.info(requesUri);
+        logger.info(request.getHeader("Referer"));
+        logger.info(request.getHeader("Origin"));
         System.out.println(request.getRemotePort());
         System.out.println(request.getServerPort());
-        System.out.println(request.getContextPath());
+        logger.info(request.getContextPath());
         boolean swagger = !Arrays.stream(AUTH_WHITELIST).filter(s -> request.getRequestURI().contains(s)).toList().isEmpty();
         if(!swagger){
             logger.info(request.getRequestURI());
         }
-        else if (token.getToken() != null && !request.getRequestURI().contains("/login")){
+        else if (!token.getToken().isBlank() && request.getRequestURI().contains("/api/v1/usuario")){
             Validacion.validarElemento(token);
             token.setToken(token.getToken().replace("Bearer ", "").replaceAll(" ","").replaceAll("\"",""));
             var user = tokenService.getSubjetc(token.getToken());
@@ -76,8 +77,8 @@ public class SecurityFilter extends OncePerRequestFilter {
                 throw new Exception("Usuario no encontrado");
             }
         }
-        else if (token.getToken() == null && !request.getRequestURI().contains("/login") && swagger){
-            throw new SecurityException("Acción invalida");
+        else if (token.getToken().isBlank() && request.getRequestURI().contains("/api/v1/usuario") && swagger){
+            throw new SecurityException("Acción inválida");
         }
         filterChain.doFilter(request, response);
     }

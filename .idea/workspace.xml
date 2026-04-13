@@ -13,7 +13,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="97948ea1-4391-4a7e-b8f2-95b5d053fd41" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/config/SecurityFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/config/SecurityFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/core/aspect/ControllerAspecto.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/core/aspect/ControllerAspecto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/core/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/core/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/core/controller/TokenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/core/controller/TokenController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/core/controller/UsuarioAppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/core/controller/UsuarioAppController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/core/controller/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/core/controller/UsuarioController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,9 +104,9 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.MicroservicioConfigApplication">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="Application" factoryName="Application">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
@@ -322,10 +328,19 @@
       <workItem from="1775494962015" duration="2612000" />
       <workItem from="1775500237639" duration="186000" />
       <workItem from="1775833942799" duration="17585000" />
+      <workItem from="1776084957452" duration="1684000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
   </component>
 </project>

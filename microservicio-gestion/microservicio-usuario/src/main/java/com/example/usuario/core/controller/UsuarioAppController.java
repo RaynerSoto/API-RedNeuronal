@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.logging.Logger;
 
 @RestController
@@ -40,6 +39,7 @@ public class UsuarioAppController {
     @Operation(summary = "Insertar usuario",
             description = "Permite insertar un usuario paciente")
     public ResponseEntity<?> insertarUsuario(@RequestBody UsuarioDto usuario, HttpServletRequest request) throws SearchException {
+        logger.info("Insertando un participante independiente");
         return ResponseEntity.ok(usuarioControllerService.insertarUsuario(usuarioDtoService.userModificacion(usuario),request));
     }
 }

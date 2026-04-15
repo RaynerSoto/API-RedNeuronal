@@ -14,12 +14,6 @@
   <component name="ChangeListManager">
     <list default="true" id="97948ea1-4391-4a7e-b8f2-95b5d053fd41" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/config/SecurityFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/config/SecurityFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/core/aspect/ControllerAspecto.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/core/aspect/ControllerAspecto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/core/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/core/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/core/controller/TokenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/core/controller/TokenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/core/controller/UsuarioAppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/core/controller/UsuarioAppController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/core/controller/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/src/main/java/com/example/usuario/core/controller/UsuarioController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,14 +67,14 @@
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;usuario&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.anthropic.code.plugin.settings&quot;,
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -104,16 +98,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.MicroservicioConfigApplication">
-    <configuration default="true" type="Application" factoryName="Application">
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="API_sensores" />
       <method v="2">
@@ -328,12 +312,33 @@
       <workItem from="1775494962015" duration="2612000" />
       <workItem from="1775500237639" duration="186000" />
       <workItem from="1775833942799" duration="17585000" />
-      <workItem from="1776084957452" duration="1684000" />
+      <workItem from="1776084957452" duration="2111000" />
+      <workItem from="1776087330064" duration="2754000" />
+      <workItem from="1776258857962" duration="1466000" />
+      <workItem from="1776260563063" duration="2482000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="MARK_IGNORED_AS_EXCLUDED" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

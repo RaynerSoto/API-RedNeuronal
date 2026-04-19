@@ -6,7 +6,7 @@ import './index.css'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
       <div className="container mt-5">
-          <h1 className="text-center text-blue-500">Hola Rayner</h1>
+          <h1 className="text-center h1 shadow-lg border-bottom">Hola Rayner</h1>
           <button className="btn btn-primary">Bootstrap</button>
       </div>
   </StrictMode>,

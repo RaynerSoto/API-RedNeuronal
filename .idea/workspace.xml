@@ -12,7 +12,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="97948ea1-4391-4a7e-b8f2-95b5d053fd41" name="Changes" comment="" />
+    <list default="true" id="97948ea1-4391-4a7e-b8f2-95b5d053fd41" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,6 +31,7 @@
         <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="spring-beans.schema" />
       </list>
     </option>
   </component>
@@ -63,6 +68,7 @@
     "RunOnceActivity.go.formatter.settings.were.checked": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.MicroservicioUsuarioApplication.executor": "Run",
     "cidr.known.project.marker": "true",
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "master",
@@ -76,6 +82,11 @@
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "show.migrate.to.gradle.popup": "false",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "DotEnv"
+    ]
   }
 }]]></component>
   <component name="ReactDesignerToolWindowState">
@@ -104,8 +115,29 @@
         <option value="SpringBootApplicationConfigurationType" />
       </set>
     </option>
+    <option name="configurationStatuses">
+      <map>
+        <entry key="SpringBootApplicationConfigurationType">
+          <value>
+            <map>
+              <entry key="MicroservicioUsuarioApplication" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.MicroservicioConfigApplication">
+  <component name="RunManager" selected="Spring Boot.MicroservicioUsuarioApplication">
+    <configuration default="true" type="Application" factoryName="Application">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="API_sensores" />
       <method v="2">
@@ -202,8 +234,14 @@
       </method>
     </configuration>
     <configuration name="MicroservicioUsuarioApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="envFilePaths">
+        <option value="$PROJECT_DIR$/microservicio-gestion/microservicio-usuario/.env" />
+      </option>
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="microservicio-usuario" />
+      <selectedOptions>
+        <option name="environmentVariables" />
+      </selectedOptions>
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.usuario.MicroservicioUsuarioApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -306,6 +344,17 @@
       <option name="studyTest" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Spring Boot.MicroservicioConfigApplication" />
+      <item itemvalue="Spring Boot.MicroservicioDatoApplication" />
+      <item itemvalue="Spring Boot.MicroservicioEurekaApplication" />
+      <item itemvalue="Spring Boot.MicroservicioGatewayApplication" />
+      <item itemvalue="Spring Boot.MicroservicioParticipanteApplication" />
+      <item itemvalue="Spring Boot.MicroservicioPatologiaApplication" />
+      <item itemvalue="Spring Boot.MicroservicioRedneuronalApplication" />
+      <item itemvalue="Spring Boot.MicroservicioSennalApplication" />
+      <item itemvalue="Spring Boot.MicroservicioUsuarioApplication" />
+    </list>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -327,6 +376,9 @@
       <workItem from="1776610811590" duration="3556000" />
       <workItem from="1776615206785" duration="6372000" />
       <workItem from="1776622751847" duration="1684000" />
+      <workItem from="1776694122695" duration="3712000" />
+      <workItem from="1776805421737" duration="7327000" />
+      <workItem from="1776823601593" duration="5508000" />
     </task>
     <servers />
   </component>

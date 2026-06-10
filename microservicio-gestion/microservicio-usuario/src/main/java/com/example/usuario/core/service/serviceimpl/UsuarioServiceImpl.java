@@ -8,16 +8,18 @@ import com.example.usuario.core.exception.SearchException;
 import com.example.usuario.core.feignClient.ParticipanteClient;
 import com.example.usuario.core.http.response.ParticipantesByUsuarioResponse;
 import com.example.usuario.core.repository.UsuarioRepository;
+import com.example.usuario.core.service.GenericService;
 import com.example.usuario.core.service.UsuarioService;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
-public class UsuarioServiceImpl implements UsuarioService {
+@Service("usuario_service")
+public class UsuarioServiceImpl implements UsuarioService{
     private UsuarioRepository usuarioRepository;
     private ParticipanteClient participanteClient;
     private final PasswordEncoder passwordEncoder;
@@ -30,13 +32,15 @@ public class UsuarioServiceImpl implements UsuarioService {
         this.passwordEncoder = passwordEncoder;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
-    public void insertarUsuario(Usuario usuario) {
+    public void insertarEntity(Usuario usuario) {
         if(!usuarioRepository.existsByNombre(usuario.getNombre())){
             usuarioRepository.save(usuario);
         }
 
     }
+
 
     @Override
     public void modificarUsuario(UsuarioDto usuarioDto, Long id, Rol rol) throws SearchException {
@@ -49,7 +53,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public void eliminarUsuario(Long id) throws SearchException {
+    public void eliminarEntity(Long id) throws SearchException {
         if(usuarioRepository.existsById(id)){
             usuarioRepository.deleteById(id);
         }else{
@@ -58,12 +62,12 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public List<Usuario> obtenerUsuarios() {
+    public List<Usuario> obtenerEntitys() {
         return usuarioRepository.findAll();
     }
 
     @Override
-    public Optional<Usuario> obtenerUsuarioXId(Long id) throws SearchException {
+    public Optional<Usuario> obtenerEntityXId(Long id) throws SearchException {
         return Optional.ofNullable(usuarioRepository.findById(id).orElseThrow(()-> new SearchException("No existe un usuario con ese ID")));
     }
 

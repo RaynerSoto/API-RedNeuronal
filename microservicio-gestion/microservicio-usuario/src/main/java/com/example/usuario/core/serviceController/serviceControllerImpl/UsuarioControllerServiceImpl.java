@@ -8,6 +8,7 @@ import com.example.usuario.core.model.Rol;
 import com.example.usuario.core.model.Usuario;
 import com.example.usuario.core.repository.RolRepository;
 import com.example.usuario.core.repository.UsuarioRepository;
+import com.example.usuario.core.service.GenericService;
 import com.example.usuario.core.service.LogsService;
 import com.example.usuario.core.service.UsuarioService;
 import com.example.usuario.core.serviceController.UsuarioControllerService;
@@ -29,7 +30,6 @@ public class UsuarioControllerServiceImpl implements UsuarioControllerService {
     private final PasswordEncoder passwordEncoder;
     private final List<Rol> rolesLista;
 
-    @Autowired
     public UsuarioControllerServiceImpl(UsuarioService usuarioService, LogsService logsService, RolRepository rolRepository, UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder, List<Rol> rolesLista) {
         this.usuarioService = usuarioService;
         this.logsService = logsService;
@@ -43,7 +43,7 @@ public class UsuarioControllerServiceImpl implements UsuarioControllerService {
     public String insertarUsuario(UsuarioDto usuario, HttpServletRequest request) throws SearchException {
         Rol rol = rolesLista.stream()
                 .filter(s -> s.getId() == usuario.getId_rol()).findFirst().orElseThrow(() -> new SearchException("No se ha encontrado el rol específico"));
-        usuarioService.insertarUsuario(new Usuario(usuario,rol,usuario.getContrasenna()));
+        usuarioService.insertarEntity(new Usuario(usuario,rol,usuario.getContrasenna()));
         return "El usuario se insertó correctamente";
     }
 
@@ -57,7 +57,7 @@ public class UsuarioControllerServiceImpl implements UsuarioControllerService {
 
     @Override
     public String eliminarUsuario(Long id, HttpServletRequest request) throws SearchException {
-        usuarioService.eliminarUsuario(id);
+        usuarioService.eliminarEntity(id);
         return "Se eliminó el usuario";
     }
 
@@ -72,7 +72,7 @@ public class UsuarioControllerServiceImpl implements UsuarioControllerService {
 
     @Override
     public UsuarioDtoSent obtenerDatosPorId(Long id, HttpServletRequest request) throws SearchException {
-        UsuarioDtoSent usuario = UsuarioDtoSent.fromUsuario(usuarioService.obtenerUsuarioXId(id).orElseThrow(() -> new SearchException("No se ha encontrado el usuario especificado")));
+        UsuarioDtoSent usuario = UsuarioDtoSent.fromUsuario(usuarioService.obtenerEntityXId(id).orElseThrow(() -> new SearchException("No se ha encontrado el usuario especificado")));
         return usuario;
     }
 

@@ -10,7 +10,7 @@
     <groupId>com.example.sennal</groupId>
     <artifactId>microservicio-sennal</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>microservicio-sennal</name>
     <description>microservicio-sennal</description>
     <url/>

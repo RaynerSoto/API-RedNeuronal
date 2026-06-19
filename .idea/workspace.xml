@@ -17,7 +17,7 @@
   <component name="ChangeListManager">
     <list default="true" id="97948ea1-4391-4a7e-b8f2-95b5d053fd41" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservicio-gateway/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gateway/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservicio-gestion/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/microservicio-gestion/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -513,7 +513,8 @@
       <workItem from="1781166300849" duration="5275000" />
       <workItem from="1781172720258" duration="640000" />
       <workItem from="1781173944306" duration="40000" />
-      <workItem from="1781241845973" duration="3521000" />
+      <workItem from="1781241845973" duration="4985000" />
+      <workItem from="1781883579319" duration="123000" />
     </task>
     <servers />
   </component>

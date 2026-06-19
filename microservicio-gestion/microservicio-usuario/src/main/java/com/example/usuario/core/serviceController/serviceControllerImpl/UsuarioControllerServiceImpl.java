@@ -78,7 +78,6 @@ public class UsuarioControllerServiceImpl implements UsuarioControllerService {
 
     @Override
     public boolean existeUsuariobynombre(Long id, HttpServletRequest request) throws SearchException {
-        boolean exists = usuarioService.existeUsuario(id);
-        return exists;
+        return usuarioService.existeUsuario(id);
     }
 }

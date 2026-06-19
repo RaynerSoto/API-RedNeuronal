@@ -1,23 +1,9 @@
 package com.example.usuario.core.dto;
 
 import com.example.usuario.core.model.Usuario;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class UserName {
-    private Long id;
-    private Long id_rol;
-    private String nombre;
-
-    public UserName(Usuario usuario) {
-        this.id = usuario.getId();
-        this.id_rol = usuario.getRol().getId();
-        this.nombre = usuario.getNombre();
+public record UserName(Long id, Long id_rol, String nombre) {
+    public static UserName fromUsuario(Usuario usuario) {
+        return new UserName(usuario.getId(), usuario.getRol().getId(), usuario.getNombre());
     }
 }

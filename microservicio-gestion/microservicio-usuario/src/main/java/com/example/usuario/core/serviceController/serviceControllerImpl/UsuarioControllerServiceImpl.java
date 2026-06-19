@@ -8,12 +8,10 @@ import com.example.usuario.core.model.Rol;
 import com.example.usuario.core.model.Usuario;
 import com.example.usuario.core.repository.RolRepository;
 import com.example.usuario.core.repository.UsuarioRepository;
-import com.example.usuario.core.service.GenericService;
 import com.example.usuario.core.service.LogsService;
 import com.example.usuario.core.service.UsuarioService;
 import com.example.usuario.core.serviceController.UsuarioControllerService;
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

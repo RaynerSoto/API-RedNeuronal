@@ -40,7 +40,7 @@ public class UsuarioControllerServiceImpl implements UsuarioControllerService {
     @Override
     public String insertarUsuario(UsuarioDto usuario, HttpServletRequest request) throws SearchException {
         Rol rol = rolesLista.stream()
-                .filter(s -> s.getId() == usuario.getId_rol()).findFirst().orElseThrow(() -> new SearchException("No se ha encontrado el rol específico"));
+                .filter(s -> s.getId().longValue() == usuario.getId_rol().longValue()).findFirst().orElseThrow(() -> new SearchException("No se ha encontrado el rol específico"));
         usuarioService.insertarEntity(new Usuario(usuario,rol,usuario.getContrasenna()));
         return "El usuario se insertó correctamente";
     }
@@ -48,7 +48,7 @@ public class UsuarioControllerServiceImpl implements UsuarioControllerService {
     @Override
     public String modificarUsuario(UsuarioDto usuario,Long id, HttpServletRequest request) throws SearchException {
         Rol rol = rolesLista.stream()
-                .filter(s -> s.getId() == usuario.getId_rol()).findFirst().orElseThrow(() -> new SearchException("No se ha encontrado el rol específico"));
+                .filter(s -> s.getId().longValue() == usuario.getId_rol().longValue()).findFirst().orElseThrow(() -> new SearchException("No se ha encontrado el rol específico"));
         usuarioService.modificarUsuario(usuario, id,rol);
         return "Usuario Modificado correctamente";
     }

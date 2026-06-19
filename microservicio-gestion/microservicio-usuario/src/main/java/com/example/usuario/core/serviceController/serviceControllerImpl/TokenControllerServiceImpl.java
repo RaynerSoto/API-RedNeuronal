@@ -52,7 +52,7 @@ public class TokenControllerServiceImpl implements TokenControllerService {
             Usuario usuario = usuarioRepository.findByUsernameEquals(decodedJWT.getSubject()).orElseThrow(() -> new SearchException("Usuario no encontrado"));
             Rol rol = rolRepository.findByNombreRolEquals(decodedJWT.getClaim("rol")).orElseThrow(() -> new SearchException("Rol no encontrado"));
             logger.info("Solamente queda el retorno de la información");
-            return (passwordEncoder.matches(usuario.getPassword(),decodedJWT.getClaim("password").asString())
+            return (passwordEncoder.matches(decodedJWT.getClaim("password").asString(),usuario.getPassword())
                     && decodedJWT.getExpiresAt().before(new Date()));
         }
         catch (Exception e) {

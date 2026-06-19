@@ -65,7 +65,7 @@ public class UsuarioControllerServiceImpl implements UsuarioControllerService {
     public List<UsuarioDtoSent> listarUsuarios(HttpServletRequest request) throws SearchException {
         try{
             return usuarioRepository.findAll().stream().map(UsuarioDtoSent::fromUsuario).toList();
-        } finally {
+        } catch (Exception e){
             throw new SearchException("No se puede acceder a la lista de usuarios");
         }
     }

@@ -20,7 +20,7 @@
         <module>microservicio-redneuronal</module>
         <module>microservicio-usuario</module>
         <module>microservicio-sennal</module>
-        <module>Microservicio-log</module>
+        <module>microservicio-log</module>
     </modules>
     <profiles>
         <profile>

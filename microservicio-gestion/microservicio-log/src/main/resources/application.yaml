@@ -1,3 +1,8 @@
+server:
+  port: 8090
+
 spring:
   application:
-    name: Microservicio-log
+    name: microservicio-log
+  profiles:
+    active: dev

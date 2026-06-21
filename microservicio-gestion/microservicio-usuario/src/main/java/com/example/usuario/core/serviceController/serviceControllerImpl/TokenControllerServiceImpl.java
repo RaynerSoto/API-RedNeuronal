@@ -59,6 +59,5 @@ public class TokenControllerServiceImpl implements TokenControllerService {
             logger.severe(e.getMessage());
             return false;
         }
-
     }
 }

@@ -2,40 +2,5 @@ server:
   port: 8089
 
 spring:
-  application:
-    name: microservicio-sennal
-  datasource:
-    url: jdbc:postgresql:${SensoresBDURL}
-    username: ${DB_USER}
-    password: ${BD_PASS}
-    driver-class-name: org.postgresql.Driver
-    hikari:
-      connection-timeout: 600000
-  jpa:
-    format-sql: true
-    show-sql: true
-    hibernate:
-      ddl-auto: update
-      properties:
-        hibernate:
-          format_sql: true
-          javax:
-            persistence:
-              query:
-                timeout: 60000
-    database: postgresql
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-  config:
-    import: optional:configserver:http://localhost:8888
-
-eureka:
-  instance:
-    hostname: localhost
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-
-logging:
-  level:
-    org.springframework.web: DEBUG
-    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
+  profiles:
+    active: dev

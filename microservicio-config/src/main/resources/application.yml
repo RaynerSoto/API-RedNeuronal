@@ -1,6 +1,12 @@
+server:
+  port: 8888
+
 spring:
-  profiles:
-    active: dev
   application:
     name: microservicio-config
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/configs
 

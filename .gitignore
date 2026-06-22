@@ -40,3 +40,10 @@ build/
 ### Configuration Files ###
 *.env
 *.properties
+
+### Claude Config ###
+CLAUDE.md
+.claude
+
+### Notas locales ###
+pendientes.md

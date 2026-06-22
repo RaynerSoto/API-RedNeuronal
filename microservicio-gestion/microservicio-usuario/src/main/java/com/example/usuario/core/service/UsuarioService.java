@@ -11,15 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-public interface UsuarioService {
-    @Transactional(rollbackFor = Exception.class)
-    void insertarUsuario(Usuario usuario);
+public interface UsuarioService extends GenericService<Usuario>{
     @Transactional(rollbackFor = Exception.class)
     void modificarUsuario(UsuarioDto usuario, Long id, Rol rol) throws SearchException;
-    @Transactional(rollbackFor = Exception.class)
-    void eliminarUsuario(Long id) throws SearchException;
-    List<Usuario> obtenerUsuarios();
-    Optional<Usuario> obtenerUsuarioXId(Long id) throws SearchException;
     Usuario obtenerUsuarioXNombre(String nombre) throws SearchException;
     boolean existeUsuario(Long id) throws SearchException;
 }

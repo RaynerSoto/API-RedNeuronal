@@ -19,7 +19,6 @@ public class ListadosCarga {
     @Autowired
     private RolRepository rolRepository;
 
-
     @Bean
     @Lazy(false)
     public List<Estado> estadosLista(){

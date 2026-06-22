@@ -10,7 +10,7 @@
     <groupId>com.example.patologia</groupId>
     <artifactId>microservicio-patologia</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>microservicio-patologia</name>
     <description>microservicio-patologia</description>
     <url/>

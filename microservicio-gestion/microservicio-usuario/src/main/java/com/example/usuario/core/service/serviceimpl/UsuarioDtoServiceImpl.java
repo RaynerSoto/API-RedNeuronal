@@ -20,7 +20,7 @@ public class UsuarioDtoServiceImpl implements UsuarioDtoService {
     public UsuarioDto userModificacion(UsuarioDto user) throws SearchException {
         Rol rol = rolesLista.stream().filter(s -> s.getNombreRol().contains("Paciente"))
                 .findFirst().orElseThrow(() -> new SearchException("No se encontro el rol"));
-        if (rol.getId() != user.getId_rol())
+        if (rol.getId().longValue() != user.getId_rol().longValue())
             return UsuarioDto.toUsuarioDtoRol(user, rol.getId());
         return user;
     }

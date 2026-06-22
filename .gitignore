@@ -44,3 +44,6 @@ build/
 ### Claude Config ###
 CLAUDE.md
 .claude
+
+### Notas locales ###
+pendientes.md

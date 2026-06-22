@@ -3,6 +3,8 @@ server:
 spring:
   application:
     name: microservicio-config
+  profile:
+    active: native
   cloud:
     config:
       server:

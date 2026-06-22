@@ -1,6 +1,4 @@
 spring:
-  application:
-    name: microservicio-usuario
   datasource:
     url: jdbc:${DB_TYPE:postgresql}://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:sensores_inteligentes}
     username: ${DB_USER:postgres}

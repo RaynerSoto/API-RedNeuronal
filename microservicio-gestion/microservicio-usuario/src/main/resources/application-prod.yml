@@ -10,7 +10,7 @@ spring:
       connection-timeout: 600000
   jpa:
     format-sql: true
-    show-sql: true
+    show-sql: false
     hibernate:
       ddl-auto: update
     database: postgresql
